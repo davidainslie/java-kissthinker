@@ -1,0 +1,25 @@
+<order id="2000" version="2.0" atTheRate="N">
+    <timeStamp>20120101 12:39:58</timeStamp>
+    <userName>scooby</userName>
+    <status>ACTIVE</status>
+    <additionalStatus/>
+    <orderType side="" type="TP"/>
+    <buy ccy="AUD" amount="100"/>
+    <sell CCY="CNY"/>
+    <usd amount="68.9"/>
+
+    <rate order="6">
+        <spread ask="0" bid="0"/>
+    </rate>
+
+    <tenor>FWD</tenor>
+    <valueDate>20120101</valueDate>
+    <fixing source="Reuters" reference="SAEC" date="20120101"/>
+    <desk>OTHER</desk>
+    <autoExecution on="N"/>
+
+    <sources>
+        <source name="ECB37" description="my ecb"/>
+        <source name="WMR 1600" description="your wmr"/>
+    </sources>
+</order>
