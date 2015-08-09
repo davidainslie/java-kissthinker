@@ -4,7 +4,7 @@
 <aspectj>
 
     <aspects>
-        <aspect name="com.kissthinker.core.configure.Configurator"/>
+        <aspect name="com.kissthinker.configure.Configurator"/>
     </aspects>
 
     <weaver options="-verbose"> <!-- -showWeaveInfo -debug to print every class [not] woven, -nowarn -warn:none -Xlint:ignore -->

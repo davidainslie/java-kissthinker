@@ -1,0 +1,354 @@
+package com.kissthinker.javabean;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.kissthinker.collection.CollectionListener;
+import com.kissthinker.collection.map.MapListener;
+import com.kissthinker.reflect.MethodUtil;
+import static com.kissthinker.collection.map.MapUtil.identityWeakHashMap;
+import static com.kissthinker.collection.set.SetUtil.hashSet;
+
+/**
+ * PropertyChangeListener broker.
+ * <br/>
+ * Notice that there are no "unlisten" methods to match {@link #listen(JavaBean, PropertyChangeListener)} or {@link #listen(JavaBean, String, PropertyChangeListener)}.<br>
+ * As listeners are managed weakly, then (like garbage collection) listener "clearance" is handled automatically.
+ * @author David Ainslie
+ * 
+ */
+public final class JavaBeanSupport
+{
+    /** */
+    private static final Logger LOGGER = LoggerFactory.getLogger(JavaBeanSupport.class);
+    
+    /** TODO Test for auto GC - may need a slight rewrite */
+    private static final Map<Collection<?>, Set<CollectionListener<?>>> COLLECTION_LISTENERS = identityWeakHashMap();
+    
+    /** */
+    private static final Lock COLLECTION_LISTENERS_LOCK = new ReentrantLock();
+    
+    /** TODO Test for auto GC - may need a slight rewrite */
+    private static final Map<Map<?, ?>, Set<MapListener<?, ?>>> MAP_LISTENERS = identityWeakHashMap();
+    
+    /** */
+    private static final Lock MAP_LISTENERS_LOCK = new ReentrantLock();
+
+    /**
+     * 
+     * @param javaBean
+     * @param propertyChangeListener
+     * @return JavaBean
+     */
+    public static JavaBean listen(JavaBean javaBean, PropertyChangeListener propertyChangeListener)
+    {
+        propertyChangeSupport(javaBean).addPropertyChangeListener(propertyChangeListener);
+        return javaBean;
+    }
+
+    /**
+     * 
+     * @param javaBean
+     * @param propertyName
+     * @param propertyChangeListener
+     * @return JavaBean
+     */
+    public static <P> JavaBean listen(JavaBean javaBean, String propertyName, PropertyChangeListener propertyChangeListener)
+    {        
+        propertyChangeSupport(javaBean).addPropertyChangeListener(propertyName, propertyChangeListener);
+        return javaBean;
+    }
+    
+    /**
+     * 
+     * @param javaBean
+     * @param propertyName
+     * @param propertyChangeListener
+     * @return JavaBean.Enumerated<?>
+     */
+    public static <P> JavaBean.Enumerated<?> listen(JavaBean.Enumerated<?> javaBean, String propertyName, PropertyChangeListener propertyChangeListener)
+    {        
+        propertyChangeSupport(javaBean).addPropertyChangeListener(propertyName, propertyChangeListener);
+        return javaBean;
+    }
+
+    /**
+     * 
+     * @param javaBean
+     * @param property
+     * @param propertyChangeListener
+     * @return JavaBean.Enumerated<?>
+     */
+    public static <P> JavaBean.Enumerated<?> listen(JavaBean.Enumerated<?> javaBean, P property, PropertyChangeListener propertyChangeListener)
+    {        
+        propertyChangeSupport(javaBean).addPropertyChangeListener(property.toString(), propertyChangeListener);
+        return javaBean;
+    }
+
+    /**
+     * 
+     * @param collection
+     * @param collectionListener
+     */
+    public static <O> void listen(Collection<O> collection, CollectionListener<O> collectionListener)
+    {
+        COLLECTION_LISTENERS_LOCK.lock();
+        Set<CollectionListener<?>> collectionListeners = null;
+        
+        try
+        {
+            collectionListeners = COLLECTION_LISTENERS.get(collection);
+            
+            if (collectionListeners == null)
+            {
+                collectionListeners = hashSet();
+                COLLECTION_LISTENERS.put(collection, collectionListeners);
+            }
+        }
+        finally
+        {
+            COLLECTION_LISTENERS_LOCK.unlock();
+        }
+        
+        collectionListeners.add(collectionListener);
+    }
+
+    /**
+     * 
+     * @param map
+     * @param mapListener
+     */
+    public static <K, V> void listen(Map<K, V> map, MapListener<K, V> mapListener)
+    {
+        MAP_LISTENERS_LOCK.lock();
+        Set<MapListener<?, ?>> mapListeners = null;
+        
+        try
+        {
+            mapListeners = MAP_LISTENERS.get(map);
+            
+            if (mapListeners == null)
+            {
+                mapListeners = hashSet();
+                MAP_LISTENERS.put(map, mapListeners);
+            }
+        }
+        finally
+        {
+            MAP_LISTENERS_LOCK.unlock();
+        }
+        
+        mapListeners.add(mapListener);
+    }
+
+    /**
+     * 
+     * @param methodName
+     * @param collection
+     * @param object
+     */
+    static void callback(final String methodName, final Collection<?> collection, final Object object)
+    {
+        final Set<CollectionListener<?>> collectionListeners = COLLECTION_LISTENERS.get(collection);
+        
+        if (collectionListeners != null)
+        {
+            // Note - Originally invoked the following on a separate thread via ExecutorUtil.execute.
+            // However, the order of applying e.g. "onAdd" is then unpredictable, which is probably not to be expected.
+            for (CollectionListener<?> collectionListener : collectionListeners)
+            {
+                MethodUtil.invoke(collectionListener, methodName, object);
+            }
+        }
+    }
+
+    /**
+     *
+     * @param methodName
+     * @param map
+     * @param key
+     * @param value
+     */
+    static void callback(final String methodName, final Map<?, ?> map, final Object key, final Object value)
+    {
+        final Set<MapListener<?, ?>> mapListeners = MAP_LISTENERS.get(map);
+        
+        if (mapListeners != null)
+        {
+            // Note - Originally invoked the following on a separate thread via ExecutorUtil.execute.
+            // However, the order of applying e.g. "onPut" is then unpredictable, which is probably not to be expected.
+            for (MapListener<?, ?> mapListener : mapListeners)
+            {
+                MethodUtil.invoke(mapListener, methodName, key, value);
+            }
+        }
+    }
+
+    /**
+     * 
+     * @param javaBean
+     * @param propertyName
+     * @param oldValue
+     * @param newValue
+     * @return JavaBean
+     */
+    static JavaBean firePropertyChange(JavaBean javaBean, String propertyName, Object oldValue, Object newValue)
+    {
+        propertyChangeSupport(javaBean).firePropertyChange(propertyName, oldValue, newValue);
+        return javaBean;
+    }
+
+    /**
+     * 
+     * @param javaBean
+     * @param propertyName
+     * @param oldValue
+     * @param newValue
+     * @return JavaBean.Enumerated<?>
+     */
+    static <P> JavaBean.Enumerated<?> firePropertyChange(JavaBean.Enumerated<?> javaBean, String propertyName, Object oldValue, Object newValue)
+    {
+        propertyChangeSupport(javaBean).firePropertyChange(propertyName, oldValue, newValue);
+        return javaBean;
+    }
+
+    /**
+     * 
+     * @param javaBean
+     * @param property
+     * @param oldValue
+     * @param newValue
+     * @return JavaBean.Enumerated<?>
+     */
+    static <P> JavaBean.Enumerated<?> firePropertyChange(JavaBean.Enumerated<?> javaBean, P property, Object oldValue, Object newValue)
+    {
+        propertyChangeSupport(javaBean).firePropertyChange(property.toString(), oldValue, newValue);
+        return javaBean;
+    }
+
+    /**
+     * 
+     * @param javaBean
+     * @param propertyChangeEvent
+     * @return JavaBean
+     */
+    static JavaBean firePropertyChange(JavaBean javaBean, PropertyChangeEvent propertyChangeEvent)
+    {
+        propertyChangeSupport(javaBean).firePropertyChange(propertyChangeEvent);
+        return javaBean;
+    }
+
+    /**
+     * 
+     * @param javaBean
+     * @param propertyName
+     * @param index
+     * @param oldValue
+     * @param newValue
+     * @return JavaBean
+     */
+    static JavaBean fireIndexedPropertyChange(JavaBean javaBean, String propertyName, int index, Object oldValue, Object newValue)
+    {
+        propertyChangeSupport(javaBean).fireIndexedPropertyChange(propertyName, index, oldValue, newValue);
+        return javaBean;
+    }
+
+    /**
+     * 
+     * @param javaBean
+     * @param propertyName
+     * @param index
+     * @param oldValue
+     * @param newValue
+     * @return JavaBean.Enumerated<?>
+     */
+    static <P> JavaBean.Enumerated<?> fireIndexedPropertyChange(JavaBean.Enumerated<?> javaBean, String propertyName, int index, Object oldValue, Object newValue)
+    {
+        propertyChangeSupport(javaBean).fireIndexedPropertyChange(propertyName, index, oldValue, newValue);
+        return javaBean;
+    }
+
+    /**
+     * 
+     * @param javaBean
+     * @param property
+     * @param index
+     * @param oldValue
+     * @param newValue
+     * @return JavaBean.Enumerated<?>
+     */
+    static <P> JavaBean.Enumerated<?> fireIndexedPropertyChange(JavaBean.Enumerated<?> javaBean, P property, int index, Object oldValue, Object newValue)
+    {
+        propertyChangeSupport(javaBean).fireIndexedPropertyChange(property.toString(), index, oldValue, newValue);
+        return javaBean;
+    }
+
+    /**
+     * Clear all sources and listeners - Removes everything from managed collections.
+     */
+    static void clear()
+    {
+        COLLECTION_LISTENERS_LOCK.lock();
+        
+        try
+        {
+            COLLECTION_LISTENERS.clear();
+        }
+        finally
+        {
+            COLLECTION_LISTENERS_LOCK.unlock();
+        }
+        
+        MAP_LISTENERS_LOCK.lock();
+        
+        try
+        {
+            MAP_LISTENERS.clear();
+        }
+        finally
+        {
+            MAP_LISTENERS_LOCK.unlock();
+        }
+    }
+
+    /** */
+    static int collectionListenerCount()
+    {
+        return COLLECTION_LISTENERS.size();
+    }
+    
+    
+    /** */
+    static int mapListenerCount()
+    {
+        return MAP_LISTENERS.size();
+    }
+    
+    
+    /**
+     * We can safely cast a given {@link JavaBean} to {@link PropertyChangeSupporter} as we have injected the interface and an implementation via AspectJ.<br/>
+     * Comparing this to Scala, {@link PropertyChangeSupporter} and its implementation act as a trait.
+     * @param javaBean
+     * @return
+     */
+    private static PropertyChangeSupport propertyChangeSupport(JavaBean javaBean)
+    {
+        PropertyChangeSupporter propertyChangeSupporter = (PropertyChangeSupporter)javaBean;
+        return propertyChangeSupporter.propertyChangeSupport();
+    }
+
+    /**
+     * Utility.
+     */
+    private JavaBeanSupport()
+    {
+        super();
+    }
+}

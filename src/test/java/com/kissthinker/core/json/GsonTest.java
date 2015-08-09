@@ -7,7 +7,7 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Test;
-import static com.kissthinker.core.object.ClassUtil.path;
+import static com.kissthinker.object.ClassUtil.path;
 
 /**
  * @author David Ainslie
