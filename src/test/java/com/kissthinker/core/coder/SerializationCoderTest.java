@@ -1,13 +1,8 @@
 package com.kissthinker.core.coder;
 
-
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import com.kissthinker.core.coder.Coder;
-import com.kissthinker.core.coder.SerializationCoder;
-
 
 /**
  * @author David Ainslie
@@ -15,28 +10,20 @@ import com.kissthinker.core.coder.SerializationCoder;
  */
 public class SerializationCoderTest
 {
-    /**
-     *
-     */
+    /** */
     @BeforeClass
     public static void initialiseClass()
     {
         System.setProperty("logback.configurationFile", "logback-test.xml");
     }
 
-
-    /**
-     *
-     */
+    /** */
     public SerializationCoderTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void encode()
     {

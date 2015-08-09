@@ -1,18 +1,13 @@
 package com.kissthinker.core.json;
 
-
-import static com.kissthinker.core.object.ClassUtil.path;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
-import org.junit.Test;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
+import org.junit.Test;
+import static com.kissthinker.core.object.ClassUtil.path;
 
 /**
  * @author David Ainslie
@@ -22,7 +17,6 @@ public class GsonTest
 {
     /** */
     private final String exampleJSONLocation = path("src/test/resources/", getClass(), "example.json");
-
 
     /**
      * @throws IOException

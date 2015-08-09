@@ -1,16 +1,8 @@
 package com.kissthinker.core.text;
 
-
-import static org.junit.Assert.assertEquals;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
+import java.io.*;
 import org.junit.Test;
-
+import static org.junit.Assert.assertEquals;
 
 /**
  * TODO Remove this test that simply tries out stuff i.e does not test any KISS functionality.
@@ -25,19 +17,13 @@ public class StringUtilTest
     /** */
     private static final int BYTE_SHIFT = 8;
 
-
-    /**
-     *
-     */
+    /** */
     public StringUtilTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void coding()
     {
@@ -51,7 +37,6 @@ public class StringUtilTest
         assertEquals(hashCode, newHashCode);
         assertEquals(stringHashCode, newStringHashCode);
     }
-
 
     /**
      *

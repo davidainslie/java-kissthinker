@@ -1,17 +1,12 @@
 package com.kissthinker.core.system;
 
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
-
 import org.junit.Test;
-
 import com.kissthinker.core.configure.Configuration;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author David Ainslie
@@ -19,18 +14,13 @@ import com.kissthinker.core.configure.Configuration;
  */
 public class EnvironmentTest
 {
-    /**
-     *
-     */
+    /** */
     public EnvironmentTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void sorted()
     {
@@ -47,10 +37,7 @@ public class EnvironmentTest
         }
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void highestOrdinal()
     {
@@ -58,10 +45,7 @@ public class EnvironmentTest
         assertEquals(Environment.LOCAL.ordinal(), highestOrdinal);
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void highestOrdinalForConfiguration()
     {

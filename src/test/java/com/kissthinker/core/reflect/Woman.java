@@ -1,10 +1,7 @@
 package com.kissthinker.core.reflect;
 
-
 import java.io.Serializable;
-
-// import com.ddtechnology.property.PropertySupport;
-
+// import com.kissthinker.property.PropertySupport;
 
 /**
  * @author David Ainslie
@@ -17,15 +14,11 @@ public class Woman implements Serializable
     /** */
     private Address home;
 
-
-    /**
-     *
-     */
+    /** */
     public Woman()
     {
         super();
     }
-
 
     /**
      *
@@ -36,16 +29,11 @@ public class Woman implements Serializable
         this.home = home;
     }
 
-
-    /**
-     *
-     * @return
-     */
+    /** */
     public Address home()
     {
         return home;
     }
-
 
     /**
      *

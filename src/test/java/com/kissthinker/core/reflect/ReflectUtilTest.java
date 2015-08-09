@@ -1,11 +1,8 @@
 package com.kissthinker.core.reflect;
 
-
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
 
 /**
  * @author David Ainslie
@@ -31,14 +28,11 @@ public class ReflectUtilTest
     /** */
     private String instanceString;
 
-    /**
-     *
-     */
+    /** */
     public ReflectUtilTest()
     {
         super();
     }
-
 
     /**
      *
@@ -53,7 +47,6 @@ public class ReflectUtilTest
         assertEquals("Scooby Doo", STATIC_FINAL_STRING);
     }
 
-
     /**
      *
      * @throws SecurityException
@@ -66,7 +59,6 @@ public class ReflectUtilTest
         assertTrue(result);
         assertEquals("Scooby Doo", staticString);
     }
-
 
     /**
      *
@@ -81,7 +73,6 @@ public class ReflectUtilTest
         assertEquals("Scooby Doo", finalInstanceString);
     }
 
-
     /**
      * Correctly (as required by KISS IoC) the field in this test will not be set.
      * @throws SecurityException
@@ -94,7 +85,6 @@ public class ReflectUtilTest
         assertTrue(result);
         assertEquals("", finalInstanceEmptyString);
     }
-
 
     /**
      * @throws NoSuchFieldException

@@ -1,13 +1,8 @@
 package com.kissthinker.core.coder;
 
-
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import com.kissthinker.core.coder.Coder;
-import com.kissthinker.core.coder.JsonCoder;
-
 
 /**
  * @author David Ainslie
@@ -15,24 +10,18 @@ import com.kissthinker.core.coder.JsonCoder;
  */
 public class JsonCoderTest
 {
-    /**
-     *
-     */
+    /** */
     @BeforeClass
     public static void initialiseClass()
     {
         System.setProperty("logback.configurationFile", "logback-test.xml");
     }
 
-
-    /**
-     *
-     */
+    /** */
     public JsonCoderTest()
     {
         super();
     }
-
 
     /**
      * TODO Bad test, as there are "log statements" instead of assertions;
@@ -52,7 +41,6 @@ public class JsonCoderTest
         Bean bean = coder.decode(bytes);
         System.out.println(bean);
     }
-
 
     /**
      * TODO Bad test, as there are "log statements" instead of assertions;

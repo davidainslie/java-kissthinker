@@ -1,8 +1,6 @@
 package com.kissthinker.core.service;
 
-
 import org.junit.Test;
-
 
 /**
  * @author David Ainslie
@@ -10,18 +8,13 @@ import org.junit.Test;
  */
 public class ServicesTest
 {
-    /**
-     *
-     */
+    /** */
     public ServicesTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void start()
     {

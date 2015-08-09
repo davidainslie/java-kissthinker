@@ -10,18 +10,40 @@
     <version>1.0-SNAPSHOT</version>
     <url>http://www.kissthinker.com</url>
 
+    <developers>
+        <developer>
+            <id>davidainslie</id>
+            <name>David Ainslie</name>
+            <email>dainslie@gmail.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <aspectj.version>1.8.6</aspectj.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.8.6</version>
+            <version>${aspectj.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.8.6</version>
+            <version>${aspectj.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.javassist</groupId>
@@ -112,6 +134,12 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-assert</artifactId>
+            <version>1.4</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -120,11 +148,19 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>aspectj-maven-plugin</artifactId>
                 <version>1.7</version>
+
                 <configuration>
                     <complianceLevel>1.8</complianceLevel>
                     <source>1.8</source>
                     <target>1.8</target>
+
+                    <showWeaveInfo>true</showWeaveInfo>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <complianceLevel>${java.version}</complianceLevel>
+                    <verbose>false</verbose>
                 </configuration>
+
                 <executions>
                     <execution>
                         <goals>
@@ -133,6 +169,20 @@
                         </goals>
                     </execution>
                 </executions>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjrt</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjtools</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

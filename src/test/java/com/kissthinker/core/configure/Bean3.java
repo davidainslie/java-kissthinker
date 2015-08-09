@@ -1,8 +1,6 @@
 package com.kissthinker.core.configure;
 
-
 import static java.text.MessageFormat.format;
-
 
 /**
  * @author David Ainslie
@@ -19,35 +17,23 @@ public class Bean3
     @Configure(id="property2", otherwise="99")
     private final Integer integer = null;
 
-
-    /**
-     *
-     */
+    /** */
     public Bean3()
     {
         super();
     }
 
-
-    /**
-     *
-     * @return
-     */
+    /** */
     public static String staticString()
     {
         return STATIC_STRING;
     }
 
-
-    /**
-     *
-     * @return
-     */
+    /** */
     public Integer integer()
     {
         return integer;
     }
-
 
     /**
      * @see java.lang.Object#toString()

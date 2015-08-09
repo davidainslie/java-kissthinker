@@ -1,10 +1,8 @@
 package com.kissthinker.core.json;
 
-
 import java.awt.Dimension;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 
 /**
  * @author David Ainslie
@@ -18,10 +16,7 @@ public class Bean2
     /** */
     private Dimension dimension = new Dimension(50, 75);
 
-
-    /**
-     *
-     */
+    /** */
     public Bean2()
     {
         super();
@@ -36,7 +31,6 @@ public class Bean2
             e.printStackTrace();
         }
     }
-
 
     /**
      *

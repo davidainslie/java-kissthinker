@@ -1,8 +1,6 @@
 package com.kissthinker.core.javabean;
 
-
 import java.io.Serializable;
-
 
 /**
  * @author David Ainslie
@@ -17,17 +15,12 @@ public class NotAJavaBean implements Serializable
     @Property
     private String id = "Scooby";
 
-
-    /**
-     *
-     */
+    /** */
     public NotAJavaBean()
     {
         super();
     }
 
-
-    
     /**
      * Getter
      * @return the id
@@ -36,8 +29,6 @@ public class NotAJavaBean implements Serializable
     {
         return id;
     }
-
-
 
     /**
      * Setter

@@ -1,13 +1,8 @@
 package com.kissthinker.core.coder;
 
-
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import com.kissthinker.core.coder.Coder;
-import com.kissthinker.core.coder.JacksonCoder;
-
 
 /**
  * @author David Ainslie
@@ -15,28 +10,20 @@ import com.kissthinker.core.coder.JacksonCoder;
  */
 public class JacksonCoderTest
 {
-    /**
-     *
-     */
+    /** */
     @BeforeClass
     public static void initialiseClass()
     {
         System.setProperty("logback.configurationFile", "logback-test.xml");
     }
 
-
-    /**
-     *
-     */
+    /** */
     public JacksonCoderTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void encode()
     {
@@ -50,10 +37,7 @@ public class JacksonCoderTest
         System.out.printf("Encoded %d bytes in %s:%n%s%n", bytes.length, stopWatch, new String(bytes));
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void prettyEncode()
     {

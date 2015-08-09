@@ -1,15 +1,9 @@
 package com.kissthinker.core.object;
 
-
+import java.beans.Encoder;
+import org.junit.Test;
 import static com.kissthinker.core.object.ClassUtil.pathAndClassName;
 import static org.junit.Assert.assertEquals;
-
-import java.beans.Encoder;
-
-import org.junit.Test;
-
-import com.kissthinker.core.object.ClassUtil;
-
 
 /**
  * @author David Ainslie
@@ -17,18 +11,13 @@ import com.kissthinker.core.object.ClassUtil;
  */
 public class ClassUtilTest
 {
-    /**
-     *
-     */
+    /** */
     public ClassUtilTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void name()
     {
@@ -38,10 +27,7 @@ public class ClassUtilTest
         assertEquals(expectedName, ClassUtil.name(new Encoder()));
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void path()
     {

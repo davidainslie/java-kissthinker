@@ -1,11 +1,8 @@
 package com.kissthinker.core.collection.array;
 
-
 import java.io.Serializable;
 import java.util.Arrays;
-
 import org.junit.Test;
-
 
 /**
  * Just experimenting.
@@ -16,19 +13,13 @@ import org.junit.Test;
  */
 public class ArrayTest
 {
-
-    /**
-     *
-     */
+    /** */
     public ArrayTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void test()
     {
@@ -37,7 +28,6 @@ public class ArrayTest
 
         System.out.println(serializables);
     }
-
 
     /**
      *
@@ -48,13 +38,11 @@ public class ArrayTest
     {
         Object[] objects;
 
-
         Test1(Object[] objects)
         {
             this.objects = objects;
         }
     }
-
 
     /**
      *

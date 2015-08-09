@@ -1,6 +1,5 @@
 package com.kissthinker.core.reflect;
 
-
 /**
  * @author David Ainslie
  */
@@ -9,15 +8,11 @@ public class Pojo1 implements PojoInterface
     /** */
 	private PojoInterface decorated;
 
-
-	/**
-	 *
-	 */
+	/** */
 	public Pojo1()
 	{
 	    super();
 	}
-
 
 	/**
 	 *
@@ -28,10 +23,9 @@ public class Pojo1 implements PojoInterface
 		this.decorated = decorated;
 	}
 
-
 	/**
 	 *
-	 * @see com.ddtechnology.PojoInterface#decorated()
+	 * @see com.kissthinker.PojoInterface#decorated()
 	 */
 	@Override
 	public PojoInterface decorated()

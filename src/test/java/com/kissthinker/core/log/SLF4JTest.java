@@ -1,13 +1,10 @@
 package com.kissthinker.core.log;
 
-
-import static com.kissthinker.core.collection.array.ArrayUtil.va;
-import static java.text.MessageFormat.format;
-
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import static com.kissthinker.core.collection.array.ArrayUtil.va;
+import static java.text.MessageFormat.format;
 
 /**
  * @author David Ainslie
@@ -18,20 +15,14 @@ public class SLF4JTest
     /** */
     private static final Logger LOGGER = LoggerFactory.getLogger(SLF4JTest.class);
 
-
-    /**
-     *
-     */
+    /** */
     public SLF4JTest()
     {
         super();
         LOGGER.info("Less of an effort that standard Java Logger");
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void log()
     {
@@ -39,10 +30,7 @@ public class SLF4JTest
                      va("localhost", 7, 5, "'exception message'"));
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void formatLog()
     {

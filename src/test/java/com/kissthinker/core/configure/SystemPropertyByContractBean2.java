@@ -1,8 +1,6 @@
 package com.kissthinker.core.configure;
 
-
-import static com.kissthinker.core.system.Environment.TEST;;
-
+import static com.kissthinker.core.system.Environment.TEST;
 
 /**
  * @author David Ainslie
@@ -14,15 +12,11 @@ public class SystemPropertyByContractBean2 extends Bean2
     /** */
     private final String name = getClass().getName();
 
-
-    /**
-     *
-     */
+    /** */
     public SystemPropertyByContractBean2()
     {
         super();
     }
-
 
     /**
      * Getter

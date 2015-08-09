@@ -1,8 +1,6 @@
 package com.kissthinker.core.factory;
 
-
 import org.junit.Test;
-
 
 /**
  * @author David Ainslie
@@ -10,9 +8,7 @@ import org.junit.Test;
  */
 public class FactoryTest
 {
-    /**
-     *
-     */
+    /** */
     @Test
     public void create()
     {

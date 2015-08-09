@@ -1,16 +1,12 @@
 package com.kissthinker.core.function;
 
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.junit.Before;
+import org.junit.Test;
 import static com.kissthinker.core.function.Fn.from;
 import static com.kissthinker.core.function.Fn.function;
 import static org.junit.Assert.assertEquals;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.junit.Before;
-import org.junit.Test;
-
 
 /**
  * Test functions written to be equivalent to certain Oracle SQL functions as an aid to understanding FP via KISS FP.
@@ -37,7 +33,6 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
     
     /** */
     private String scoobyDooToBeRTrimmed;
-    
         
     /**
      * 
@@ -46,8 +41,7 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
     {
         super();
     }
-    
-    
+
     /**
      * 
      */
@@ -62,8 +56,7 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
         scoobyDooToBeLTrimmed = "    Scooby Doo";
         scoobyDooToBeRTrimmed = "Scooby Doo    ";
     }
-    
-    
+
     /**
      * Equivalent of an Oracle SQL "ltrim" e.g.<br/>
      * select ltrim("    Scooby") from dual;
@@ -74,8 +67,7 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
         assertEquals(scoobyTrimmed, ltrim(scoobyToBeLTrimmed));
         assertEquals(scoobyDooTrimmed, ltrim(scoobyDooToBeLTrimmed));
     }
-    
-    
+
     /**
      * KISS FP equivalent of an Oracle SQL "ltrim" as a follow on from {@link #ltrim()}
      */
@@ -88,7 +80,6 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
         assertEquals(scoobyDooTrimmed, ltrim.apply(scoobyDooToBeLTrimmed));
     }
     
-    
     /**
      * Equivalent of an Oracle SQL "rtrim" e.g.<br/>
      * select rtrim("Scooby    ") from dual;
@@ -99,8 +90,7 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
         assertEquals(scoobyTrimmed, rtrim(scoobyToBeRTrimmed));
         assertEquals(scoobyDooTrimmed, rtrim(scoobyDooToBeRTrimmed));
     }
-    
-    
+
     /**
      * KISS FP equivalent of an Oracle SQL "rtrim" as a follow on from {@link #rtrim()}
      */
@@ -112,8 +102,7 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
         assertEquals(scoobyTrimmed, rtrim.apply(scoobyToBeRTrimmed));
         assertEquals(scoobyDooTrimmed, rtrim.apply(scoobyDooToBeRTrimmed));
     }
-    
-    
+
     /**
      * 
      * @param string
@@ -131,7 +120,6 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
         
         return string;
     }
-    
     
     /**
      * 

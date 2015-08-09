@@ -1,19 +1,13 @@
 package com.kissthinker.core.xml;
 
-
-import static com.kissthinker.core.object.ClassUtil.path;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.io.File;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import org.junit.Test;
-
 import com.kissthinker.core.text.StringUtil;
-import com.kissthinker.core.xml.XML.AttributeCallback;
-
+import static com.kissthinker.core.object.ClassUtil.path;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test {@link XML}
@@ -22,9 +16,7 @@ import com.kissthinker.core.xml.XML.AttributeCallback;
  */
 public class XMLTest
 {
-    /**
-     *
-     */
+    /** */
     @Test
     public void create()
     {
@@ -34,10 +26,7 @@ public class XMLTest
         assertTrue(xml.toString().contains("id=\"scooby\""));
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void toMap()
     {
@@ -52,10 +41,7 @@ public class XMLTest
         }
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void toMapFromInputStream()
     {
@@ -70,10 +56,7 @@ public class XMLTest
         }
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void toMapFromURI()
     {
@@ -88,10 +71,7 @@ public class XMLTest
         }
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void parse()
     {
@@ -108,10 +88,7 @@ public class XMLTest
         System.out.printf("%nParsing and xpath look up in %s milliseconds%n", stop - start);
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void parseList()
     {
@@ -119,26 +96,16 @@ public class XMLTest
 
         XML xml = XML.parse(Thread.currentThread().getContextClassLoader().getResourceAsStream(path(getClass(), "/order.xml")));
 
-        xml.get("//sources/source/@", new AttributeCallback()
-        {
-            /**
-             *
-             * @see com.kissthinker.core.xml.XML.AttributeCallback#got(java.util.Map)
-             */
-            @Override
-            public void got(Map<String, String> attributeNameValuePairs)
+        xml.get("//sources/source/@", attributeNameValuePairs -> {
+            for (Entry<String, String> attributeNameValuePair : attributeNameValuePairs.entrySet())
             {
-                for (Entry<String, String> attributeNameValuePair : attributeNameValuePairs.entrySet())
-                {
-                    System.out.printf("%nAttribute name and value: %s, %s", attributeNameValuePair.getKey(), attributeNameValuePair.getValue());
-                }
+                System.out.printf("%nAttribute name and value: %s, %s", attributeNameValuePair.getKey(), attributeNameValuePair.getValue());
             }
         });
 
         long stop = System.currentTimeMillis();
         System.out.printf("%nList parsing and xpath look up in %s milliseconds%n", stop - start);
     }
-
 
     /**
      *

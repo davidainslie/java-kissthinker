@@ -1,12 +1,8 @@
 package com.kissthinker.core.object;
 
-
-import static org.junit.Assert.assertEquals;
-
-import java.awt.Dimension;
-
+import java.awt.*;
 import org.junit.Test;
-
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author David Ainslie
@@ -14,18 +10,13 @@ import org.junit.Test;
  */
 public class ObjectUtilTest
 {
-    /**
-     *
-     */
+    /** */
     public ObjectUtilTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void morph()
     {

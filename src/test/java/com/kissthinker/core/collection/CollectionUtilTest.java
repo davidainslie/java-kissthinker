@@ -1,6 +1,5 @@
 package com.kissthinker.core.collection;
 
-
 /**
  *
  * @author David Ainslie
@@ -8,9 +7,7 @@ package com.kissthinker.core.collection;
  */
 public class CollectionUtilTest
 {
-    /**
-     *
-     */
+    /** */
     public CollectionUtilTest()
     {
         super();

@@ -1,46 +1,33 @@
 package com.kissthinker.core.reflect;
 
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import java.lang.reflect.Constructor;
-
 import org.junit.Test;
-
-/*import com.ddtechnology.property.PropertyEvent;
-import com.ddtechnology.property.PropertyListener;
-import com.ddtechnology.property.PropertySupport;
-import com.ddtechnology.property.User;
-import com.ddtechnology.property.User.Gender;*/
-
+import static org.junit.Assert.*;
+/*import com.kissthinker.property.PropertyEvent;
+import com.kissthinker.property.PropertyListener;
+import com.kissthinker.property.PropertySupport;
+import com.kissthinker.property.User;
+import com.kissthinker.property.User.Gender;*/
 
 /**
  * @author David Ainslie
  */
 public class ObjectUtilTest
 {
-    /**
-     * 
-     */
+    /** */
     public ObjectUtilTest()
     {
         super();
         // TODO Auto-generated constructor stub
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void packageName()
     {
         assertEquals("com.kissthinker.core.reflect", ObjectUtil.packageName(this));
         assertEquals("com.kissthinker.core.reflect", ObjectUtil.packageName(getClass()));
     }
-
 
     /**
      *
@@ -63,10 +50,7 @@ public class ObjectUtilTest
         assertNotNull(constructor.newInstance(bool.toString()));
     }
 
-
-    /**
-     *
-     */
+    /** */
     /*@Test
     public void hasProperty()
     {
@@ -79,10 +63,7 @@ public class ObjectUtilTest
         assertFalse(ObjectUtil.hasProperty(pojo, pojo1NotContains));
     }*/
 
-
-    /**
-     *
-     */
+    /** */
     /*@Test
     public void deepCopy()
     {
@@ -91,10 +72,7 @@ public class ObjectUtilTest
         assertEquals("Scooby Doo", userCopy.getName());
     }*/
 
-
-    /**
-     *
-     */
+    /** */
     /*@Test
     public void deepCopyViaJBoss()
     {
@@ -102,7 +80,6 @@ public class ObjectUtilTest
         User userCopy = ObjectUtil.deepCopyViaJBoss(user);
         assertEquals("Scooby Doo", userCopy.getName());
     }*/
-
 
     /**
      * @throws InterruptedException

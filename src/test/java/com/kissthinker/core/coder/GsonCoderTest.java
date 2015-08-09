@@ -1,15 +1,10 @@
 package com.kissthinker.core.coder;
 
-
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.kissthinker.core.coder.Coder;
-import com.kissthinker.core.coder.GsonCoder;
-
 
 /**
  * @author David Ainslie
@@ -20,10 +15,7 @@ public class GsonCoderTest
     /** */
     private static final Logger LOGGER = LoggerFactory.getLogger(GsonCoderTest.class);
 
-
-    /**
-     *
-     */
+    /** */
     @BeforeClass
     public static void initialiseClass()
     {
@@ -32,15 +24,11 @@ public class GsonCoderTest
         System.setProperty("logback.configurationFile", "logback-test.xml");
     }
 
-
-    /**
-     *
-     */
+    /** */
     public GsonCoderTest()
     {
         super();
     }
-
 
     /**
      *
@@ -59,7 +47,6 @@ public class GsonCoderTest
 
         System.out.printf("Encoded %d bytes in %s:%n%s%n", bytes.length, stopWatch, new String(bytes));
     }
-
 
     /**
      *

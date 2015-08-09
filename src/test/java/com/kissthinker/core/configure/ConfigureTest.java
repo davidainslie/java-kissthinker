@@ -1,11 +1,8 @@
 package com.kissthinker.core.configure;
 
-
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
 
 /**
  * IoC test i.e testing configuration of "beans" via KISS IoC.
@@ -20,9 +17,7 @@ import org.junit.Test;
  */
 public class ConfigureTest
 {
-    /**
-     *
-     */
+    /** */
     @Test
     public void configure()
     {
@@ -33,10 +28,7 @@ public class ConfigureTest
         assertEquals(99, Bean1.integer().intValue());
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void configureOverrideWithSystemPropertyByID()
     {
@@ -46,10 +38,7 @@ public class ConfigureTest
         System.setProperty("systemPropertyBeanByID", "");
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void configureOverrideWithSystemPropertyContract()
     {
@@ -59,10 +48,7 @@ public class ConfigureTest
         System.setProperty(Bean2.class.getName(), "");
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void configureOverrideWithProperiesFile()
     {

@@ -1,34 +1,23 @@
 package com.kissthinker.core.reflect;
 
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
 import org.junit.Test;
-
+import static org.junit.Assert.*;
 
 /**
  * @author David Ainslie
  */
 public class MethodUtilTest
 { 
-    /**
-     * 
-     */
+    /** */
     public MethodUtilTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
 	@Test
 	public void acquireMethod()
 	{
@@ -41,10 +30,7 @@ public class MethodUtilTest
 		assertTrue(method.getParameterTypes()[0].isInstance(new LinkedList<>()));
 	}
 
-
-	/**
-	 *
-	 */
+	/** */
 	@Test
 	public void isGetter()
 	{

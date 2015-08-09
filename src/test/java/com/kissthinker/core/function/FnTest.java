@@ -1,30 +1,15 @@
 package com.kissthinker.core.function;
 
-
-import static com.kissthinker.core.collection.list.ListUtil.arrayList;
-import static com.kissthinker.core.function.Fn.filter;
-import static com.kissthinker.core.function.Fn.foldLeft;
-import static com.kissthinker.core.function.Fn.forEach;
-import static com.kissthinker.core.function.Fn.from;
-import static com.kissthinker.core.function.Fn.function;
-import static com.kissthinker.core.function.Fn.map;
-import static org.fest.assertions.Assertions.assertThat;
-import static org.junit.Assert.fail;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import java.util.*;
 import org.junit.Before;
 import org.junit.Test;
-
 import com.kissthinker.core.collection.CollectionUtil;
 import com.kissthinker.core.collection.CollectionUtilTest;
 import com.kissthinker.core.object.Type;
-
+import static com.kissthinker.core.collection.list.ListUtil.arrayList;
+import static com.kissthinker.core.function.Fn.*;
+import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * To test creating and executing functions.
@@ -44,19 +29,13 @@ public class FnTest
     /** */
     private List<Bean> beans;
 
-
-    /**
-     *
-     */
+    /** */
     public FnTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Before
     public void initialise()
     {
@@ -69,10 +48,7 @@ public class FnTest
                           new Bean("Grandad", 99));
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void applyFunction()
     {
@@ -85,10 +61,7 @@ public class FnTest
         assertThat(1).isEqualTo(functionApplyCount);
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void applyFunctionInstantiatedInline()
     {
@@ -113,10 +86,7 @@ public class FnTest
         assertThat(1).isEqualTo(functionApplyCount);
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void instantiateAndApplyFunction()
     {
@@ -130,10 +100,7 @@ public class FnTest
         assertThat(1).isEqualTo(functionApplyCount);
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void applyMeAsFunction()
     {
@@ -163,7 +130,6 @@ public class FnTest
         assertThat(3).isEqualTo(functionApplyCount);
     }
 
-
     /**
      * Note that a "function" method must be public and return "something".<br/>
      * This can be expected of a "function" as a function should take an input(s) and give back some output.<br/>
@@ -177,7 +143,6 @@ public class FnTest
         return true;
     }
 
-
     /**
      * Note that a "function" method must be public and return "something".<br/>
      * This can be expected of a "function" as a function should take an input(s) and give back some output.<br/>
@@ -190,7 +155,6 @@ public class FnTest
         return null;
     }
 
-
     /**
      * Note that a "function" method must be public and return "something".<br/>
      * This can be expected of a "function" as a function should take an input(s) and give back some output.<br/>
@@ -202,7 +166,6 @@ public class FnTest
         functionApplyCount++;
         return Type.VOID;
     }
-
 
     /**
      * Referring to test {@link #executeFunction()} why would we not just implement the {@link Function} interface directly?
@@ -231,7 +194,6 @@ public class FnTest
         assertThat(FUNCTION_RESULT).isEqualTo(result);
         assertThat(1).isEqualTo(functionApplyCount);
     }
-
 
     /**
      *
@@ -262,7 +224,6 @@ public class FnTest
         }
     }
 
-
     /**
      *
      * @param bean
@@ -273,7 +234,6 @@ public class FnTest
         return "Just Bean";
     }
 
-
     /**
      *
      * @param bean2
@@ -283,7 +243,6 @@ public class FnTest
     {
         return "Ah! Bean2";
     }
-
 
     /**
      * Notice 0 passed to call to "timesTen".
@@ -299,7 +258,6 @@ public class FnTest
         List<Integer> newNumbers = forEach(numbers, function);
         assertThat(arrayList(10, 20, 30, 40, 50)).isEqualTo(newNumbers);
     }
-
 
     /**
      * Note that this test does not use the following syntax:
@@ -323,10 +281,7 @@ public class FnTest
         assertThat(3).isEqualTo(filteredCollection.size());
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void filterList()
     {
@@ -335,7 +290,6 @@ public class FnTest
 
         assertThat(3).isEqualTo(filteredList.size());
     }
-
 
     /**
      * Note that this test does not use the following syntax:
@@ -362,7 +316,6 @@ public class FnTest
         assertThat(1).isEqualTo(filteredList.size());
     }
 
-
     /**
      * This test shows the power/convenience of using {@link Fn} instead of directly implementing {@link Function} as mentioned in {@link FnTest}.
      * A better example is the test for map {@link mapBeansToStrings}
@@ -377,7 +330,6 @@ public class FnTest
         System.out.println(CollectionUtil.toString(filteredBeans));
         assertThat(3).isEqualTo(filteredBeans.size());
     }
-
 
     /**
      *
@@ -398,7 +350,6 @@ public class FnTest
         assertThat(3).isEqualTo(filteredSet.size());
     }
 
-
     /**
      *
      */
@@ -416,7 +367,6 @@ public class FnTest
         assertThat(new Bean("Grandad", 99)).isEqualTo(beans.get(listLastIndex));
         assertThat("Grandad").isEqualTo(beanNames.get(listLastIndex));
     }
-       
 
     /**
      * 
@@ -431,8 +381,7 @@ public class FnTest
         Integer sum = foldLeft(integers, 0, add);
         assertThat(25).isEqualTo(sum);
     }
-    
-    
+
     /**
      * Can be used as a function, and it is used in that way by {@link #sumListOfIntegersByFoldLeft()}
      * @param i1
@@ -443,8 +392,7 @@ public class FnTest
     {
         return i1 + i2;
     }
-    
-    
+
     /**
      *
      * @author David Ainslie
@@ -452,17 +400,13 @@ public class FnTest
      */
     public static class AFunction
     {
-        /**
-         *
-         * @return
-         */
+        /** */
         public String doSomething()
         {
             functionApplyCount++;
             return FUNCTION_RESULT;
         }
     }
-
 
     /**
      * Function that is thread safe (has no state) and performant as function is only created once (and essentially cached).
@@ -475,7 +419,6 @@ public class FnTest
         /** */
         private static final Function<Class<?>[]> INSTANCE = function(from(ClassHierarchyFunction.class).classHierarchy(null));
 
-
         /**
          * Use this method to gain access to the function.
          * @return
@@ -484,7 +427,6 @@ public class FnTest
         {
             return INSTANCE;
         }
-
 
         /**
          * This is the method that is actually wrapped up in a function.
@@ -507,7 +449,6 @@ public class FnTest
         }
     }
 
-
     /**
      *
      * @author David Ainslie
@@ -525,7 +466,6 @@ public class FnTest
             return number * 10;
         }
     }
-
 
     /**
      *
@@ -545,7 +485,6 @@ public class FnTest
         }
     }
 
-
     /**
      *
      * @author David Ainslie
@@ -564,7 +503,6 @@ public class FnTest
         }
     }
 
-
     /**
      *
      * @author David Ainslie
@@ -578,7 +516,6 @@ public class FnTest
         /** */
         private /*final*/ int age;
 
-
         /**
          * TODO Currently need no-arg constructor when using this class as a function. Note the "final" commented out in fields.
          */
@@ -586,7 +523,6 @@ public class FnTest
         {
             super();
         }
-
 
         /**
          * @param name
@@ -599,7 +535,6 @@ public class FnTest
             this.age = age;
         }
 
-
         /**
          * Getter.
          * @return the name
@@ -609,7 +544,6 @@ public class FnTest
             return name;
         }
 
-
         /**
          * Getter.
          * @return the age
@@ -618,7 +552,6 @@ public class FnTest
         {
             return age;
         }
-
 
         /**
          * Autogenerated
@@ -633,7 +566,6 @@ public class FnTest
             result = prime * result + ((name == null) ? 0 : name.hashCode());
             return result;
         }
-
 
         /**
          * Autogenerated
@@ -662,7 +594,6 @@ public class FnTest
         }
     }
 
-
     /**
      *
      * @author David Ainslie
@@ -671,7 +602,6 @@ public class FnTest
     public static class Bean2 extends Bean
     {
     }
-
 
     /**
      *

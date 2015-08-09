@@ -1,13 +1,9 @@
 package com.kissthinker.core.collection.map;
 
-
+import java.util.Map;
+import org.junit.Test;
 import static com.kissthinker.core.collection.map.MapUtil.hashMap;
 import static org.junit.Assert.assertEquals;
-
-import java.util.Map;
-
-import org.junit.Test;
-
 
 /**
  * @author David Ainslie
@@ -15,18 +11,13 @@ import org.junit.Test;
  */
 public class MapUtilTest
 {
-    /**
-     *
-     */
+    /** */
     public MapUtilTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void hashMapNew()
     {
@@ -36,7 +27,6 @@ public class MapUtilTest
 
         assertEquals("You", strings.get(2));
     }
-
 
     /**
      * In this case, we cannot call just "hashMap()".<br/>

@@ -1,10 +1,7 @@
 package com.kissthinker.core.reflect;
 
-
 import java.io.Serializable;
-
 // import com.ddtechnology.property.PropertySupport; TODO
-
 
 /**
  * @author David Ainslie
@@ -20,15 +17,11 @@ public class Address implements Serializable
     /** */
     private String telephone;
 
-
-    /**
-     *
-     */
+    /** */
     public Address()
     {
         super();
     }
-
 
     /**
      *
@@ -41,7 +34,6 @@ public class Address implements Serializable
         this.telephone = telephone;
     }
 
-
     /**
      * Getter
      * @return
@@ -50,7 +42,6 @@ public class Address implements Serializable
     {
         return street;
     }
-
 
     /**
      * Setter
@@ -62,7 +53,6 @@ public class Address implements Serializable
         return this;
     }
 
-
     /**
      * Getter
      * @return
@@ -71,7 +61,6 @@ public class Address implements Serializable
     {
         return telephone;
     }
-
 
     /**
      * Setter

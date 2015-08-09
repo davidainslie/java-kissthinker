@@ -1,24 +1,16 @@
 package com.kissthinker.core.javabean;
 
-
-import static com.kissthinker.core.collection.list.ListUtil.arrayList;
-import static com.kissthinker.core.collection.map.MapUtil.hashMap;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
-
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import com.kissthinker.core.collection.CollectionListener;
 import com.kissthinker.core.collection.map.MapListener;
-
+import static com.kissthinker.core.collection.list.ListUtil.arrayList;
+import static com.kissthinker.core.collection.map.MapUtil.hashMap;
+import static org.junit.Assert.*;
 
 /**
  * @author David Ainslie
@@ -26,26 +18,20 @@ import com.kissthinker.core.collection.map.MapListener;
  */
 public class JavaBeanTest
 {
-    /**
-     * 
-     */
+    /** */
     public JavaBeanTest()
     {
         super();
     }
-    
-    
-    /**
-     * 
-     */
+
+    /** */
     @Before
     public void initialise()
     {
         PropertyChangeListenerDebug.reset();
         assertNull(PropertyChangeListenerDebug.propertyChangeListener());
     }
-    
-    
+
     /**
      * @throws InterruptedException 
      * 
@@ -59,10 +45,6 @@ public class JavaBeanTest
 
         JavaBeanSupport.listen(bean, Bean.Properties.id, new PropertyListener<String>()
         {
-            /**
-             * 
-             * @see com.kissthinker.core.javabean.PropertyListener#propertyChange(com.kissthinker.core.javabean.PropertyEvent)
-             */
             @Override
             public void propertyChange(PropertyEvent<String> propertyEvent)
             {
@@ -76,7 +58,6 @@ public class JavaBeanTest
         countDownLatch.await();
     }
 
-    
     /**
      * This test is essentially duplicated {@link #listenToJavaBeanByProperty()} but also asserts correct garbage collection.
      * @throws InterruptedException
@@ -84,46 +65,34 @@ public class JavaBeanTest
     @Test
     public void listenToJavaBeanByPropertyCheckGC() throws InterruptedException
     {
-        Thread thread = new Thread(new Runnable()
-        {
-            /**
-             * 
-             */
-            @Override
-            public void run()
+        Thread thread = new Thread(() -> {
+            final CountDownLatch countDownLatch = new CountDownLatch(1);
+            Bean bean = new Bean();
+
+            JavaBeanSupport.listen(bean, Bean.Properties.id, new PropertyListener<String>()
             {
-                final CountDownLatch countDownLatch = new CountDownLatch(1);
-                Bean bean = new Bean();
-
-                JavaBeanSupport.listen(bean, Bean.Properties.id, new PropertyListener<String>()
+                @Override
+                public void propertyChange(PropertyEvent<String> propertyEvent)
                 {
-                    /**
-                     * 
-                     * @see com.kissthinker.core.javabean.PropertyListener#propertyChange(com.kissthinker.core.javabean.PropertyEvent)
-                     */
-                    @Override
-                    public void propertyChange(PropertyEvent<String> propertyEvent)
-                    {
-                        System.out.println(propertyEvent);
-                        assertEquals('B', propertyEvent.newValue().charAt(0));
-                        countDownLatch.countDown();
-                    }
-                });
-
-                assertNotNull(PropertyChangeListenerDebug.propertyChangeListener());
-                
-                bean.id("Boo");
-                
-                try
-                {
-                    countDownLatch.await();
+                    System.out.println(propertyEvent);
+                    assertEquals('B', propertyEvent.newValue().charAt(0));
+                    countDownLatch.countDown();
                 }
-                catch (InterruptedException e)
-                {
-                    // Naughty; we are ignoring; but hey, it's just a test.
-                    e.printStackTrace();
-                }
-            }            
+            });
+
+            assertNotNull(PropertyChangeListenerDebug.propertyChangeListener());
+
+            bean.id("Boo");
+
+            try
+            {
+                countDownLatch.await();
+            }
+            catch (InterruptedException e)
+            {
+                // Naughty; we are ignoring; but hey, it's just a test.
+                e.printStackTrace();
+            }
         });
         
         thread.start();
@@ -141,7 +110,6 @@ public class JavaBeanTest
         System.out.println("Number of GC requests required = " + gcRequestCount);
     }
     
-    
     /**
      * 
      * @throws InterruptedException
@@ -155,10 +123,6 @@ public class JavaBeanTest
 
         JavaBeanSupport.listen(bean, "age", new PropertyListener<Integer>()
         {
-            /**
-             * 
-             * @see com.kissthinker.core.javabean.PropertyListener#propertyChange(com.kissthinker.core.javabean.PropertyEvent)
-             */
             @Override
             public void propertyChange(PropertyEvent<Integer> propertyEvent)
             {
@@ -171,8 +135,7 @@ public class JavaBeanTest
         bean.age(101);
         countDownLatch.await();
     }
-    
-    
+
     /**
      * 
      * @throws InterruptedException
@@ -185,10 +148,6 @@ public class JavaBeanTest
         
         JavaBeanSupport.listen(integers, new CollectionListener<Integer>()
         {
-            /**
-             * 
-             * @param integer
-             */
             @Override
             public void onAdd(Integer integer)
             {
@@ -196,16 +155,10 @@ public class JavaBeanTest
                 countDownLatch.countDown();                
             }
 
-            
-            /**
-             * 
-             * @param integer
-             */
             @Override
             public void onRemove(Integer integer)
             {
                 // TODO Auto-generated method stub
-                
             }
         });
         
@@ -219,8 +172,7 @@ public class JavaBeanTest
             fail();
         }
     }
-    
-    
+
     /**
      * 
      * @throws InterruptedException
@@ -233,11 +185,6 @@ public class JavaBeanTest
         
         JavaBeanSupport.listen(stringsByInteger, new MapListener<Integer, String>()
         {
-            /**
-             * 
-             * @param key
-             * @param value
-             */
             @Override
             public void onPut(Integer key, String value)
             {
@@ -245,17 +192,10 @@ public class JavaBeanTest
                 countDownLatch.countDown();
             }
 
-            
-            /**
-             * 
-             * @param key
-             * @param value
-             */
             @Override
             public void onRemove(Integer key, String value)
             {
                 // TODO Auto-generated method stub
-                
             }
         });
         
@@ -269,8 +209,7 @@ public class JavaBeanTest
             fail();
         }
     }
-    
-    
+
     /**
      * 
      * @throws InterruptedException
@@ -283,11 +222,6 @@ public class JavaBeanTest
         
         MapListener<Integer, String> mapListener = new MapListener<Integer, String>()
         {
-            /**
-             * 
-             * @param key
-             * @param value
-             */
             @Override
             public void onPut(Integer key, String value)
             {
@@ -295,17 +229,10 @@ public class JavaBeanTest
                 countDownLatch.countDown();
             }
 
-            
-            /**
-             * 
-             * @param key
-             * @param value
-             */
             @Override
             public void onRemove(Integer key, String value)
             {
                 // TODO Auto-generated method stub
-                
             }
         };
         

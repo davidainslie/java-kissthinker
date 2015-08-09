@@ -1,13 +1,9 @@
 package com.kissthinker.core.collection.array;
 
-
-import static org.junit.Assert.assertEquals;
-
 import java.io.Serializable;
 import java.util.Arrays;
-
 import org.junit.Test;
-
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author David Ainslie
@@ -15,14 +11,11 @@ import org.junit.Test;
  */
 public class ArrayUtilTest
 {
-    /**
-     *
-     */
+    /** */
     public ArrayUtilTest()
     {
         super();
     }
-
 
     /**
      *

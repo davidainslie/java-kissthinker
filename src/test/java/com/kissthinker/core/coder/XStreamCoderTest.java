@@ -1,13 +1,8 @@
 package com.kissthinker.core.coder;
 
-
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import com.kissthinker.core.coder.Coder;
-import com.kissthinker.core.coder.XStreamCoder;
-
 
 /**
  * @author David Ainslie
@@ -15,28 +10,20 @@ import com.kissthinker.core.coder.XStreamCoder;
  */
 public class XStreamCoderTest
 {
-    /**
-     *
-     */
+    /** */
     @BeforeClass
     public static void initialiseClass()
     {
         System.setProperty("logback.configurationFile", "logback-test.xml");
     }
 
-
-    /**
-     *
-     */
+    /** */
     public XStreamCoderTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void encode()
     {

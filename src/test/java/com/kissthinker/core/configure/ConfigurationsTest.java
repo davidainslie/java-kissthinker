@@ -1,12 +1,8 @@
 package com.kissthinker.core.configure;
 
-
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
-
 import com.kissthinker.core.configure.configurer.ConfigurationClasses;
-
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author David Ainslie
@@ -14,18 +10,13 @@ import com.kissthinker.core.configure.configurer.ConfigurationClasses;
  */
 public class ConfigurationsTest
 {
-    /**
-     *
-     */
+    /** */
     public ConfigurationsTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void exists()
     {

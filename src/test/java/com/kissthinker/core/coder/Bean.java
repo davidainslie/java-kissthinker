@@ -1,14 +1,11 @@
 package com.kissthinker.core.coder;
 
-
-import static com.kissthinker.core.collection.set.SetUtil.hashSet;
-
 import java.io.Serializable;
 import java.util.Currency;
 import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
-
+import static com.kissthinker.core.collection.set.SetUtil.hashSet;
 
 /**
  * @author David Ainslie
@@ -34,7 +31,6 @@ public class Bean implements Serializable
     /** */
     private String largeString = largeString();
 
-
     /**
      *
      */
@@ -42,7 +38,6 @@ public class Bean implements Serializable
     {
         super();
     }
-
 
     /**
      *
@@ -68,7 +63,6 @@ public class Bean implements Serializable
 
         return currencies;
     }
-
 
     /**
      *

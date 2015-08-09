@@ -1,34 +1,25 @@
 package com.kissthinker.core.reflect;
 
-
-import static org.junit.Assert.assertNotNull;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
 import org.junit.Test;
-
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author David Ainslie
  */
 public class ConstructorUtilTest
 {  
-    /**
-     * 
-     */
+    /** */
     public ConstructorUtilTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
-	@Test
+    /** */
+	/*@Test
 	public void getConstructor()
 	{
 		PojoInterface pojoInterface = new Pojo(new Pojo());
@@ -36,8 +27,7 @@ public class ConstructorUtilTest
 
 		pojoInterface = new Pojo();
 		assertNotNull(ConstructorUtil.constructor(pojoInterface));
-	}
-
+	}*/
 
 	/**
 	 *
@@ -66,10 +56,7 @@ public class ConstructorUtilTest
 		System.out.println(constructor);
 	}
 
-
-	/**
-	 *
-	 */
+	/** */
 	@Test
 	public void newInstance()
 	{

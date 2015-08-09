@@ -1,19 +1,12 @@
 package com.kissthinker.core.collection.map;
 
-
-import static com.kissthinker.core.collection.map.MapUtil.blockingHashMap;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import com.kissthinker.core.concurrency.ExecutorUtil;
-
+import static com.kissthinker.core.collection.map.MapUtil.blockingHashMap;
+import static org.junit.Assert.*;
 
 /**
  * @author David Ainslie
@@ -24,29 +17,20 @@ public class BlockingHashMapTest
     /** */
     private BlockingHashMap<String, String> blockingHashMap;
 
-
-    /**
-     *
-     */
+    /** */
     public BlockingHashMapTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Before
     public void initialise()
     {
         blockingHashMap = blockingHashMap();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void get()
     {
@@ -55,25 +39,15 @@ public class BlockingHashMapTest
 
         final AtomicBoolean putExecuted = new AtomicBoolean(false);
 
-        ExecutorUtil.schedule(2, TimeUnit.SECONDS, new Runnable()
-        {
-            /**
-             *
-             * @see java.lang.Runnable#run()
-             */
-            @Override
-            public void run()
-            {
-                putExecuted.set(true);
-                blockingHashMap.put(key, value);
-            }
+        ExecutorUtil.schedule(2, TimeUnit.SECONDS, () -> {
+            blockingHashMap.put(key, value);
+            putExecuted.set(true);
         });
 
         String gotValue = blockingHashMap.get(key);
         assertEquals(value, gotValue);
         assertTrue(putExecuted.get());
     }
-
 
     /**
      *
@@ -86,18 +60,9 @@ public class BlockingHashMapTest
 
         final AtomicBoolean putExecuted = new AtomicBoolean(false);
 
-        ExecutorUtil.schedule(2, TimeUnit.SECONDS, new Runnable()
-        {
-            /**
-             *
-             * @see java.lang.Runnable#run()
-             */
-            @Override
-            public void run()
-            {
-                putExecuted.set(true);
-                blockingHashMap.put("keyDifferent", value);
-            }
+        ExecutorUtil.schedule(2, TimeUnit.SECONDS, () -> {
+            blockingHashMap.put("keyDifferent", value);
+            putExecuted.set(true);
         });
 
         String gotValue = blockingHashMap.get(key, 4, TimeUnit.SECONDS);

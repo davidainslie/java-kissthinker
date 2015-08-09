@@ -1,9 +1,7 @@
 package com.kissthinker.core.json;
 
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * @author David Ainslie
@@ -23,20 +21,14 @@ public class Bean
     /** */
     private final List<String> list = new ArrayList<String>()
     {
-        /** */
         private static final long serialVersionUID = 1L;
 
-
-        /**
-         * Initialisation.
-         */
         {
             add("String 1");
             add("String 2");
             add("String 3");
         }
     };
-
 
     /**
      *
@@ -46,7 +38,6 @@ public class Bean
     {
         super();
     }
-
 
     /**
      *

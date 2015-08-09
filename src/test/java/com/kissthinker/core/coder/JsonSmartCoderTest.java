@@ -1,12 +1,10 @@
 package com.kissthinker.core.coder;
 
-
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 
 /**
  * Interesting - nothing encoded and so nothing decoded - kind of useless!
@@ -19,10 +17,7 @@ public class JsonSmartCoderTest
     /** */
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonSmartCoderTest.class);
 
-
-    /**
-     *
-     */
+    /** */
     @BeforeClass
     public static void initialiseClass()
     {
@@ -31,19 +26,13 @@ public class JsonSmartCoderTest
         System.setProperty("logback.configurationFile", "logback-test.xml");
     }
 
-
-    /**
-     *
-     */
+    /** */
     public JsonSmartCoderTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void encode()
     {
@@ -57,7 +46,8 @@ public class JsonSmartCoderTest
         stopWatch.stop();
 
         System.out.printf("Encoded %d bytes in %s:%n%s%n", bytes.length, stopWatch, new String(bytes));
-        
-        System.out.println(coder.decode(bytes));
+
+        Bean bean = coder.decode(bytes);
+        System.out.println(bean);
     }
 }

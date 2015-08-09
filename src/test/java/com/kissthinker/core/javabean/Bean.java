@@ -1,14 +1,11 @@
 package com.kissthinker.core.javabean;
 
-
-import static com.kissthinker.core.collection.set.SetUtil.hashSet;
-
 import java.io.Serializable;
 import java.util.Currency;
 import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
-
+import static com.kissthinker.core.collection.set.SetUtil.hashSet;
 
 /**
  * @author David Ainslie
@@ -39,16 +36,12 @@ public class Bean implements JavaBean.Enumerated<Bean.Properties>, Serializable
     /** */
     private final String largeString = largeString();
 
-
-    /**
-     *
-     */
+    /** */
     public Bean()
     {
         super();
     }
 
- 
     /**
      * Getter
      * @return the id
@@ -57,7 +50,6 @@ public class Bean implements JavaBean.Enumerated<Bean.Properties>, Serializable
     {
         return id;
     }
-
 
     /**
      * Setter
@@ -70,7 +62,6 @@ public class Bean implements JavaBean.Enumerated<Bean.Properties>, Serializable
         return this;
     }
 
-
     /**
      * Getter
      * @return the age
@@ -79,7 +70,6 @@ public class Bean implements JavaBean.Enumerated<Bean.Properties>, Serializable
     {
         return age;
     }
-
 
     /**
      * Setter
@@ -92,11 +82,7 @@ public class Bean implements JavaBean.Enumerated<Bean.Properties>, Serializable
         return this;
     }
 
-
-    /**
-     *
-     * @return
-     */
+    /** */
     private static Set<Currency> allCurrencies()
     {
         Set<Currency> currencies = hashSet();
@@ -118,11 +104,7 @@ public class Bean implements JavaBean.Enumerated<Bean.Properties>, Serializable
         return currencies;
     }
 
-
-    /**
-     *
-     * @return
-     */
+    /** */
     private static String largeString()
     {
         StringBuilder stringBuilder = new StringBuilder();

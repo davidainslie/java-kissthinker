@@ -1,12 +1,9 @@
 package com.kissthinker.core.reflect;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 //import com.ddtechnology.property.PropertySupport;
-
 
 /**
  * @author David Ainslie
@@ -25,15 +22,11 @@ public class Man implements Serializable
     /** */
     private Address home;
 
-
-    /**
-     *
-     */
+    /** */
     public Man()
     {
         super();
     }
-
 
     /**
      *
@@ -46,16 +39,11 @@ public class Man implements Serializable
         homes(homes);
     }
 
-
-    /**
-     *
-     * @return
-     */
+    /** */
     public Woman wife()
     {
         return wife;
     }
-
 
     /**
      *
@@ -67,16 +55,11 @@ public class Man implements Serializable
         return this;
     }
 
-
-    /**
-     *
-     * @return
-     */
+    /** */
     public List<Address> homes()
     {
         return homes;
     }
-
 
     /**
      * Default first home as home then others are secondary homes e.g. holiday homes.
@@ -94,16 +77,11 @@ public class Man implements Serializable
         return this;
     }
 
-
-    /**
-     *
-     * @return
-     */
+    /** */
     public Address home()
     {
         return home;
     }
-
 
     /**
      *

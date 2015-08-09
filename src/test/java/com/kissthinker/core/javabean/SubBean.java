@@ -1,6 +1,5 @@
 package com.kissthinker.core.javabean;
 
-
 /**
  * @author David Ainslie
  *
@@ -13,11 +12,8 @@ public class SubBean extends Bean
     /** */
     @Property
     private String extraProperty;
-    
-    
-    /**
-     * 
-     */
+
+    /** */
     public SubBean()
     {
         super();

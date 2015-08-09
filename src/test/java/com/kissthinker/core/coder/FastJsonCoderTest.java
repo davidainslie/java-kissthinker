@@ -1,15 +1,10 @@
 package com.kissthinker.core.coder;
 
-
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.kissthinker.core.coder.Coder;
-import com.kissthinker.core.coder.FastJsonCoder;
-
 
 /**
  * @author David Ainslie
@@ -20,10 +15,7 @@ public class FastJsonCoderTest
     /** */
     private static final Logger LOGGER = LoggerFactory.getLogger(FastJsonCoderTest.class);
 
-
-    /**
-     *
-     */
+    /** */
     @BeforeClass
     public static void initialiseClass()
     {
@@ -32,19 +24,13 @@ public class FastJsonCoderTest
         System.setProperty("logback.configurationFile", "logback-test.xml");
     }
 
-
-    /**
-     *
-     */
+    /** */
     public FastJsonCoderTest()
     {
         super();
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void encode()
     {
@@ -60,10 +46,7 @@ public class FastJsonCoderTest
         System.out.printf("Encoded %d bytes in %s:%n%s%n", bytes.length, stopWatch, new String(bytes));
     }
 
-
-    /**
-     *
-     */
+    /** */
     @Test
     public void prettyEncode()
     {

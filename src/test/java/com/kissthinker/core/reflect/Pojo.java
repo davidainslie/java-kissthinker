@@ -1,12 +1,9 @@
 package com.kissthinker.core.reflect;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-
-// import com.ddtechnology.property.Property; TODO
-
+// import com.kissthinker.property.Property; TODO
 
 /**
  * @author David Ainslie
@@ -17,15 +14,11 @@ public class Pojo implements PojoInterface
 
 	/*@Property TODO*/ private PojoInterface decorated;
 
-
-	/**
-	 *
-	 */
+	/** */
 	public Pojo()
 	{
 	    super();
 	}
-
 
 	/**
 	 *
@@ -35,7 +28,6 @@ public class Pojo implements PojoInterface
 	{
 	}
 
-
 	/**
 	 *
 	 * @param double_
@@ -44,7 +36,6 @@ public class Pojo implements PojoInterface
 	{
 	}
 
-
 	/**
 	 *
 	 * @param int_
@@ -52,7 +43,6 @@ public class Pojo implements PojoInterface
 	public Pojo(int int_)
 	{
 	}
-
 
 	/**
 	 *
@@ -63,7 +53,6 @@ public class Pojo implements PojoInterface
 	{
 	}
 
-
 	/**
 	 *
 	 * @param list
@@ -72,7 +61,6 @@ public class Pojo implements PojoInterface
 	public Pojo(ArrayList<Integer> list, int int_)
 	{
 	}
-
 
 	/**
 	 *
@@ -83,17 +71,15 @@ public class Pojo implements PojoInterface
 		this.decorated = decorated;
 	}
 
-
 	/**
 	 *
-	 * @see com.ddtechnology.PojoInterface#decorated()
+	 * @see com.kissthinker.PojoInterface#decorated()
 	 */
 	@Override
 	public PojoInterface decorated()
 	{
 		return decorated;
 	}
-
 
 	/**
 	 *
@@ -111,7 +97,6 @@ public class Pojo implements PojoInterface
 		}
 	}
 
-
 	/**
 	 *
 	 * @param strings
@@ -120,7 +105,6 @@ public class Pojo implements PojoInterface
 	{
 		LOGGER.info("method(List<String>)");
 	}
-
 
 	/**
 	 *
