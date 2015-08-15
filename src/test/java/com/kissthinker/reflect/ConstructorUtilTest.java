@@ -19,7 +19,7 @@ public class ConstructorUtilTest
     }
 
     /** */
-	/*@Test
+	@Test
 	public void getConstructor()
 	{
 		PojoInterface pojoInterface = new Pojo(new Pojo());
@@ -27,7 +27,7 @@ public class ConstructorUtilTest
 
 		pojoInterface = new Pojo();
 		assertNotNull(ConstructorUtil.constructor(pojoInterface));
-	}*/
+	}
 
 	/**
 	 *
@@ -39,20 +39,20 @@ public class ConstructorUtilTest
 	@Test
 	public void getConstructorOverloaded() throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException
 	{
-		Constructor<Pojo> constructor = ConstructorUtil.constructor(Pojo.class, Integer.class);
+		Constructor<Pojo> constructor = ConstructorUtil.constructorByTypes(Pojo.class, Integer.class);
 		System.out.println(constructor);
 
-		constructor = ConstructorUtil.constructor(Pojo.class, Double.class);
+		constructor = ConstructorUtil.constructorByTypes(Pojo.class, Double.class);
 		System.out.println(constructor);
 
-		constructor = ConstructorUtil.constructor(Pojo.class, int.class);
+		constructor = ConstructorUtil.constructorByTypes(Pojo.class, int.class);
 		System.out.println(constructor);
 
-		constructor = ConstructorUtil.constructor(Pojo.class, ArrayList.class, int.class);
+		constructor = ConstructorUtil.constructorByTypes(Pojo.class, ArrayList.class, int.class);
 		System.out.println(constructor);
 		constructor.newInstance(new ArrayList<>(), new Integer(1));
 
-		constructor = ConstructorUtil.constructor(Pojo.class, LinkedList.class, int.class);
+		constructor = ConstructorUtil.constructorByTypes(Pojo.class, LinkedList.class, int.class);
 		System.out.println(constructor);
 	}
 

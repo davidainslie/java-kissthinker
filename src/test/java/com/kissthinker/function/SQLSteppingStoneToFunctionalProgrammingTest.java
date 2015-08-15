@@ -34,17 +34,13 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
     /** */
     private String scoobyDooToBeRTrimmed;
         
-    /**
-     * 
-     */
+    /** */
     public SQLSteppingStoneToFunctionalProgrammingTest()
     {
         super();
     }
 
-    /**
-     * 
-     */
+    /** */
     @Before
     public void initialise()
     {

@@ -9,9 +9,10 @@ import static org.junit.Assert.assertTrue;
  * <br/>
  * "Wiring" up is done per environment; appropriate configurations are found at runtime with any "disputes" worked out via "isDefault" on a {@link Configuration},
  * and if necessary, the most specific environment choice. Note that it is encouraged to just mark up a field that requires a configuration with an empty {@link Configure}.
- * However, an "id" and/or "otherwise" can be provided. There are downsides to using these two attributes. One, regarding "id", is that a string must be given.
- * It would be nice, and this maybe a TODO, to instead have to provide an enum. However, strings (currently) are the most appropriate, as these would be stipulated
- * as system properties, or declared in properties files.
+ * However, an "id" and/or "otherwise" can be provided. There are downsides to using these two attributes.
+ * Regarding "id" is that a string must be given.
+ * It would be nice, and this maybe a TODO, to instead have to provide an enum.
+ * However, strings (currently) are the most appropriate, as these would be stipulated as system properties, or declared in properties files.
  * @author David Ainslie
  *
  */
@@ -48,7 +49,10 @@ public class ConfigureTest
         System.setProperty(Bean2.class.getName(), "");
     }
 
-    /** */
+    /**
+     * This test picks up an external configuration under META-INF/configure.
+     * The configuration file that is accessed is com.kissthinker.configure.Bean3.properties i.e. corresponding to the Bean being configured.
+     */
     @Test
     public void configureOverrideWithProperiesFile()
     {

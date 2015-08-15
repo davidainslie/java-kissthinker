@@ -86,7 +86,7 @@ public final class ConstructorUtil
 			parameterClasses[i] = parameters[i].getClass();
 		}
 
-		return constructor(object, parameterClasses);
+		return constructorByTypes(object, parameterClasses);
 	}
 
 	/**
@@ -96,9 +96,9 @@ public final class ConstructorUtil
 	 * @return
 	 * @throws ConstructorException
 	 */
-	public static Constructor<?> constructor(Object object, Class<?>... parameterClasses) throws ConstructorException
+	public static Constructor<?> constructorByTypes(Object object, Class<?>... parameterClasses) throws ConstructorException
 	{
-		return constructor(object.getClass(), parameterClasses);
+		return constructorByTypes(object.getClass(), parameterClasses);
 	}
 
 	/**
@@ -117,7 +117,7 @@ public final class ConstructorUtil
 			parameterClasses[i] = parameters[i].getClass();
 		}
 
-		return constructor(constructorClass, parameterClasses);
+		return constructorByTypes(constructorClass, parameterClasses);
 	}
 
 	/**
@@ -128,7 +128,7 @@ public final class ConstructorUtil
 	 * @throws ConstructorException
 	 */
 	@SuppressWarnings("unchecked")
-	public static <O> Constructor<O> constructor(Class<?> constructorClass, Class<?>... parameterClasses) throws ConstructorException
+	public static <O> Constructor<O> constructorByTypes(Class<?> constructorClass, Class<?>... parameterClasses) throws ConstructorException
 	{
 		try
 		{

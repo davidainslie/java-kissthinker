@@ -14,7 +14,8 @@ import static org.junit.Assert.fail;
 /**
  * To test creating and executing functions.
  * <br/>
- * Note that originally this class was named FunctionUtilTest as it was testing FunctionUtil, but that class has been renamed Fn.
+ * Note that even though I've updated various code to use the new features of Java 8 (especially lambdas), they are not used in the "functional" sources provided by KISS.
+ * The functionality provided by KISS is deprecated in favour of the functional methodologies introduced by Java 8, but all original code has been left, mainly because I took the time to create it in the first place.
  * @author David Ainslie
  *
  */

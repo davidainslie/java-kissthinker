@@ -7,8 +7,10 @@ import net.sf.ezmorph.MorpherRegistry;
 import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.kissthinker.configure.Configuration;
 import com.kissthinker.factory.Factory;
 import com.kissthinker.morph.Morpher;
+import com.kissthinker.system.Environment;
 import static com.kissthinker.collection.list.ListUtil.arrayList;
 import static com.kissthinker.collection.set.SetUtil.hashSet;
 import static com.kissthinker.object.ClassUtil.name;
@@ -17,6 +19,7 @@ import static com.kissthinker.object.ClassUtil.name;
  * @author David Ainslie
  *
  */
+@Configuration(environment = Environment.ANY)
 public class EZMorpher implements Morpher
 {
     /** */

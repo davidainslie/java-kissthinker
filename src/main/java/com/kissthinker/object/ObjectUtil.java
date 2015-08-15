@@ -1,17 +1,20 @@
 package com.kissthinker.object;
 
+import com.kissthinker.configure.Configurable;
+import com.kissthinker.configure.Configure;
 import com.kissthinker.morph.Morpher;
-import com.kissthinker.morph.ezmorph.EZMorpher;
 
 /**
  * @author David Ainslie
  *
  */
 @Singleton
+@Configurable
 public class ObjectUtil
 {
     /** */
-    private static final Morpher MORPHER = new EZMorpher();
+    @Configure
+    private static final Morpher MORPHER = null;
 
     /**
      * Morph (transform/convert) given object to the required class i.e to an object of type classToMorphTo, Class<O>
