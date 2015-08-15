@@ -227,7 +227,7 @@ public class Configurator
         configuredClassFields.get(configurableClass).entrySet().stream().filter(entry ->
             ReflectUtil.get(entry.getKey()) == null
         ).forEach(entry ->
-            configure(null, entry.getKey(), entry.getValue())
+            configureIt(null, entry.getKey(), entry.getValue())
         );
 
         configuredClassFields.remove(configurableClass);
@@ -269,7 +269,7 @@ public class Configurator
         configuredObjectFields.get(configurable).entrySet().stream().filter(entry ->
             ReflectUtil.get(configurable, entry.getKey()) == null
         ).forEach(entry ->
-            configure(configurable, entry.getKey(), entry.getValue())
+            configureIt(configurable, entry.getKey(), entry.getValue())
         );
 
         configuredObjectFields.remove(configurable);
@@ -328,7 +328,7 @@ public class Configurator
      */
     public boolean configure(Object configurable, Field field, Class<?> configurationClass)
     {
-        return configure(configurable, field, Factory.create(configurationClass));
+        return configureIt(configurable, field, Factory.create(configurationClass));
     }
 
     /**
@@ -336,10 +336,10 @@ public class Configurator
      * @param configurable
      * @param field
      * @param configuration
-     * @return boolean true if given field was configured in configurable with configuration.s
+     * @return boolean true if given field was configured in configurable with the given configuration
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
-    public boolean configure(Object configurable, Field field, Object configuration)
+    public boolean configureIt(Object configurable, Field field, Object configuration)
     {
         if (configuration == null)
         {
@@ -351,7 +351,7 @@ public class Configurator
 
         if (configuration instanceof Proxy)
         {
-            proxied = true;            
+            proxied = true;
             Proxy proxy = (Proxy)configuration;
             configuration = proxy.create(new Proxy.ClassInfo(field.getType()).parentClass(field.getDeclaringClass()).parent(configurable));
         }

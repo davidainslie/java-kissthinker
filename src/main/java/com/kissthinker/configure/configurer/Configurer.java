@@ -67,7 +67,7 @@ public abstract class Configurer
      */
     protected boolean configure(Object configurable, Field field, Object configuration)
     {
-        return configurator().configure(configurable, field, configuration);
+        return configurator().configureIt(configurable, field, configuration);
     }
 
     /**
@@ -90,7 +90,7 @@ public abstract class Configurer
 
             if (morph != null)
             {
-                return configurator().configure(configurable, field, morph);
+                return configurator().configureIt(configurable, field, morph);
             }
         }
 

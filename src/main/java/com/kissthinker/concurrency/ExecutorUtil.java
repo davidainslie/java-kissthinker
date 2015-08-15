@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import com.kissthinker.configure.Configurable;
 import com.kissthinker.configure.Configure;
 import com.kissthinker.object.ClassUtil;
+import com.kissthinker.object.Singleton;
 import com.kissthinker.reflect.ReflectUtil;
 import com.kissthinker.text.StringUtil;
 import static java.text.MessageFormat.format;
@@ -21,6 +22,7 @@ import static java.text.MessageFormat.format;
  * @author David Ainslie
  *
  */
+@Singleton
 @Configurable
 public final class ExecutorUtil
 {

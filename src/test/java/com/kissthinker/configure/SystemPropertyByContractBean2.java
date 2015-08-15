@@ -6,7 +6,7 @@ import static com.kissthinker.system.Environment.TEST;
  * @author David Ainslie
  *
  */
-@Configuration(environment=TEST)
+@Configuration(environment = TEST)
 public class SystemPropertyByContractBean2 extends Bean2
 {
     /** */

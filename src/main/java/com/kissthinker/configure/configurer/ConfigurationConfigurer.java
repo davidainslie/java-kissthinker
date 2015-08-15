@@ -79,7 +79,8 @@ public class ConfigurationConfigurer extends Configurer
             propertyValue = getProperty(field.getType().getName(), configurableClass);
         }
 
-        if (propertyValue != null) {
+        if (propertyValue != null)
+        {
             propertyValue.trim();
 
             // Is it to be found in ConfigurationClasses?
@@ -95,7 +96,9 @@ public class ConfigurationConfigurer extends Configurer
             {
                 configurationClass = Class.forName(propertyValue);
                 return configure(configurable, field, configurationClass);
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 // Ignore.
             }
 

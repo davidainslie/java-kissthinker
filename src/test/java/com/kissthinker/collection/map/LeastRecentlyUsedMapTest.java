@@ -56,7 +56,7 @@ public class LeastRecentlyUsedMapTest
             fail();
         }
 
-        // List content (not really unit test as no asserting).
+        // List content (not a unit test as no asserting).
         for (Map.Entry<String, String> entry : map.entrySet())
         {
             System.out.println(entry.getKey() + " : " + entry.getValue());

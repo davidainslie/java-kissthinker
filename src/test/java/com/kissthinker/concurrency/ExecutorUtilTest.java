@@ -20,7 +20,6 @@ public class ExecutorUtilTest
 
     /**
      * @throws InterruptedException
-     *
      */
     @Test
     public void corePoolSizeCheck() throws InterruptedException
@@ -50,7 +49,6 @@ public class ExecutorUtilTest
     }
 
     /**
-     * Do we really need both {@link #corePoolSizeCheck()} and {@link #corePoolSizeCheck2()} as they are pretty much the same?
      * @throws InterruptedException
      */
     @Test
@@ -77,5 +75,6 @@ public class ExecutorUtilTest
         }
 
         countDownLatch.await();
+        assertEquals(ExecutorUtil.corePoolSize(), ExecutorUtil.coreCurrentPoolSize());
     }
 }

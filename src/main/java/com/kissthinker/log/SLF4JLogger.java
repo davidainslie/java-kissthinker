@@ -10,18 +10,18 @@ import static com.kissthinker.system.Environment.ANY;
  * @author David Ainslie
  *
  */
-@Configuration(environment=ANY, proxy=SLF4JLogger.SLF4JLoggerProxy.class)
+@Configuration(environment = ANY, proxy = SLF4JLogger.SLF4JLoggerProxy.class)
 public interface SLF4JLogger extends Logger
 {
     /**
-     * 
+     *
      * @author David Ainslie
      *
      */
-    public static class SLF4JLoggerProxy implements Proxy
+    class SLF4JLoggerProxy implements Proxy
     {
         /**
-         * 
+         *
          * @see com.kissthinker.proxy.Proxy#create(com.kissthinker.proxy.Proxy.ClassInfo)
          */
         @SuppressWarnings("unchecked")

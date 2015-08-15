@@ -23,6 +23,7 @@ public class LoggingBean
      * 
      * @param message
      */
+    @SuppressWarnings("all")
     public void log(String message)
     {
         LOGGER.info(message);

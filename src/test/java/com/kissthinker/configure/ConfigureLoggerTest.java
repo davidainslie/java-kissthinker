@@ -5,6 +5,7 @@ import java.io.PrintStream;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import com.kissthinker.configure.configurer.ConfigurationClasses;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -54,6 +55,8 @@ public class ConfigureLoggerTest
     @Test
     public void configure()
     {
+        System.out.println(ConfigurationClasses.configurationClasses());
+
         String message = "This message should be logged";
         
         LoggingBean loggingBean = new LoggingBean();

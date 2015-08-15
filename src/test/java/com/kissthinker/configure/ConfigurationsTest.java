@@ -1,8 +1,9 @@
 package com.kissthinker.configure;
 
 import org.junit.Test;
-import com.kissthinker.configure.configurer.ConfigurationClasses;
-import static org.junit.Assert.assertTrue;
+import static com.kissthinker.configure.configurer.ConfigurationClasses.configurationClasses;
+import static com.kissthinker.system.Environment.LIVE;
+import static org.junit.Assert.*;
 
 /**
  * @author David Ainslie
@@ -20,16 +21,22 @@ public class ConfigurationsTest
     @Test
     public void exists()
     {
-        boolean bean2ClassFound = false;
+        assertTrue(configurationClasses().stream().filter(Bean2.class::isAssignableFrom).findFirst().isPresent());
+    }
 
-        for (Class<?> configurationClass : ConfigurationClasses.configurationClasses())
-        {
-            if (Bean2.class.isAssignableFrom(configurationClass))
-            {
-                bean2ClassFound = true;
-            }
-        }
+    @Test
+    public void notExists()
+    {
+        assertFalse(configurationClasses().stream().filter(BeanInWrongEnvironment.class::isAssignableFrom).findFirst().isPresent());
+    }
+}
 
-        assertTrue(bean2ClassFound);
+@Configuration(environment = LIVE)
+class BeanInWrongEnvironment
+{
+    /** */
+    public BeanInWrongEnvironment()
+    {
+        super();
     }
 }

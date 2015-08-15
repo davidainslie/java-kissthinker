@@ -49,11 +49,11 @@ public class EnvironmentTest
     @Test
     public void highestOrdinalForConfiguration()
     {
-        @Configuration(environment=Environment.INTEGRATION)
-        class Test1 {};
+        @Configuration(environment = Environment.INTEGRATION)
+        class Test1 {}
 
-        @Configuration(environment={Environment.INTEGRATION, Environment.LOCAL})
-        class Test2 {};
+        @Configuration(environment = {Environment.INTEGRATION, Environment.LOCAL})
+        class Test2 {}
 
         int highestOrdinalForTest1 = Environment.highestOrdinal(Test1.class.getAnnotation(Configuration.class).environment());
         int highestOrdinalForTest2 = Environment.highestOrdinal(Test2.class.getAnnotation(Configuration.class).environment());
