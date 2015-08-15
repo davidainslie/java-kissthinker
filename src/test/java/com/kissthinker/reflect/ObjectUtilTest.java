@@ -25,8 +25,8 @@ public class ObjectUtilTest
     @Test
     public void packageName()
     {
-        assertEquals("com.kissthinker.core.reflect", ObjectUtil.packageName(this));
-        assertEquals("com.kissthinker.core.reflect", ObjectUtil.packageName(getClass()));
+        assertEquals("com.kissthinker.reflect", ObjectUtil.packageName(this));
+        assertEquals("com.kissthinker.reflect", ObjectUtil.packageName(getClass()));
     }
 
     /**

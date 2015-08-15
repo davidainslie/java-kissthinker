@@ -1,4 +1,4 @@
-package com.kissthinker.core.json;
+package com.kissthinker.json;
 
 import java.awt.Dimension;
 import java.net.URI;

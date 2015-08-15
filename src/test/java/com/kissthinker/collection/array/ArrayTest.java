@@ -26,7 +26,7 @@ public class ArrayTest
         Object[] objects = new Object[]{"Scooby", "Scrappy"};
         Serializable[] serializables = Arrays.copyOf(objects, objects.length, Serializable[].class);
 
-        System.out.println(serializables);
+        System.out.println(Arrays.toString(serializables));
     }
 
     /**

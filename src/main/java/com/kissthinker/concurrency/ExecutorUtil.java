@@ -1,6 +1,5 @@
 package com.kissthinker.concurrency;
 
-
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.slf4j.Logger;

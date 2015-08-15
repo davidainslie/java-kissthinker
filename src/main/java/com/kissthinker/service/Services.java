@@ -94,7 +94,7 @@ public final class Services
     }
 
     /**
-     * Convenience method instead of calling Class.forName("com.kissthinker.core.service.Services");
+     * Convenience method instead of calling Class.forName("com.kissthinker.service.Services");
      */
     public static void start()
     {

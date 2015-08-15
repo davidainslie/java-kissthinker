@@ -48,28 +48,33 @@ public class ConfigurationConfigurer extends Configurer
      * @see com.kissthinker.configure.configurer.Configurer#doConfigure(java.lang.Object, java.lang.Class, java.lang.reflect.Field)
      */
     @Override
-    protected boolean doConfigure(Object configurable, Class<? extends Object> configurableClass, Field field) {
+    protected boolean doConfigure(Object configurable, Class<? extends Object> configurableClass, Field field)
+    {
         Configure configure = field.getAnnotation(Configure.class);
         String propertyKey = configure.id();
         String propertyValue = null;
 
         // System property by ID?
-        if (propertyKey != null && !"".equals(propertyKey = propertyKey.trim())) {
+        if (propertyKey != null && !"".equals(propertyKey = propertyKey.trim()))
+        {
             // System property by ID?
             propertyValue = System.getProperty(propertyKey);
 
-            if (propertyValue == null || "".equals(propertyValue = propertyValue.trim())) {
+            if (propertyValue == null || "".equals(propertyValue = propertyValue.trim()))
+            {
                 // Configuration property by ID?
                 propertyValue = getProperty(propertyKey, configurableClass);
             }
         }
 
-        if (propertyValue == null || "".equals(propertyValue = propertyValue.trim())) {
+        if (propertyValue == null || "".equals(propertyValue = propertyValue.trim()))
+        {
             // System property by field type?
             propertyValue = System.getProperty(field.getType().getName());
         }
 
-        if (propertyValue == null || "".equals(propertyValue = propertyValue.trim())) {
+        if (propertyValue == null || "".equals(propertyValue = propertyValue.trim()))
+        {
             // Configuration property by field type?
             propertyValue = getProperty(field.getType().getName(), configurableClass);
         }
@@ -80,12 +85,14 @@ public class ConfigurationConfigurer extends Configurer
             // Is it to be found in ConfigurationClasses?
             Class<?> configurationClass = ConfigurationClasses.lookup(propertyValue);
 
-            if (configurationClass != null) {
+            if (configurationClass != null)
+            {
                 return configure(configurable, field, configurationClass);
             }
 
             // Is it a class name?
-            try {
+            try
+            {
                 configurationClass = Class.forName(propertyValue);
                 return configure(configurable, field, configurationClass);
             } catch (Exception e) {
@@ -95,7 +102,8 @@ public class ConfigurationConfigurer extends Configurer
             // Is it a value? Try "morphing"?
             Object morph = morph(propertyValue, field.getType());
 
-            if (morph != null) {
+            if (morph != null)
+            {
                 return configure(configurable, field, morph);
             }
         }

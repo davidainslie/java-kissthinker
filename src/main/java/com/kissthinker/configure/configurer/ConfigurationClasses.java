@@ -70,7 +70,8 @@ public final class ConfigurationClasses
         for (Class<?> configurationClass : configurationClasses)
         {
             Configuration configuration = configurationClass.getAnnotation(Configuration.class);
-            add(configurationClass, configuration);
+
+            if (configuration != null) add(configurationClass, configuration);
         }
 
         for (Class<?> configurationsClass : configurationsClasses)
@@ -79,7 +80,7 @@ public final class ConfigurationClasses
 
             for (Configuration configuration : configurations.value())
             {
-                add(configurationsClass, configuration);
+                if (configuration != null) add(configurationsClass, configuration);
             }
         }
 

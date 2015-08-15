@@ -264,7 +264,7 @@ public class FnTest
      * <pre>
      * filter(Arrays.asList(42, 40, 1, 7, 99), function(from(CanDrink.class).check(null)));
      * where the following import would have been used:
-     * import static com.kissthinker.core.function.Fn.function;
+     * import static com.kissthinker.function.Fn.function;
      * The reason for not being able to utilise the above, is down to Generics - we have to stipulate the function return type.
      * And why do we pass in that "null" to the call on method "check"?
      * We are not really calling the method at that point, we generating a function but need the "placeholder".
@@ -296,7 +296,7 @@ public class FnTest
      * <pre>
      * functions.add(function(from(CanDrink.class).check(null)));
      * where the following import would have been used:
-     * import static com.kissthinker.core.function.Fn.function;
+     * import static com.kissthinker.function.Fn.function;
      * The reason for not being able to utilise the above, is down to Generics - we have to stipulate the function return type.
      * NOTE that instead of a list, we could have had:
      * List<Integer> filteredList = filter(filter(Arrays.asList(42, 40, 1, 7, 99),

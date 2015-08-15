@@ -5,7 +5,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -159,9 +158,7 @@ public class Configurator
     /** */
     private Configurer configurer;
 
-    /**
-     *
-     */
+    /** */
     public Configurator()
     {
         super();
@@ -194,9 +191,7 @@ public class Configurator
         }
     }
 
-    /**
-     *
-     */
+    /** */
     @Pointcut("staticinitialization(*) && within(@com.kissthinker.configure.Configurable *)")
     public void configurableClassInstantiation()
     {
@@ -213,7 +208,7 @@ public class Configurator
         Class<?> configurableClass = initializerSignature.getDeclaringType();
         LOGGER.trace("Class configuring {}", configurableClass);
 
-        configuredClassFields.put(configurableClass, new HashMap<Field, Object>());
+        configuredClassFields.put(configurableClass, new HashMap<>());
 
         configure(null, configurableClass);
     }
@@ -229,13 +224,11 @@ public class Configurator
         Class<?> configurableClass = initializerSignature.getDeclaringType();
         LOGGER.trace("Class configured {}", configurableClass);
 
-        for (Entry<Field, Object> entry : configuredClassFields.get(configurableClass).entrySet())
-        {
-            if (ReflectUtil.get(entry.getKey()) == null)
-            {
-                configure(null, entry.getKey(), entry.getValue());
-            }
-        }
+        configuredClassFields.get(configurableClass).entrySet().stream().filter(entry ->
+            ReflectUtil.get(entry.getKey()) == null
+        ).forEach(entry ->
+            configure(null, entry.getKey(), entry.getValue())
+        );
 
         configuredClassFields.remove(configurableClass);
     }
@@ -257,7 +250,7 @@ public class Configurator
     @Before("configurableObjectInstantiation(configurable)")
     public void configurableObjectInstantiating(JoinPoint joinPoint, Object configurable)
     {
-        configuredObjectFields.put(configurable, new HashMap<Field, Object>());
+        configuredObjectFields.put(configurable, new HashMap<>());
 
         LOGGER.trace("Object configuring {}", configurable.getClass());
         configure(configurable, configurable.getClass());
@@ -273,13 +266,11 @@ public class Configurator
     {
         LOGGER.trace("Object configured {}", configurable.getClass());
 
-        for (Entry<Field, Object> entry : configuredObjectFields.get(configurable).entrySet())
-        {
-            if (ReflectUtil.get(configurable, entry.getKey()) == null)
-            {
-                configure(configurable, entry.getKey(), entry.getValue());
-            }
-        }
+        configuredObjectFields.get(configurable).entrySet().stream().filter(entry ->
+            ReflectUtil.get(configurable, entry.getKey()) == null
+        ).forEach(entry ->
+            configure(configurable, entry.getKey(), entry.getValue())
+        );
 
         configuredObjectFields.remove(configurable);
     }

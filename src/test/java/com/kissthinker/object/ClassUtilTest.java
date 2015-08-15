@@ -31,6 +31,6 @@ public class ClassUtilTest
     @Test
     public void path()
     {
-        assertEquals("com/kissthinker/core/object/ClassUtil.properties", pathAndClassName(ClassUtil.class, ".properties"));
+        assertEquals("com/kissthinker/object/ClassUtil.properties", pathAndClassName(ClassUtil.class, ".properties"));
     }
 }

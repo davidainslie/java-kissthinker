@@ -1,4 +1,4 @@
-package com.kissthinker.core.json;
+package com.kissthinker.json;
 
 import java.util.ArrayList;
 import java.util.List;

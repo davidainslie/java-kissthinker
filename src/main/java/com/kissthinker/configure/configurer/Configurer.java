@@ -32,7 +32,8 @@ public abstract class Configurer
      * @param field
      * @return
      */
-    public boolean configure(Object configurable, Class<? extends Object> configurableClass, Field field) {
+    public boolean configure(Object configurable, Class<? extends Object> configurableClass, Field field)
+    {
         return doConfigure(configurable, configurableClass, field) || configureOtherwise(configurable, field);
     }
 

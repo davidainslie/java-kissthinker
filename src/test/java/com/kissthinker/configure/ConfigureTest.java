@@ -32,7 +32,7 @@ public class ConfigureTest
     @Test
     public void configureOverrideWithSystemPropertyByID()
     {
-        System.setProperty("systemPropertyBeanByID", "com.kissthinker.core.configure.SystemPropertyByIDBean2");
+        System.setProperty("systemPropertyBeanByID", "com.kissthinker.configure.SystemPropertyByIDBean2");
         Bean1 bean1 = new Bean1();
         assertTrue(bean1.bean2() instanceof SystemPropertyByIDBean2);
         System.setProperty("systemPropertyBeanByID", "");
@@ -42,7 +42,7 @@ public class ConfigureTest
     @Test
     public void configureOverrideWithSystemPropertyContract()
     {
-        System.setProperty(Bean2.class.getName(), "com.kissthinker.core.configure.SystemPropertyByContractBean2");
+        System.setProperty(Bean2.class.getName(), "com.kissthinker.configure.SystemPropertyByContractBean2");
         Bean1 bean1 = new Bean1();
         assertTrue(bean1.bean2() instanceof SystemPropertyByContractBean2);
         System.setProperty(Bean2.class.getName(), "");

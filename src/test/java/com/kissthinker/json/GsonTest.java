@@ -1,4 +1,4 @@
-package com.kissthinker.core.json;
+package com.kissthinker.json;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

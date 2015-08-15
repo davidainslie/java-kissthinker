@@ -39,7 +39,7 @@ public final class ClassUtil
     }
 
     /**
-     * Get path of given class e.g given class com.kissthinker.core.object.ClassUtil to get back com/kissthinker/core/object
+     * Get path of given class e.g given class com.kissthinker.object.ClassUtil to get back com/kissthinker/object
      * @param class_
      * @return String of path to given class
      */

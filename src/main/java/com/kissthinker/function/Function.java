@@ -8,8 +8,8 @@ package com.kissthinker.function;
  * This interface can be implemented directly. However, it should be created via {@link Fn#function()} e.g.
  * <pre>
  * {@code
- * import static com.kissthinker.core.function.Fn.from;
- * import static com.kissthinker.core.function.Fn.function;
+ * import static com.kissthinker.function.Fn.from;
+ * import static com.kissthinker.function.Fn.function;
  *
  * Function<String> function = function(from(AFunction.class).doSomething());
  * }
