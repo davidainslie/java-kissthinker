@@ -1,6 +1,8 @@
 package com.kissthinker.coder;
 
+import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 /**
@@ -21,8 +23,16 @@ public class XMLBeanCoder implements Coder
     @Override
     public <O> O decode(byte[] bytes)
     {
-        // TODO Auto-generated method stub
-        return null;
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
+
+        XMLDecoder xmlDecoder = new XMLDecoder(byteArrayInputStream);
+
+        @SuppressWarnings("unchecked")
+        O o = (O)xmlDecoder.readObject();
+
+        xmlDecoder.close();
+
+        return o;
     }
 
     /**

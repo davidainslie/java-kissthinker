@@ -3,7 +3,7 @@ package com.kissthinker.coder;
 import com.alibaba.fastjson.JSON;
 
 /**
- * Mmmm, seems to want javabean methods.
+ * Mmmm, seems to want javabean methods - So this one really doesn't work yet!
  * <br/>
  * @author David Ainslie
  *

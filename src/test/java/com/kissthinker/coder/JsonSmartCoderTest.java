@@ -1,7 +1,7 @@
 package com.kissthinker.coder;
 
 import org.apache.commons.lang3.time.StopWatch;
-import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,15 +18,6 @@ public class JsonSmartCoderTest
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonSmartCoderTest.class);
 
     /** */
-    @BeforeClass
-    public static void initialiseClass()
-    {
-        // TODO The following should not be required as logback should automatically fine it.
-        // However, even the following does not help.
-        System.setProperty("logback.configurationFile", "logback-test.xml");
-    }
-
-    /** */
     public JsonSmartCoderTest()
     {
         super();
@@ -34,10 +25,9 @@ public class JsonSmartCoderTest
 
     /** */
     @Test
+    @Ignore
     public void encode()
     {
-        LOGGER.trace("Should be logged (if logback-test.xml was read) but it is not.");
-
         StopWatch stopWatch = new StopWatch();
         Coder coder = new JsonSmartCoder();
 

@@ -1,10 +1,11 @@
 package com.kissthinker.coder;
 
 import org.apache.commons.lang3.time.StopWatch;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author David Ainslie
@@ -16,15 +17,6 @@ public class GsonExtCoderTest
     private static final Logger LOGGER = LoggerFactory.getLogger(GsonExtCoderTest.class);
 
     /** */
-    @BeforeClass
-    public static void initialiseClass()
-    {
-        // TODO The following should not be required as logback should automatically fine it.
-        // However, even the following does not help.
-        System.setProperty("logback.configurationFile", "logback-test.xml");
-    }
-
-    /** */
     public GsonExtCoderTest()
     {
         super();
@@ -34,8 +26,6 @@ public class GsonExtCoderTest
     @Test
     public void encode()
     {
-        LOGGER.trace("Should be logged (if logback-test.xml was read) but it is not.");
-
         StopWatch stopWatch = new StopWatch();
         Coder coder = new GsonExtCoder();
 
@@ -43,7 +33,9 @@ public class GsonExtCoderTest
         byte[] bytes = coder.encode(new Bean());
         stopWatch.stop();
 
-        System.out.printf("Encoded %d bytes in %s:%n%s%n", bytes.length, stopWatch, new String(bytes));
-        System.out.printf("%nAnd decoded...%n%s%n", coder.decode(bytes));
+        LOGGER.info("Encoded {} bytes in {}", bytes.length, stopWatch);
+        LOGGER.trace("Encoded bytes: {}", new String(bytes));
+
+        assertThat(bytes.length, greaterThan(1000));
     }
 }

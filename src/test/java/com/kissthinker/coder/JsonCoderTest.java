@@ -1,8 +1,12 @@
 package com.kissthinker.coder;
 
 import org.apache.commons.lang3.time.StopWatch;
-import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author David Ainslie
@@ -11,11 +15,7 @@ import org.junit.Test;
 public class JsonCoderTest
 {
     /** */
-    @BeforeClass
-    public static void initialiseClass()
-    {
-        System.setProperty("logback.configurationFile", "logback-test.xml");
-    }
+    private static final Logger LOGGER = LoggerFactory.getLogger(JsonCoderTest.class);
 
     /** */
     public JsonCoderTest()
@@ -23,9 +23,7 @@ public class JsonCoderTest
         super();
     }
 
-    /**
-     * TODO Bad test, as there are "log statements" instead of assertions;
-     */
+    /** */
     @Test
     public void encodeAndDecode()
     {
@@ -36,15 +34,16 @@ public class JsonCoderTest
         byte[] bytes = coder.encode(new Bean());
         stopWatch.stop();
 
-        System.out.printf("Encoded %d bytes in %s:%n%s%n", bytes.length, stopWatch, new String(bytes));
+        LOGGER.info("Encoded {} bytes in {}", bytes.length, stopWatch);
+        LOGGER.trace("Encoded bytes: {}", new String(bytes));
+
+        assertThat(bytes.length, greaterThan(1000));
 
         Bean bean = coder.decode(bytes);
-        System.out.println(bean);
+        assertEquals(bean.getAge(), 42);
     }
 
-    /**
-     * TODO Bad test, as there are "log statements" instead of assertions;
-     */
+    /** */
     @Test
     public void prettyEncode()
     {
@@ -55,6 +54,9 @@ public class JsonCoderTest
         byte[] bytes = jsonCoder.prettyEncode(new Bean());
         stopWatch.stop();
 
-        System.out.printf("Encoded %d bytes in %s:%n%s%n", bytes.length, stopWatch, new String(bytes));
+        LOGGER.info("Encoded {} bytes in {}", bytes.length, stopWatch);
+        LOGGER.trace("Encoded bytes: {}", new String(bytes));
+
+        assertThat(bytes.length, greaterThan(1000));
     }
 }

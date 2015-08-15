@@ -1,10 +1,7 @@
 package com.kissthinker.coder;
 
 import java.io.Serializable;
-import java.util.Currency;
-import java.util.Locale;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import static com.kissthinker.collection.set.SetUtil.hashSet;
 
 /**
@@ -31,18 +28,93 @@ public class Bean implements Serializable
     /** */
     private String largeString = largeString();
 
-    /**
-     *
-     */
+    /** */
     public Bean()
     {
         super();
     }
 
-    /**
-     *
-     * @return
-     */
+    /** */
+    public String getId() {
+        return id;
+    }
+
+    /** */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    /** */
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    /** */
+    public Set<Currency> getMajorCurrencies() {
+        return majorCurrencies;
+    }
+
+    /** */
+    public void setMajorCurrencies(Set<Currency> majorCurrencies) {
+        this.majorCurrencies = majorCurrencies;
+    }
+
+    /** */
+    public Set<Currency> getAllCurrencies() {
+        return allCurrencies;
+    }
+
+    /** */
+    public void setAllCurrencies(Set<Currency> allCurrencies) {
+        this.allCurrencies = allCurrencies;
+    }
+
+    /** */
+    public String getLargeString() {
+        return largeString;
+    }
+
+    /** */
+    public void setLargeString(String largeString) {
+        this.largeString = largeString;
+    }
+
+    /** */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bean bean = (Bean) o;
+        return Objects.equals(age, bean.age) &&
+                Objects.equals(id, bean.id) &&
+                Objects.equals(majorCurrencies, bean.majorCurrencies) &&
+                Objects.equals(allCurrencies, bean.allCurrencies) &&
+                Objects.equals(largeString, bean.largeString);
+    }
+
+    /** */
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, age, majorCurrencies, allCurrencies, largeString);
+    }
+
+    /** */
+    @Override
+    public String toString() {
+        return "Bean{" +
+                "id='" + id + '\'' +
+                ", age=" + age +
+                ", majorCurrencies=" + majorCurrencies +
+                ", allCurrencies=" + allCurrencies +
+                ", largeString='" + largeString + '\'' +
+                '}';
+    }
+
+    /** */
     private static Set<Currency> allCurrencies()
     {
         Set<Currency> currencies = hashSet();
@@ -64,10 +136,7 @@ public class Bean implements Serializable
         return currencies;
     }
 
-    /**
-     *
-     * @return
-     */
+    /** */
     private static String largeString()
     {
         StringBuilder stringBuilder = new StringBuilder();

@@ -1,5 +1,6 @@
 package com.kissthinker.coder;
 
+import java.io.ByteArrayInputStream;
 import com.thoughtworks.xstream.XStream;
 
 /**
@@ -20,10 +21,10 @@ public class XStreamCoder implements Coder
     /**
      * @see com.kissthinker.coder.Coder#decode(byte[])
      */
+    @SuppressWarnings("unchecked")
     public <O> O decode(byte[] bytes)
     {
-        // TODO Auto-generated method stub
-        return null;
+        return (O)xstream.fromXML(new ByteArrayInputStream(bytes));
     }
 
     /**

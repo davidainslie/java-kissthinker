@@ -1,8 +1,6 @@
 package com.kissthinker.coder;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 /**
  * @author David Ainslie
@@ -22,8 +20,23 @@ public class SerializationCoder implements Coder
     @Override
     public <O> O decode(byte[] bytes)
     {
-        // TODO Auto-generated method stub
-        return null;
+        try
+        {
+            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
+
+            ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+
+            @SuppressWarnings("unchecked")
+            O o = (O)objectInputStream.readObject();
+
+            objectInputStream.close();
+
+            return o;
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            throw new IllegalArgumentException(e);
+        }
     }
 
     /**

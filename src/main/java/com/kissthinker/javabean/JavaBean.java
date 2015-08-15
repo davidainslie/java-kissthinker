@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import static com.kissthinker.collection.array.ArrayUtil.va;
 
 /**
- * Marker interface to hightlight a "class" as a JavaBean i.e. a class where any fields marked up with @Property fire property change events to property listeners.
+ * Marker interface to highlight a "class" as a JavaBean i.e. a class where any fields marked up with @Property fire property change events to property listeners.
  * <br/>
  * To "listen" to a {@link JavaBean} go through the 3rd party (support/helper) class {@link JavaBeanSupport}
  * @author David Ainslie
