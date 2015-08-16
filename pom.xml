@@ -8,6 +8,8 @@
     <groupId>kissthinker</groupId>
     <artifactId>java</artifactId>
     <version>1.0</version>
+    <name>Java KISS Thinker</name>
+    <description>Usable functionality that was developed to show examples of good Java coding described in an accompanying book</description>
     <url>http://www.kissthinker.com</url>
 
     <developers>
