@@ -24,9 +24,9 @@
     </developers>
 
     <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
+        <groupId>com.jcabi</groupId>
+        <artifactId>parent</artifactId>
+        <version>0.34</version>
     </parent>
     
     <licenses>
@@ -232,19 +232,6 @@
         
         <pluginManagement>
             <plugins>
-                <!-- Some overrides of parent POM -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <version>1.6</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.5.2</version>
-                </plugin>
-
                 <!-- The following keeps Eclipse happy by not showing incorrect errors around AspectJ -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
