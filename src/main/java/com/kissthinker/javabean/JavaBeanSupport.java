@@ -18,7 +18,7 @@ import static com.kissthinker.collection.set.SetUtil.hashSet;
 
 /**
  * PropertyChangeListener broker.
- * <br/>
+ * <p>
  * Notice that there are no "unlisten" methods to match {@link #listen(JavaBean, PropertyChangeListener)} or {@link #listen(JavaBean, String, PropertyChangeListener)}.<br>
  * As listeners are managed weakly, then (like garbage collection) listener "clearance" is handled automatically.
  * @author David Ainslie
@@ -333,7 +333,7 @@ public final class JavaBeanSupport
     
     
     /**
-     * We can safely cast a given {@link JavaBean} to {@link PropertyChangeSupporter} as we have injected the interface and an implementation via AspectJ.<br/>
+     * We can safely cast a given {@link JavaBean} to {@link PropertyChangeSupporter} as we have injected the interface and an implementation via AspectJ.<p>
      * Comparing this to Scala, {@link PropertyChangeSupporter} and its implementation act as a trait.
      * @param javaBean
      * @return

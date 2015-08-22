@@ -46,7 +46,7 @@ public final class ReflectUtil
     }
 
     /**
-     * Set a given static field to the given value.<br/>
+     * Set a given static field to the given value.<p>
      * The field may be final.
      * @param field
      * @param value
@@ -58,7 +58,7 @@ public final class ReflectUtil
     }
 
     /**
-     * Set a given field to the given value for the given object.<br/>
+     * Set a given field to the given value for the given object.<p>
      * The field may be final and/or static.
      * @param object
      * @param field

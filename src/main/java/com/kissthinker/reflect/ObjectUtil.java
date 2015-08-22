@@ -10,7 +10,7 @@ import com.kissthinker.property.Property;
 
 /**
  * Utility for object (and class) manipulation.
- * <br/>
+ * <p>
  * TODO Consolidate with another version
  * @author David Ainslie
  */

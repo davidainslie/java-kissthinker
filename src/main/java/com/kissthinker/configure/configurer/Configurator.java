@@ -23,35 +23,35 @@ import static java.text.MessageFormat.format;
 
 /**
  * Any class marked @{@link Configurable} has its fields that are marked @{@link Configure} set by this aspect.
- * <br/>
- * Any field, whether static or not and final or not can be configured.<br/>
- * Firstly, if a {@link Configure} has something other than "null", then it will not be configured.<br/>
+ * <p>
+ * Any field, whether static or not and final or not can be configured.<p>
+ * Firstly, if a {@link Configure} has something other than "null", then it will not be configured.<p>
  * e.g
  * <pre>
  * {@code @Configure} private Foo foo = new Foo();
  * </pre>
- * This variable will not be configured, essentially it is not eligible for being configured because an actual value has been stipulated.<br/>
- * This has been done for 2 reasons.<br/>
- * 1) It allows for normal/usual Java development or using "new" (whether instantiated by a factory or not does not matter).<br/>
- * 2) Allowing this is beneficial from a client developing perspective as, when a class is first developed, there may not be an appropriate configuration.<br/>
- * This may not actually be a valid reason, but a Developer will often just want to instantiate anything as a means to testing the initial (and ongoing) development.<br/>
- * Note that if "foo = null" in the declaration, it can be configured.<br/>
- * This is actually essential for "final" fields as a final field always has to be set to "something". By setting a final initially to null we keep the compiler happy.<br/>
- * At this point of "initialisation", note that a Developer is still allowed to set (final and non final) fields in class and instance initialisers.<br/>
- * Again, this allows for normal/usual Java development. However, this does go against the idea of using a "configuration framework", but at least the "framework" does not intefere.<br/>
- * <br/>
- * So how is an application configured (say use xml, or scripting, or some custom way - this is allowed by this framework) is actually configurable.<br/>
+ * This variable will not be configured, essentially it is not eligible for being configured because an actual value has been stipulated.<p>
+ * This has been done for 2 reasons.<p>
+ * 1) It allows for normal/usual Java development or using "new" (whether instantiated by a factory or not does not matter).<p>
+ * 2) Allowing this is beneficial from a client developing perspective as, when a class is first developed, there may not be an appropriate configuration.<p>
+ * This may not actually be a valid reason, but a Developer will often just want to instantiate anything as a means to testing the initial (and ongoing) development.<p>
+ * Note that if "foo = null" in the declaration, it can be configured.<p>
+ * This is actually essential for "final" fields as a final field always has to be set to "something". By setting a final initially to null we keep the compiler happy.<p>
+ * At this point of "initialisation", note that a Developer is still allowed to set (final and non final) fields in class and instance initialisers.<p>
+ * Again, this allows for normal/usual Java development. However, this does go against the idea of using a "configuration framework", but at least the "framework" does not intefere.<p>
+ * <p>
+ * So how is an application configured (say use xml, or scripting, or some custom way - this is allowed by this framework) is actually configurable.<p>
  * If the sytem property "application.configurer" is provided and that "class name" declares an extension of {@link Configurer},
  * then configurations are performed by the instructions laid out by that implementation.
  * The default "configurer" is {@link ConfigurationConfigurer}
  * There are rules to the configuration process (mainly what is the order of getting an appropriate/desired configuration).
  * These rules are declared within a {@link Configurer}, whether those rules use helper methods in the abstract class {@link Configurer} that all configurers should extend
  * of whether custom rules are coded. Here follows some examples of rules.
- * <p/>
- * One would hope that "id" is not provided, as Configurations is really about "I don't care, just configure me".<br/>
- * However if an "id" is provided, then it is assumed that the Developer want something specific and so this takes highest priority.<br/>
+ * <p>
+ * One would hope that "id" is not provided, as Configurations is really about "I don't care, just configure me".<p>
+ * However if an "id" is provided, then it is assumed that the Developer want something specific and so this takes highest priority.<p>
  * But also not, that if the sytem property "application.configurer" is provided, then any list of "Configurer" can be provided in any order, so overriding these defaults.
- * <p/>
+ * <p>
  * <pre>
  * configure.id()
  *  This is used by method {@link Configurer#configureID()}
@@ -104,8 +104,8 @@ import static java.text.MessageFormat.format;
  * Note that any custom configurer can be developed by extending the abstract (base) class {@link Configurer}
  *
  * </pre>
- * AN IMPORTANT NOTE<br/>
- * Like any configuration, IoC, dependency injection framework (or however you wish to name this process), one must be careful of cyclic dependencies.<br/>
+ * AN IMPORTANT NOTE<p>
+ * Like any configuration, IoC, dependency injection framework (or however you wish to name this process), one must be careful of cyclic dependencies.<p>
  * Example:
  * <pre>
  * @Singleton
@@ -126,7 +126,7 @@ import static java.text.MessageFormat.format;
  * -> the above would only work if at least one class is a singleton.
  * TODO If not, should detect this (I guess possible) infinite recursion and log it. Test it
  * </pre>
- * Final note about "otherwise" (which should actually be avoided like the use of "id" i.e should really only declare @Configure with no attributes)<br/>
+ * Final note about "otherwise" (which should actually be avoided like the use of "id" i.e should really only declare @Configure with no attributes)<p>
  * Let's take the following example:
  * <pre>
  *{@code @Configure} int port = 1099;

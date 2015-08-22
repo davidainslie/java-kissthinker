@@ -15,12 +15,12 @@ import static com.kissthinker.collection.array.ArrayUtil.va;
 
 /**
  * A {@link Coder} version of an {@link OutputStream} where objects are written (much like an {@link ObjectOutputStream} but as a standard stream of encoded bytes.
- * <br/>
- * Given objects (and {@link Invocation} objects) are encoded via a {@link Coder}. At the other end of the communication channel a {@link CoderInputStream} should be used.<p/>
- * Notes/Decisions regarding API (and implementation):<br/>
- * The method {@link #writeObject(Invocation)} returns an "id" that acts as a "message identifier", so that an outgoing "message" can be matched to one incoming.<br/>
- * The ID from an IDGenerator (configured/injected) can be thought of as analogous to a topic/queue name in JMS, or a RMI identifier<br/>
- * i.e we manage to have different forms of communication but all analogous.<br/>
+ * <p>
+ * Given objects (and {@link Invocation} objects) are encoded via a {@link Coder}. At the other end of the communication channel a {@link CoderInputStream} should be used.<p>
+ * Notes/Decisions regarding API (and implementation):<p>
+ * The method {@link #writeObject(Invocation)} returns an "id" that acts as a "message identifier", so that an outgoing "message" can be matched to one incoming.<p>
+ * The ID from an IDGenerator (configured/injected) can be thought of as analogous to a topic/queue name in JMS, or a RMI identifier<p>
+ * i.e we manage to have different forms of communication but all analogous.<p>
  * Also note, that the coder streams were originally in project "io-kissthinker", and was moved to "core" to be alongside all other coder functionality - whether this is best I don't know.
  * @author David Ainslie
  *
@@ -49,7 +49,7 @@ public class CoderOutputStream extends OutputStream
     private final IDGenerator<?> idGenerator = /*null*/ new IntegerIDGenerator(); // TODO Put back to null
 
     /**
-     * @param outputStream
+     * @param outputStream OutputStream
      */
     public CoderOutputStream(OutputStream outputStream)
     {
@@ -69,7 +69,7 @@ public class CoderOutputStream extends OutputStream
 
     /**
      *
-     * @param object
+     * @param object Object
      * @throws IOException
      */
     public void writeObject(Object object) throws IOException
@@ -79,8 +79,8 @@ public class CoderOutputStream extends OutputStream
 
     /**
      *
-     * @param invocation
-     * @return
+     * @param invocation Invocation
+     * @return ID
      * @throws IOException
      */
     public <I> I writeObject(Invocation invocation) throws IOException
@@ -100,9 +100,9 @@ public class CoderOutputStream extends OutputStream
 
     /**
      *
-     * @param <I>
-     * @param id
-     * @param object
+     * @param <I> Input type
+     * @param id ID
+     * @param object Object
      * @throws IOException
      */
     public <I, O> void writeObject(I id, O object) throws IOException
@@ -117,9 +117,9 @@ public class CoderOutputStream extends OutputStream
 
     /**
      *
-     * @param <O>
-     * @param object
-     * @return
+     * @param <O> Object type
+     * @param object Object
+     * @return Coder
      * @throws IOException
      */
     private <O> Coder encodeCoder(O object) throws IOException
@@ -136,11 +136,11 @@ public class CoderOutputStream extends OutputStream
     }
 
     /**
-     * @param <O>
-     * @param <I>
-     * @param id
-     * @param object
-     * @param coder
+     * @param <O> Object type
+     * @param <I> ID type
+     * @param id ID
+     * @param object Object
+     * @param coder Coder
      * @throws IOException
      */
     private <O, I> void encodeObject(I id, O object, Coder coder) throws IOException
@@ -154,9 +154,9 @@ public class CoderOutputStream extends OutputStream
     }
 
     /**
-     * Get {@link Coder} for given object, where if there is none available/found then use the {@link #DEFAULT_CODER}.<br/>
-     * @param <O>
-     * @param object
+     * Get {@link Coder} for given object, where if there is none available/found then use the {@link #DEFAULT_CODER}.<p>
+     * @param <O> Object type
+     * @param object Object
      * @return Coder
      */
     private <O> Coder coder(O object)

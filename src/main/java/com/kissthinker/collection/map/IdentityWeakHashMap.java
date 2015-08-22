@@ -274,7 +274,7 @@ public class IdentityWeakHashMap<K, V> implements Map<K, V>
 
         /**
          * 
-         * @param obj
+         * @param obj Object
          */
         @SuppressWarnings("unchecked")
         IdentityWeakReference(Object obj)

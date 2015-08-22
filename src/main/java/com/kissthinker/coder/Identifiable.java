@@ -2,7 +2,7 @@ package com.kissthinker.coder;
 
 /**
  * ID wrapper around an object.
- * <br/>
+ * <p>
  * @author David Ainslie
  *
  */
@@ -16,8 +16,8 @@ public class Identifiable<I, O>
 
     /**
      *
-     * @param id
-     * @param object
+     * @param id ID
+     * @param object Object
      */
     public Identifiable(I id, O object)
     {

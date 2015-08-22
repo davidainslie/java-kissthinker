@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Marker annotation to hightlight a "field" as a JavaBean "property" i.e. property listeners  will be informed of state changes to a marked up property field.
- * <br/>
+ * <p>
  * NOTE That a field marked up as "property" is only recognised within the context of a class marked up with @JavaBean
  * @author David Ainslie
  *

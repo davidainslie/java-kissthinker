@@ -29,7 +29,7 @@ public class MapUtilTest
     }
 
     /**
-     * In this case, we cannot call just "hashMap()".<br/>
+     * In this case, we cannot call just "hashMap()".<p>
      * To avoid IDE complaints regarding generics, we must call "MapUtil.<Integer, String>hashMap()". Yes? Annoying!
      */
     @Test

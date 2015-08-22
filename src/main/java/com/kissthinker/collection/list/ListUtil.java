@@ -3,16 +3,18 @@ package com.kissthinker.collection.list;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
+import com.kissthinker.object.Singleton;
 
 /**
  * @author David Ainslie
  *
  */
+@Singleton
 public final class ListUtil
 {
     /**
      *
-     * @param <O>
+     * @param <O> Type of objects in array
      * @return ArrayList<O>
      */
     public static <O> ArrayList<O> arrayList()
@@ -22,7 +24,7 @@ public final class ListUtil
 
     /**
      *
-     * @param <O>
+     * @param <O> Type of objects in array
      * @return ArrayList<O>
      */
     @SafeVarargs
@@ -40,7 +42,7 @@ public final class ListUtil
 
     /**
      *
-     * @param <O>
+     * @param <O> Type of objects in list
      * @return LinkedList<O>
      */
     public static <O> LinkedList<O> linkedList()
@@ -50,7 +52,7 @@ public final class ListUtil
 
     /**
      *
-     * @param <O>
+     * @param <O> Type of objects in list
      * @return LinkedList<O>
      */
     @SafeVarargs

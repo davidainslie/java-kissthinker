@@ -5,7 +5,7 @@ import java.util.Map.Entry;
 
 /**
  * A {@link LinkedHashMap} that acts as a "least recently used map".
- * <br/>
+ * <p>
  * When adding ({@link #put(Object, Object)}) to the map, upon exceeding the maximum number of entries, the "oldest" entry is removed.
  * @author David Ainslie
  * @param <K>
@@ -36,7 +36,7 @@ public class LeastRecentlyUsedMap<K, V> extends LinkedHashMap<K, V>
 
     /**
      *
-     * @param maximumNumberOfEntries
+     * @param maximumNumberOfEntries Maximum number of entries
      */
     public LeastRecentlyUsedMap(int maximumNumberOfEntries)
     {

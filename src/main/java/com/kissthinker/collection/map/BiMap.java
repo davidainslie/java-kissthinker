@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  * A "bi map" or "two way map".
- * <br/>
+ * <p>
  * Get a value with a given key (as in a traditional map), but also get a key with a given value.
  * @author David Ainslie
  *
@@ -28,8 +28,8 @@ public class BiMap<K, V> implements Map<K, V>
 
     /**
      *
-     * @param key
-     * @param value
+     * @param key Key
+     * @param value Value
      */
     @Override
     public V put(K key, V value)
@@ -40,7 +40,7 @@ public class BiMap<K, V> implements Map<K, V>
 
     /**
      *
-     * @param key
+     * @param key Key
      * @return V or null
      */
     public V value(K key)
@@ -50,7 +50,7 @@ public class BiMap<K, V> implements Map<K, V>
 
     /**
      *
-     * @param value
+     * @param value Value
      * @return true if contained
      */
     public boolean hasValue(V value)
@@ -60,7 +60,7 @@ public class BiMap<K, V> implements Map<K, V>
 
     /**
      *
-     * @param key
+     * @param key Key
      * @return V or null
      */
     public V removeValue(K key)
@@ -73,7 +73,7 @@ public class BiMap<K, V> implements Map<K, V>
 
     /**
      *
-     * @param value
+     * @param value Value
      * @return K or null
      */
     public K key(V value)
@@ -83,7 +83,7 @@ public class BiMap<K, V> implements Map<K, V>
 
     /**
      *
-     * @param key
+     * @param key Key
      * @return true if contained
      */
     public boolean hasKey(K key)
@@ -93,7 +93,7 @@ public class BiMap<K, V> implements Map<K, V>
 
     /**
      *
-     * @param value
+     * @param value Value
      * @return K or null
      */
     public K removeKey(V value)
@@ -104,20 +104,14 @@ public class BiMap<K, V> implements Map<K, V>
         return key;
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** */
     @Override
     public int size()
     {
         return keyValueMap.size();
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** */
     @Override
     public boolean isEmpty()
     {
@@ -126,8 +120,8 @@ public class BiMap<K, V> implements Map<K, V>
 
     /**
      * 
-     * @param key
-     * @return
+     * @param key Key
+     * @return Value
      */
     @Override
     public V get(Object key)
@@ -137,8 +131,8 @@ public class BiMap<K, V> implements Map<K, V>
 
     /**
      * 
-     * @param key
-     * @return
+     * @param key Key
+     * @return Value
      */
     @Override
     public V remove(Object key)
@@ -151,7 +145,7 @@ public class BiMap<K, V> implements Map<K, V>
 
     /**
      * 
-     * @param m
+     * @param m Map
      */
     @Override
     public void putAll(Map<? extends K, ? extends V> m)
@@ -160,9 +154,7 @@ public class BiMap<K, V> implements Map<K, V>
         // TODO need to update valueKeyMap
     }
 
-    /**
-     * 
-     */
+    /** */
     @Override
     public void clear()
     {
@@ -170,30 +162,21 @@ public class BiMap<K, V> implements Map<K, V>
         valueKeyMap.clear();
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** */
     @Override
     public Set<K> keySet()
     {
         return keyValueMap.keySet();
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** */
     @Override
     public Collection<V> values()
     {
         return keyValueMap.values();
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** */
     @Override
     public Set<java.util.Map.Entry<K, V>> entrySet()
     {
@@ -202,8 +185,8 @@ public class BiMap<K, V> implements Map<K, V>
 
     /**
      * 
-     * @param key
-     * @return
+     * @param key Key
+     * @return True or false
      */
     @Override
     public boolean containsKey(Object key)
@@ -213,8 +196,8 @@ public class BiMap<K, V> implements Map<K, V>
 
     /**
      * 
-     * @param value
-     * @return
+     * @param value Value
+     * @return True or false
      */
     @Override
     public boolean containsValue(Object value)

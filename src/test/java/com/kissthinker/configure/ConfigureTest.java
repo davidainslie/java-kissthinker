@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * IoC test i.e testing configuration of "beans" via KISS IoC.
- * <br/>
+ * <p>
  * "Wiring" up is done per environment; appropriate configurations are found at runtime with any "disputes" worked out via "isDefault" on a {@link Configuration},
  * and if necessary, the most specific environment choice. Note that it is encouraged to just mark up a field that requires a configuration with an empty {@link Configure}.
  * However, an "id" and/or "otherwise" can be provided. There are downsides to using these two attributes.

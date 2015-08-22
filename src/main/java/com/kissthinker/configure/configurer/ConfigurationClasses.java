@@ -23,7 +23,7 @@ import static com.kissthinker.collection.set.SetUtil.hashSet;
 
 /**
  * Utility/Manager of "configuration classes".
- * <br/>
+ * <p>
  * Configurations are searched for on the classpath for classes marked up with {@link Configuration}
  * @author David Ainslie
  *

@@ -7,7 +7,7 @@ import com.kissthinker.io.ByteOutputStream;
 
 /**
  * Object cloning utility.
- * <br/>
+ * <p>
  * @author David Ainslie
  *
  */

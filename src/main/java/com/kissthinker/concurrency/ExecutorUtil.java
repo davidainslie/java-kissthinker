@@ -14,8 +14,8 @@ import static java.text.MessageFormat.format;
 
 /**
  * A general purpose concurrency utility.
- * <br/>
- * Concurrency problems are usually categorised as either "high blocking" e.g involve a lot of IO or "low blocking" e.g involve a lot of processing.<br/>
+ * <p>
+ * Concurrency problems are usually categorised as either "high blocking" e.g involve a lot of IO or "low blocking" e.g involve a lot of processing.<p>
  * In either case, a thread pool should be tuned as to the size and whether the size is fixed or dynamic.<br/.
  * TODO Allow this general purpose utility be instantiated more than once and so can be configured to the type of problem at hand.
  *

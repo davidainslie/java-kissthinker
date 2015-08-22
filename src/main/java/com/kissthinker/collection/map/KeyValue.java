@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * Immutable generic "key value" pair.
- * <br/>
+ * <p>
  * @param <K> key
  * @param <V> value
  * @author David Ainslie
@@ -24,11 +24,11 @@ public final class KeyValue<K, V> implements Comparable<KeyValue<K, V>>,
 
     /**
      *
-     * @param <K>
-     * @param <V>
-     * @param key
-     * @param value
-     * @return KeyValue<K, V>
+     * @param <K> Key type
+     * @param <V> Value type
+     * @param key Key
+     * @param value Value
+     * @return KeyValue
      */
     @SuppressWarnings("unchecked")
     public static <K, V> KeyValue<K, V> keyValue(K key, V value)

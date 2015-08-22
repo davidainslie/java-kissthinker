@@ -31,9 +31,9 @@ public class BlockingHashMap<K, V> implements Map<K, V>
     }
 
     /**
-     * @param initialCapacity
-     * @param loadFactor
-     * @param concurrencyLevel
+     * @param initialCapacity Initial capacity
+     * @param loadFactor Load factor
+     * @param concurrencyLevel Concurrency level
      */
     public BlockingHashMap(int initialCapacity, float loadFactor, int concurrencyLevel)
     {
@@ -42,8 +42,8 @@ public class BlockingHashMap<K, V> implements Map<K, V>
     }
 
     /**
-     * @param initialCapacity
-     * @param loadFactor
+     * @param initialCapacity Initial capacity
+     * @param loadFactor Load factor
      */
     public BlockingHashMap(int initialCapacity, float loadFactor)
     {
@@ -52,7 +52,7 @@ public class BlockingHashMap<K, V> implements Map<K, V>
     }
 
     /**
-     * @param initialCapacity
+     * @param initialCapacity Initial capacity
      */
     public BlockingHashMap(int initialCapacity)
     {
@@ -129,9 +129,9 @@ public class BlockingHashMap<K, V> implements Map<K, V>
 
     /**
      * A blocking version of {@link Map#get(Object)} but with a timeout
-     * @param key
-     * @param timeOut
-     * @param timeUnit
+     * @param key Key
+     * @param timeOut Time out
+     * @param timeUnit Time unit
      * @return V
      */
     @SuppressWarnings("unchecked")
@@ -195,10 +195,10 @@ public class BlockingHashMap<K, V> implements Map<K, V>
 
     /**
      * Either a blocking or non-blocking version of "put".
-     * @param key
-     * @param value
-     * @param blocking
-     * @return
+     * @param key Key
+     * @param value Value
+     * @param blocking True or false
+     * @return Value
      */
     public V put(K key, V value, boolean blocking)
     {
@@ -227,12 +227,12 @@ public class BlockingHashMap<K, V> implements Map<K, V>
     
     /**
      * Either a blocking (with a time out) or non-blocking version of "put".
-     * @param key
-     * @param value
-     * @param blocking
-     * @param timeOut
-     * @param timeUnit
-     * @return
+     * @param key Key
+     * @param value Value
+     * @param blocking True or false
+     * @param timeOut Time out
+     * @param timeUnit Time unit
+     * @return Value
      */
     public V put(K key, V value, boolean blocking, long timeOut, TimeUnit timeUnit)
     {

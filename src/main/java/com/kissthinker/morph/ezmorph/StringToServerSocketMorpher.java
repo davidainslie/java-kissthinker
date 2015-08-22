@@ -7,8 +7,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Morph a String, representing a server socket port to a {@link ServerSocket}
- * <br/>
- * This implementation makes the assumption, that only one {@link ServerSocket} will be created for running JVM.<br/>
+ * <p>
+ * This implementation makes the assumption, that only one {@link ServerSocket} will be created for running JVM.<p>
  * TODO Allow for server sockets to be created on other ports.
  * @author David Ainslie
  *

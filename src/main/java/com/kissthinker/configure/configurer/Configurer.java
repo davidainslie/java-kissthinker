@@ -6,7 +6,7 @@ import static com.kissthinker.object.ObjectUtil.morph;
 
 /**
  * The abstract (parent) to any "configurer" i.e how configuration is performed, where the default {@link ConfigurationConfigurer} searches for configurations on the classpath.
- * <br/>
+ * <p>
  * @author David Ainslie
  *
  */
@@ -71,7 +71,7 @@ public abstract class Configurer
     }
 
     /**
-     * The fallback.<br/>
+     * The fallback.<p>
      * TODO Morphing is incomplete i.e need to implement many morphers
      * @param configurable
      * @param field

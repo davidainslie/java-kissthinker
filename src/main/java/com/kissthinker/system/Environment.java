@@ -11,7 +11,7 @@ import com.kissthinker.collection.array.ArrayUtil;
 
 /**
  * Available environments.
- * <br/>
+ * <p>
  * Environment can be set with system property "environment".
  * @author David Ainslie
  *
@@ -132,7 +132,7 @@ public enum Environment
     }
 
     /**
-     * Sort the given environments naturally.<br/>
+     * Sort the given environments naturally.<p>
      * As Environment is an enum, the sorting is by the ordering that each is declared.
      * @param environments
      * @return Set<Environment>

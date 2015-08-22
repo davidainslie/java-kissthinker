@@ -2,7 +2,7 @@ package com.kissthinker.system;
 
 /**
  * Convenience wrapper around {@link java.lang.System}
- * <br/>
+ * <p>
  * TODO Should this be an interface?
  * @author David Ainslie
  *

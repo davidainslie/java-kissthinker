@@ -17,19 +17,19 @@ import static com.kissthinker.collection.CollectionUtil.newInstance;
 /**
  * This class was written for Java 7 and should not be used for Java 8+.
  * Utility to invoke methods (on some class/object) not directly, but as a function - a function that can be passed around and have its {@link Function#apply(Object...)} called.
- * <br/>
- * Note that originally, this class was name FunctionUtil, as Fn is not descriptive. However, Fn was eventually chosen because of generics e.g<br/>
- * Because of generics, we would have to code:<br/>
- * fxQuotePublisher.subscribe(new FX(Currency.EUR, Currency.USD), function(from(this).onQuote(null)), FunctionUtil.<Boolean>function(from(this).invalidCriteria(null)));<br/>
+ * <p>
+ * Note that originally, this class was name FunctionUtil, as Fn is not descriptive. However, Fn was eventually chosen because of generics e.g<p>
+ * Because of generics, we would have to code:<p>
+ * fxQuotePublisher.subscribe(new FX(Currency.EUR, Currency.USD), function(from(this).onQuote(null)), FunctionUtil.<Boolean>function(from(this).invalidCriteria(null)));<p>
  * instead of
- * fxQuotePublisher.subscribe(new FX(Currency.EUR, Currency.USD), function(from(this).onQuote(null)), function(from(this).invalidCriteria(null)));<br/>
- * but now with this class named as Fn, we can do:<br/>
- * fxQuotePublisher.subscribe(new FX(Currency.EUR, Currency.USD), function(from(this).onQuote(null)), Fn.<Boolean>function(from(this).invalidCriteria(null)));<br/>
- * which is still not great, but if that fabulous library op4j names its functions classes as FnXXX (such as FnString), then some others must think this is okay.<br/>
+ * fxQuotePublisher.subscribe(new FX(Currency.EUR, Currency.USD), function(from(this).onQuote(null)), function(from(this).invalidCriteria(null)));<p>
+ * but now with this class named as Fn, we can do:<p>
+ * fxQuotePublisher.subscribe(new FX(Currency.EUR, Currency.USD), function(from(this).onQuote(null)), Fn.<Boolean>function(from(this).invalidCriteria(null)));<p>
+ * which is still not great, but if that fabulous library op4j names its functions classes as FnXXX (such as FnString), then some others must think this is okay.<p>
  * Note that this utility also provides the standard functional programming of functions on collections through filter, map and reduce.
- * TODO This Implementation does not cater for invoking static methods as functions.<br/>
- * TODO MapReduce.<br/>
- * This is because, the implementation used in this class uses CBLIB, and static method interception is not handled.<br/>
+ * TODO This Implementation does not cater for invoking static methods as functions.<p>
+ * TODO MapReduce.<p>
+ * This is because, the implementation used in this class uses CBLIB, and static method interception is not handled.<p>
  * A solution to this, would be to implement a new utility that used AspectJ.
  * See {@link FnTest} for examples on how to use this utility.
  *
@@ -89,7 +89,7 @@ public final class Fn
     }
 
     /**
-     * To create a "function", an object is wrapped up as a "function" by proxy.<br/>
+     * To create a "function", an object is wrapped up as a "function" by proxy.<p>
      * @param <O>
      * @param object
      * @return O a proxied object that can be executed as a function
@@ -116,7 +116,7 @@ public final class Fn
     }
 
     /**
-     * Convenience method to execute given function on given target, instead of the (original) proxied target.<br/>
+     * Convenience method to execute given function on given target, instead of the (original) proxied target.<p>
      * Primarily used by {@link CollectionUtil}
      * @param <R>
      * @param function

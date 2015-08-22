@@ -2,7 +2,7 @@ package com.kissthinker.object;
 
 /**
  * Utility methods for Class.
- * <br/>
+ * <p>
  * @author David Ainslie
  *
  */

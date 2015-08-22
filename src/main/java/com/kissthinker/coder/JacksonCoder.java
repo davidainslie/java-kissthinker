@@ -7,7 +7,7 @@ import org.codehaus.jackson.map.ObjectWriter;
 
 /**
  * Coding between Object and bytes via Jackson.
- * <br/>
+ * <p>
  * Note that Jackson has a XmlMapper:
  * <pre>
  * XmlMapper mapper = new XmlMapper();
@@ -69,8 +69,8 @@ public class JacksonCoder implements Coder
 
     /**
      *
-     * @param <O>
-     * @param object
+     * @param <O> Object type
+     * @param object Object
      * @return byte[]
      */
     public <O> byte[] prettyEncode(O object)

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Interesting - nothing encoded and so nothing decoded - kind of useless!
- * <br/>
+ * <p>
  * @author David Ainslie
  *
  */

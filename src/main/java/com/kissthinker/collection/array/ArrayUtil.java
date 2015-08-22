@@ -1,16 +1,18 @@
 package com.kissthinker.collection.array;
 
 import java.util.Arrays;
+import com.kissthinker.object.Singleton;
 
 /**
  * @author David Ainslie
  *
  */
+@Singleton
 public final class ArrayUtil
 {
     /**
      * Essentially a conversion from varargs to array
-     * @param args
+     * @param args Zero to many objects
      * @return Object[]
      */
     public static Object[] va(Object... args)
@@ -20,9 +22,9 @@ public final class ArrayUtil
 
     /**
      *
-     * @param <O>
-     * @param array
-     * @param object
+     * @param <O> Object type
+     * @param array Array of objects
+     * @param object Object
      * @return true if given object is in the given array
      */
     public static <O> boolean contains(O[] array, O object)
@@ -43,10 +45,10 @@ public final class ArrayUtil
 
     /**
      *
-     * @param <I>
-     * @param <O>
-     * @param input
-     * @param outputArrayClass
+     * @param <I> Input type
+     * @param <O> Output type
+     * @param input Array of input
+     * @param outputArrayClass Class of output
      * @return O[]
      */
     public static <I, O> O[] convert(I[] input, Class<O[]> outputArrayClass)

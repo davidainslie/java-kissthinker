@@ -6,7 +6,7 @@ import java.io.OutputStream;
 
 /**
  * To be fast(er), this {@link OutputStream} implementation does not synchronize.
- * <br/>
+ * <p>
  * @author David Ainslie
  *
  */

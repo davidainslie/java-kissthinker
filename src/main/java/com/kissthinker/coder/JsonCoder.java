@@ -43,8 +43,8 @@ public class JsonCoder implements Coder
 
     /**
      *
-     * @param <O>
-     * @param object
+     * @param <O> Object type
+     * @param object Object
      * @return byte[]
      */
     public <O> byte[] prettyEncode(O object) {

@@ -4,28 +4,23 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.kissthinker.factory.Factory;
 
 /**
  * A {@link Coder} version of an {@link InputStream} where objects are read (much like an {@link ObjectInputStream} but as a standard stream of bytes for decoding.
- * <br/>
- * Note that at the other end of the communication channel a {@link CoderOutputStream} should be used.<p/>
+ * <p>
+ * Note that at the other end of the communication channel a {@link CoderOutputStream} should be used.<p>
  * @author David Ainslie
  *
  */
 public class CoderInputStream extends InputStream
 {
     /** */
-    private static final Logger LOGGER = LoggerFactory.getLogger(CoderInputStream.class);
-
-    /** */
     private final DataInputStream dataInputStream;
 
     /**
      *
-     * @param inputStream
+     * @param inputStream Stream to be used for coding
      */
     public CoderInputStream(InputStream inputStream)
     {
@@ -45,9 +40,9 @@ public class CoderInputStream extends InputStream
 
     /**
      *
-     * @param <I>
-     * @param <O>
-     * @return
+     * @param <I> Input
+     * @param <O> Output
+     * @return Identifiable
      * @throws IOException
      */
     public <I, O> Identifiable<I, O> readObject() throws IOException
@@ -56,7 +51,7 @@ public class CoderInputStream extends InputStream
     }
 
     /**
-     * @return
+     * @return Coder
      * @throws IOException
      */
     private Coder decodeCoder() throws IOException
@@ -67,13 +62,12 @@ public class CoderInputStream extends InputStream
         byte[] coderBytes = new byte[coderLength];
         dataInputStream.readFully(coderBytes);
 
-        Coder coder = Factory.create(new String(coderBytes)); // TODO Should cache coder bytes
-        return coder;
+        return Factory.create(new String(coderBytes)); // TODO Should cache coder bytes
     }
 
     /**
-     * @param coder
-     * @return
+     * @param coder Coder
+     * @return Identifiable
      * @throws IOException
      */
     private <I, O> Identifiable<I, O> decodeIdentifiable(Coder coder) throws IOException

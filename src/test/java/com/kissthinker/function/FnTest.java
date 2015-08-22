@@ -13,7 +13,7 @@ import static org.junit.Assert.fail;
 
 /**
  * To test creating and executing functions.
- * <br/>
+ * <p>
  * Note that even though I've updated various code to use the new features of Java 8 (especially lambdas), they are not used in the "functional" sources provided by KISS.
  * The functionality provided by KISS is deprecated in favour of the functional methodologies introduced by Java 8, but all original code has been left, mainly because I took the time to create it in the first place.
  * @author David Ainslie
@@ -132,8 +132,8 @@ public class FnTest
     }
 
     /**
-     * Note that a "function" method must be public and return "something".<br/>
-     * This can be expected of a "function" as a function should take an input(s) and give back some output.<br/>
+     * Note that a "function" method must be public and return "something".<p>
+     * This can be expected of a "function" as a function should take an input(s) and give back some output.<p>
      * And public, because a function can be passed to around to any class in any package, so accessibility is required.
      * @param whatever
      * @return Boolean
@@ -145,8 +145,8 @@ public class FnTest
     }
 
     /**
-     * Note that a "function" method must be public and return "something".<br/>
-     * This can be expected of a "function" as a function should take an input(s) and give back some output.<br/>
+     * Note that a "function" method must be public and return "something".<p>
+     * This can be expected of a "function" as a function should take an input(s) and give back some output.<p>
      * And public, because a function can be passed to around to any class in any package, so accessibility is required.
      * @return
      */
@@ -157,8 +157,8 @@ public class FnTest
     }
 
     /**
-     * Note that a "function" method must be public and return "something".<br/>
-     * This can be expected of a "function" as a function should take an input(s) and give back some output.<br/>
+     * Note that a "function" method must be public and return "something".<p>
+     * This can be expected of a "function" as a function should take an input(s) and give back some output.<p>
      * And public, because a function can be passed to around to any class in any package, so accessibility is required.
      * @return
      */
@@ -411,7 +411,7 @@ public class FnTest
 
     /**
      * Function that is thread safe (has no state) and performant as function is only created once (and essentially cached).
-     * <br/>
+     * <p>
      * @author David Ainslie
      *
      */

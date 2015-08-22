@@ -24,19 +24,19 @@ import static com.kissthinker.function.Fn.function;
 
 /**
  * Bootstrap classes such as those with a "main" method or unit tests may be "marked up" by this annotation to allow for "automatic initialisation".
- * <br/>
- * Automatic initialisation includes starting all services that have been marked up with {@link Service}<br/>
- * There is an inner static class that handles the bootstrapping automatically as an "aspect".<br/>
- * NOTE That "bootstapping" can still be called directly (and so not have to annotate with @Bootstrap).<br/>
- * In this case, client code would call the following:<p/>
- * Note that calling the following multiple times would still only initialise once (this is handled by the implementation).<br/>
+ * <p>
+ * Automatic initialisation includes starting all services that have been marked up with {@link Service}<p>
+ * There is an inner static class that handles the bootstrapping automatically as an "aspect".<p>
+ * NOTE That "bootstapping" can still be called directly (and so not have to annotate with @Bootstrap).<p>
+ * In this case, client code would call the following:<p>
+ * Note that calling the following multiple times would still only initialise once (this is handled by the implementation).<p>
  * {@code
  * Bootstrap.Bootstrapper.bootstrap(Environment);
  * }
- * <p/>
- * Why choose this way? Maybe some "pre configuration" is first required e.g in a test setting the application's "environement" within the code.<br/>
- * Don't understand why the inner class {@link Bootstrapper#bootstrap(JoinPoint, Bootstrap)} does not call {@link Bootstrapper#prepareShutdown()} directly?<br/>
- * First of all, this is for demonstation purposes, and second, as subclasses of {@link Bootstrapper} can pass in functions to {@link Bootstrapper#bootstrap(Environment, Function<?>...)}<br/>
+ * <p>
+ * Why choose this way? Maybe some "pre configuration" is first required e.g in a test setting the application's "environement" within the code.<p>
+ * Don't understand why the inner class {@link Bootstrapper#bootstrap(JoinPoint, Bootstrap)} does not call {@link Bootstrapper#prepareShutdown()} directly?<p>
+ * First of all, this is for demonstation purposes, and second, as subclasses of {@link Bootstrapper} can pass in functions to {@link Bootstrapper#bootstrap(Environment, Function...)}<p>
  * to be executed, we may as well keep with consistency is the "parent" class and also pass in functions.
  * @author David Ainslie
  *
@@ -50,12 +50,11 @@ public @interface Bootstrap
 
     /**
      * Bootstrap through this class/aspect.
-     * <br/>
      * @author David Ainslie
      *
      */
     @Aspect
-    public static class Bootstrapper
+    static class Bootstrapper
     {
         /** */
         private static final Logger LOGGER = LoggerFactory.getLogger(Bootstrapper.class);
@@ -65,7 +64,7 @@ public @interface Bootstrap
 
         /**
          *
-         * @param environment
+         * @param environment Environment to boostrap within
          * @param functions provide functions (or none) to be executed upon this initial bootstrap.
          */
         public static void bootstrap(Environment environment, Function<?>... functions)
@@ -102,7 +101,7 @@ public @interface Bootstrap
 
         /**
          *
-         * @param joinPoint
+         * @param joinPoint Defined point in execution of application
          */
         @Before("within(@com.kissthinker.boot.Bootstrap *) && @annotation(bootstrap)")
         public void bootstrap(JoinPoint joinPoint, Bootstrap bootstrap)
@@ -130,9 +129,6 @@ public @interface Bootstrap
         {
             Runtime.getRuntime().addShutdownHook(new Thread()
             {
-                /**
-                 * @see java.lang.Thread#run()
-                 */
                 @Override
                 public void run()
                 {
@@ -144,9 +140,7 @@ public @interface Bootstrap
             return Type.VOID;
         }
 
-        /**
-         * 
-         */
+        /** */
         private static void logSystemProperties()
         {
             LOGGER.info("");

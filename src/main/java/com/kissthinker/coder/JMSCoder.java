@@ -2,8 +2,8 @@ package com.kissthinker.coder;
 
 /**
  * A {@link Coder} for the publish/subscribe paradigm.
- * <br/>
- * This {@link Coder} is specifically for interactions via {@link Publisher} which uses, as part of its "subscribe" methods, {@link Function} for callbacks.<br/>
+ * <p>
+ * This {@link Coder} is specifically for interactions via Publisher which uses, as part of its "subscribe" methods, Function for callbacks.<p>
  * Appropriate implementation regarding pub/sub is JMS.
  * @author David Ainslie
  *

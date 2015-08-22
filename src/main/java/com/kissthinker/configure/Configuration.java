@@ -9,7 +9,7 @@ import com.kissthinker.system.Environment;
 
 /**
  * Highlight a class (or interface) as being a "configuration" that can be used (injected into) a reference that is highlighted as {@link Configure}.
- * <br/>
+ * <p>
  * Note, that if a "proxy" is provided, then "id" (if provided) is ignored.
  * 
  * @author David Ainslie

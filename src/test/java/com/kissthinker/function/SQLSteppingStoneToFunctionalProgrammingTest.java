@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Test functions written to be equivalent to certain Oracle SQL functions as an aid to understanding FP via KISS FP.
- * <br/>
+ * <p>
  * @author David Ainslie
  *
  */
@@ -54,7 +54,7 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
     }
 
     /**
-     * Equivalent of an Oracle SQL "ltrim" e.g.<br/>
+     * Equivalent of an Oracle SQL "ltrim" e.g.<p>
      * select ltrim("    Scooby") from dual;
      */
     @Test
@@ -77,7 +77,7 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
     }
     
     /**
-     * Equivalent of an Oracle SQL "rtrim" e.g.<br/>
+     * Equivalent of an Oracle SQL "rtrim" e.g.<p>
      * select rtrim("Scooby    ") from dual;
      */
     @Test

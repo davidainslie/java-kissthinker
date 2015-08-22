@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 
 /**
  * Mmmm, seems to want javabean methods - So this one really doesn't work yet!
- * <br/>
+ * <p>
  * @author David Ainslie
  *
  */
@@ -35,8 +35,8 @@ public class FastJsonCoder implements Coder
 
     /**
      *
-     * @param <O>
-     * @param object
+     * @param <O> Object type
+     * @param object Object
      * @return byte[]
      */
     public <O> byte[] prettyEncode(O object)

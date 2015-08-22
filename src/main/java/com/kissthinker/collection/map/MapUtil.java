@@ -5,18 +5,20 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
+import com.kissthinker.object.Singleton;
 
 /**
  * @author David Ainslie
  *
  */
+@Singleton
 public final class MapUtil
 {
     /**
      *
-     * @param <K>
-     * @param <V>
-     * @return FluentHashMap<K, V>
+     * @param <K> Key type
+     * @param <V> Value type
+     * @return FluentHashMap
      */
     public static <K, V> FluentHashMap<K, V> hashMap()
     {
@@ -25,10 +27,10 @@ public final class MapUtil
 
     /**
      *
-     * @param <K>
-     * @param <V>
-     * @param keyValues
-     * @return FluentHashMap<K, V>
+     * @param <K> Key type
+     * @param <V> Value type
+     * @param keyValues Keys and their values
+     * @return FluentHashMap
      */
     @SafeVarargs
     public static <K, V> FluentHashMap<K, V> hashMap(KeyValue<K, V>... keyValues)
@@ -45,10 +47,10 @@ public final class MapUtil
 
     /**
      *
-     * @param <K>
-     * @param <V>
-     * @param keyValues
-     * @return FluentHashMap<K, V>
+     * @param <K> Key type
+     * @param <V> Value type
+     * @param keyValues Keys and their values
+     * @return FluentHashMap
      */
     public static <K, V> FluentHashMap<K, V> hashMap(KeyValue<K, V>[][] keyValues)
     {
@@ -67,9 +69,9 @@ public final class MapUtil
 
     /**
      *
-     * @param <K>
-     * @param <V>
-     * @return ConcurrentHashMap<K, V>
+     * @param <K> Key type
+     * @param <V> Value type
+     * @return ConcurrentHashMap
      */
     public static <K, V> ConcurrentHashMap<K, V> concurrentHashMap()
     {
@@ -78,9 +80,9 @@ public final class MapUtil
 
     /**
      *
-     * @param <K>
-     * @param <V>
-     * @return BlockingHashMap<K, V>
+     * @param <K> Key type
+     * @param <V> Value type
+     * @return BlockingHashMap
      */
     public static <K, V> BlockingHashMap<K, V> blockingHashMap()
     {
@@ -89,9 +91,9 @@ public final class MapUtil
 
     /**
      *
-     * @param <K>
-     * @param <V>
-     * @return BiMap<K, V>
+     * @param <K> Key type
+     * @param <V> Value type
+     * @return BiMap
      */
     public static <K, V> BiMap<K, V> biMap()
     {
@@ -100,9 +102,9 @@ public final class MapUtil
 
     /**
      *
-     * @param <K>
-     * @param <V>
-     * @return LeastRecentlyUsedMap<K, V>
+     * @param <K> Key type
+     * @param <V> Value type
+     * @return LeastRecentlyUsedMap
      */
     public static <K, V> LeastRecentlyUsedMap<K, V> lruMap()
     {
@@ -111,28 +113,22 @@ public final class MapUtil
 
     /**
      *
-     * @param <K>
-     * @param <V>
-     * @return WeakHashMap<K, V>
+     * @param <K> Key type
+     * @param <V> Value type
+     * @return WeakHashMap
      */
     public static <K, V> WeakHashMap<K, V> weakHashMap()
     {
         return new WeakHashMap<>();
     }
 
-    /**
-     * 
-     * @return
-     */
+    /** */
     public static <K, V> IdentityHashMap<K, V> identityHashMap()
     {
         return new IdentityHashMap<>();
     }
     
-    /**
-     * 
-     * @return
-     */
+    /** */
     public static <K, V> IdentityWeakHashMap<K, V> identityWeakHashMap()
     {
         return new IdentityWeakHashMap<>();
@@ -140,11 +136,11 @@ public final class MapUtil
 
     /**
      *
-     * @param <K>
-     * @param <V>
-     * @param key
-     * @param value
-     * @return
+     * @param <K> Key type
+     * @param <V> Value type
+     * @param key Key
+     * @param value Value
+     * @return KeyValue
      */
     public static <K, V> KeyValue<K, V> keyValue(K key, V value)
     {
@@ -163,8 +159,8 @@ public final class MapUtil
      *
      * @author David Ainslie
      *
-     * @param <K>
-     * @param <V>
+     * @param <K> Key type
+     * @param <V> Value type
      */
     public static class FluentHashMap<K, V> extends HashMap<K, V>
     {
@@ -178,8 +174,8 @@ public final class MapUtil
         }
 
         /**
-         * @param initialCapacity
-         * @param loadFactor
+         * @param initialCapacity Initial capacity
+         * @param loadFactor Load factor
          */
         public FluentHashMap(int initialCapacity, float loadFactor)
         {
@@ -187,7 +183,7 @@ public final class MapUtil
         }
 
         /**
-         * @param initialCapacity
+         * @param initialCapacity Initial capacity
          */
         public FluentHashMap(int initialCapacity)
         {
@@ -195,7 +191,7 @@ public final class MapUtil
         }
 
         /**
-         * @param m
+         * @param m Map
          */
         public FluentHashMap(Map<? extends K, ? extends V> m)
         {
@@ -204,9 +200,9 @@ public final class MapUtil
 
         /**
          *
-         * @param key
-         * @param value
-         * @return
+         * @param key Key
+         * @param value Value
+         * @return Map
          */
         public FluentHashMap<K, V> keyValue(K key, V value)
         {
