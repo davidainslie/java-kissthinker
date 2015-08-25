@@ -25,6 +25,7 @@ import static java.text.MessageFormat.format;
  * @author David Ainslie
  *
  */
+@Singleton
 public final class Factory
 {
     /** */
@@ -46,10 +47,10 @@ public final class Factory
      *  <li>As a "fallback" an object can be instantiated even if there is no appropriate constructor.</li>
      * </ul>
      * Note the unnecessary casting to O. This is not required by Eclipse, but required by Maven.
-     * @param <O>
-     * @param class_
-     * @param constructorParamters
-     * @return
+     * @param <O> Object type
+     * @param class_ Class to be created
+     * @param constructorParamters Constructor paramters
+     * @return Object
      */
     @SuppressWarnings("unchecked")
     public static <O> O create(Class<?> class_, Object... constructorParamters)
@@ -98,11 +99,11 @@ public final class Factory
     }
 
     /**
-     * Convenience alternative to {@link #create(Class)}.<p>
+     * Convenience alternative to {@link Factory#create(Class, Object...)}.<p>
      * Note the unnecessary casting to O. This is not required by Eclipse, but required by Maven.
-     * @param <O>
+     * @param <O> Object type
      * @param className String of complete class name such as java.lang.String
-     * @return
+     * @return Object created
      */
     @SuppressWarnings("unchecked")
     public static <O> O create(String className) throws IllegalArgumentException
@@ -119,9 +120,9 @@ public final class Factory
 
     /**
      *
-     * @param <O>
-     * @param class_
-     * @return
+     * @param <O> Object type
+     * @param class_ Class
+     * @return True or false
      */
     public static <O> boolean isSingleton(Class<?> class_)
     {
@@ -130,10 +131,10 @@ public final class Factory
 
     /**
      *
-     * @param <O>
-     * @param class_
-     * @param constructorParamters
-     * @return O
+     * @param <O> Object type
+     * @param class_ Class to be instantiated
+     * @param constructorParamters Constructor paramters
+     * @return Object
      */
     @SuppressWarnings("unchecked")
     private static <O> O createInstance(Class<?> class_, Object... constructorParamters)
@@ -171,10 +172,10 @@ public final class Factory
 
     /**
      * Instantiate from a no-arg constructor (it could be private)
-     * @param <O>
-     * @param class_
-     * @param constructorParamters
-     * @return O
+     * @param <O> Object type
+     * @param class_ Class to be instantiated
+     * @param constructorParamters Constructor paramters
+     * @return Object
      */
     @SuppressWarnings("unchecked")
     private static <O> O instantiate(Class<?> class_, Object... constructorParamters)
@@ -223,8 +224,8 @@ public final class Factory
 
     /**
      *
-     * @param objects
-     * @return Class<?>[]
+     * @param objects Objects
+     * @return Class[]
      */
     private static Class<?>[] classes(Object... objects)
     {
