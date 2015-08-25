@@ -54,13 +54,11 @@ import static java.text.MessageFormat.format;
  * <p>
  * <pre>
  * configure.id()
- *  This is used by method {@link Configurer#configureID()}
  *  -> system property
  *      => bean id to in Configurations
  *      => class name
  *      => value to morph
  *
- *  This is used by method {@link Configurer#configureApplicationProperties()}
  *  -> META-INF/configure/application-env.properties
  *      => bean id to in Configurations
  *      => class name
@@ -75,7 +73,6 @@ import static java.text.MessageFormat.format;
  *  -> Configurations
  *
  * Field type
- *  This is used by method {@link Configurer#configureFieldType()}
  *  -> system property
  *      => class name
  *
@@ -93,12 +90,11 @@ import static java.text.MessageFormat.format;
  * One would hope (just like "id") that "otherwise" is not provided, but this is a useful compromise especially during development (testing/mocking).
  *
  * otherwise
- *  This is used by method {@link Configurer#configureOtherwise()}
  *      => value to morph
  *
  * Other existing "configurers" that can be used:
  * {@link JavaBeanXMLConfigurer} - This uses Java's XMLDecoder to read a XML file that is a configuration.
- * {@link IocConfigurer} - Equivalent to standard XML IoC but instead of XML, scripting is used to declare the configurations.
+ * {@link IoCConfigurer} - Equivalent to standard XML IoC but instead of XML, scripting is used to declare the configurations.
  * This Configurer utilises "Rhino", Java's embedded scripting language
  * Along the line of IocConfigurer, other "scripting" configurers could be created for the likes of Groovy, JRuby etc.
  * Note that any custom configurer can be developed by extending the abstract (base) class {@link Configurer}
@@ -108,19 +104,19 @@ import static java.text.MessageFormat.format;
  * Like any configuration, IoC, dependency injection framework (or however you wish to name this process), one must be careful of cyclic dependencies.<p>
  * Example:
  * <pre>
- * @Singleton
- * @Configurable
- * @Configuration
+ * @@Singleton
+ * @@Configurable
+ * @@Configuration
  * public class A
  * {
- *      @Configure B b
+ *      @@Configure B b
  * }
  *
- * @Configurable
- * @Configuration
+ * @@Configurable
+ * @@Configuration
  * public class BImpl extends B
  * {
- *      @Configure A a
+ *      @@Configure A a
  * }
  *
  * -> the above would only work if at least one class is a singleton.
@@ -199,7 +195,7 @@ public class Configurator
 
     /**
      *
-     * @param joinPoint
+     * @param joinPoint JoinPoint
      */
     @Before("configurableClassInstantiation()")
     public void configurableClassInstantiating(JoinPoint joinPoint)
@@ -215,7 +211,7 @@ public class Configurator
 
     /**
      *
-     * @param joinPoint
+     * @param joinPoint JoinPoint
      */
     @After("configurableClassInstantiation()")
     public void configurableClassInstantiated(JoinPoint joinPoint)
@@ -235,7 +231,7 @@ public class Configurator
 
     /**
      *
-     * @param configurable
+     * @param configurable Configurable
      */
     @Pointcut("execution((@com.kissthinker.configure.Configurable *).new(..)) && target(configurable)")
     public void configurableObjectInstantiation(Object configurable)
@@ -244,8 +240,8 @@ public class Configurator
 
     /**
      *
-     * @param joinPoint
-     * @param configurable
+     * @param joinPoint JoinPoint
+     * @param configurable Configurable
      */
     @Before("configurableObjectInstantiation(configurable)")
     public void configurableObjectInstantiating(JoinPoint joinPoint, Object configurable)
@@ -258,8 +254,8 @@ public class Configurator
 
     /**
      *
-     * @param joinPoint
-     * @param configurable
+     * @param joinPoint JoinPoint
+     * @param configurable Configurable
      */
     @After("configurableObjectInstantiation(configurable)")
     public void configurableObjectInstantiated(JoinPoint joinPoint, Object configurable)
@@ -277,8 +273,8 @@ public class Configurator
 
     /**
      *
-     * @param proceedingJoinPoint
-     * @return
+     * @param proceedingJoinPoint ProceedingJoinPoint
+     * @return Object
      * @throws Throwable
      */
     @Around("get(* *.*) && @annotation(com.kissthinker.configure.Configure)")
@@ -299,7 +295,7 @@ public class Configurator
             {
                 LOGGER.trace("WITHIN class instantiating");
 
-                if (ReflectUtil.get(object, field) == null)
+                if (ReflectUtil.get(null, field) == null)
                 {
                     ReflectUtil.set(field, configuredClassFields.get(class_).get(field));
                 }
@@ -321,10 +317,10 @@ public class Configurator
 
     /**
      *
-     * @param configurable
-     * @param field
-     * @param configurationClass
-     * @return
+     * @param configurable Configurable
+     * @param field Field
+     * @param configurationClass Configurable class
+     * @return True or false
      */
     public boolean configure(Object configurable, Field field, Class<?> configurationClass)
     {
@@ -333,9 +329,9 @@ public class Configurator
 
     /**
      *
-     * @param configurable
-     * @param field
-     * @param configuration
+     * @param configurable Configurable
+     * @param field Field
+     * @param configuration Configuration
      * @return boolean true if given field was configured in configurable with the given configuration
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -396,10 +392,10 @@ public class Configurator
 
     /**
      *
-     * @param configurable
-     * @param configurableClass
+     * @param configurable Configurable
+     * @param configurableClass Configurable class
      */
-    private void configure(Object configurable, Class<? extends Object> configurableClass)
+    private void configure(Object configurable, Class<?> configurableClass)
     {
         if (configurableClass != null)
         {
@@ -435,15 +431,15 @@ public class Configurator
 
     /**
      *
-     * @param configurable
-     * @param configurableClass
-     * @param field
+     * @param configurable configurable
+     * @param configurableClass Configurable class
+     * @param field Field
      * @return true if field for given configurable was actually configured
      * @throws InstantiationException
      * @throws IllegalAccessException
      * @throws ClassNotFoundException
      */
-    private boolean configure(Object configurable, Class<? extends Object> configurableClass, Field field) throws InstantiationException, IllegalAccessException, ClassNotFoundException
+    private boolean configure(Object configurable, Class<?> configurableClass, Field field) throws InstantiationException, IllegalAccessException, ClassNotFoundException
     {
         LOGGER.trace("Field '{}' needs configuring", field.getName());
         return configurer.configure(configurable, configurableClass, field);

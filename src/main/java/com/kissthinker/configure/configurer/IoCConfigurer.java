@@ -10,7 +10,7 @@ public class IoCConfigurer extends Configurer
 {
     /**
      *
-     * @param configurator
+     * @param configurator Configurator
      */
     public IoCConfigurer(Configurator configurator)
     {

@@ -7,9 +7,7 @@ package com.kissthinker.event;
 @Deprecated
 public class Criteria<E>
 {
-    /**
-     *
-     */
+    /** */
     public Criteria()
     {
         super();
@@ -17,8 +15,8 @@ public class Criteria<E>
 
     /**
      *
-     * @param event
-     * @return
+     * @param event Event
+     * @return True or false
      */
     public boolean check(E event)
     {

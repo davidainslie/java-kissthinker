@@ -101,10 +101,6 @@ public final class ExecutorUtil
         // Shutdown hook.
         Runtime.getRuntime().addShutdownHook(new Thread()
         {
-            /**
-             *
-             * @see java.lang.Thread#run()
-             */
             @Override
             public void run()
             {
@@ -115,7 +111,7 @@ public final class ExecutorUtil
     }
 
     /**
-     * @param runnable
+     * @param runnable Runnable
      */
     public static void execute(Runnable runnable)
     {
@@ -125,8 +121,8 @@ public final class ExecutorUtil
 
     /**
      *
-     * @param runnable
-     * @return
+     * @param runnable Runnable
+     * @return Future
      */
     public static Future<?> submit(Runnable runnable)
     {
@@ -136,9 +132,9 @@ public final class ExecutorUtil
 
     /**
      *
-     * @param <T>
-     * @param callable
-     * @return
+     * @param <T> Type of Callable
+     * @param callable Callable
+     * @return Future
      */
     public static <T> Future<T> submit(Callable<T> callable)
     {
@@ -148,10 +144,10 @@ public final class ExecutorUtil
 
     /**
      *
-     * @param delay
-     * @param timeUnit
-     * @param runnable
-     * @return
+     * @param delay Delay before schedule is triggered
+     * @param timeUnit Time unit of delay
+     * @param runnable Runnable to run upon triggering of schedule
+     * @return ScheduledFuture
      */
     public static ScheduledFuture<?> schedule(long delay, TimeUnit timeUnit, Runnable runnable)
     {
@@ -160,11 +156,11 @@ public final class ExecutorUtil
 
     /**
      *
-     * @param initialDelay
-     * @param period
-     * @param timeUnit
-     * @param runnable
-     * @return
+     * @param initialDelay Initial delay before schedule is triggered
+     * @param period Period between subsequent triggers
+     * @param timeUnit Time unit of trigger
+     * @param runnable Runnable to run upon triggering of schedule
+     * @return ScheduledFuture
      */
     public static ScheduledFuture<?> scheduleAtFixedRate(long initialDelay, long period, TimeUnit timeUnit, Runnable runnable)
     {
@@ -173,19 +169,17 @@ public final class ExecutorUtil
 
     /**
      *
-     * @param period
-     * @param timeUnit
-     * @param runnable
-     * @return
+     * @param period Period between subsequent triggers
+     * @param timeUnit Time unit of trigger
+     * @param runnable Runnable to run upon triggering of schedule
+     * @return ScheduledFuture
      */
     public static ScheduledFuture<?> scheduleAtFixedRate(long period, TimeUnit timeUnit, Runnable runnable)
     {
         return SCHECULED_THREAD_POOL_EXECUTOR.scheduleAtFixedRate(runnable, 0, period, timeUnit);
     }
 
-    /**
-     *
-     */
+    /** */
     public static void shutdown()
     {
         LOGGER.warn("Controlled shutdown...");
@@ -270,10 +264,7 @@ public final class ExecutorUtil
         return THREAD_POOL_EXECUTOR.getMaximumPoolSize();
     }
 
-    /**
-     *
-     * @return
-     */
+    /** */
     public static int awaitingTaskCount()
     {
         return THREAD_POOL_EXECUTOR.getQueue().size();

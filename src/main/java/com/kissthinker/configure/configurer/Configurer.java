@@ -17,7 +17,7 @@ public abstract class Configurer
 
     /**
      *
-     * @param configurator
+     * @param configurator Configurator
      */
     public Configurer(Configurator configurator)
     {
@@ -27,31 +27,31 @@ public abstract class Configurer
 
     /**
      *
-     * @param configurable
-     * @param configurableClass
-     * @param field
-     * @return
+     * @param configurable Configurable
+     * @param configurableClass Configurable class
+     * @param field Field
+     * @return True or false
      */
-    public boolean configure(Object configurable, Class<? extends Object> configurableClass, Field field)
+    public boolean configure(Object configurable, Class<?> configurableClass, Field field)
     {
         return doConfigure(configurable, configurableClass, field) || configureOtherwise(configurable, field);
     }
 
     /**
      * Contract
-     * @param configurable
-     * @param configurableClass
-     * @param field
-     * @return
+     * @param configurable Configurable
+     * @param configurableClass Configurable class
+     * @param field Field
+     * @return True or false
      */
-    protected abstract boolean doConfigure(Object configurable, Class<? extends Object> configurableClass, Field field);
+    protected abstract boolean doConfigure(Object configurable, Class<?> configurableClass, Field field);
 
     /**
      *
-     * @param configurable
-     * @param field
-     * @param configurationClass
-     * @return
+     * @param configurable Configurable
+     * @param field Field
+     * @param configurationClass Configuration class
+     * @return True or false
      */
     protected boolean configure(Object configurable, Field field, Class<?> configurationClass)
     {
@@ -60,10 +60,10 @@ public abstract class Configurer
 
     /**
      *
-     * @param configurable
-     * @param field
-     * @param configuration
-     * @return
+     * @param configurable Configurable
+     * @param field Field
+     * @param configuration Configuration
+     * @return True or false
      */
     protected boolean configure(Object configurable, Field field, Object configuration)
     {
@@ -73,8 +73,8 @@ public abstract class Configurer
     /**
      * The fallback.<p>
      * TODO Morphing is incomplete i.e need to implement many morphers
-     * @param configurable
-     * @param field
+     * @param configurable Configurable
+     * @param field Field
      * @return boolean true if configured otherwise false
      */
     protected boolean configureOtherwise(Object configurable, Field field)
@@ -101,7 +101,7 @@ public abstract class Configurer
 
     /**
      *
-     * @return
+     * @return Configurator
      */
     private Configurator configurator()
     {

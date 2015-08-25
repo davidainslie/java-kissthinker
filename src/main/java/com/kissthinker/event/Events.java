@@ -27,10 +27,10 @@ public final class Events
 
     /**
      *
-     * @param <E>
-     * @param <L>
-     * @param event
-     * @param listener
+     * @param <E> Event type
+     * @param <L> Listener type
+     * @param event Event
+     * @param listener Listener
      */
     public static <E, L> void listen(E event, L listener)
     {
@@ -38,12 +38,12 @@ public final class Events
 
     /**
      *
-     * @param <E>
-     * @param <S>
-     * @param <L>
-     * @param event
-     * @param source
-     * @param listener
+     * @param <E> Event type
+     * @param <S> Source type
+     * @param <L> Listener type
+     * @param event Event
+     * @param source Source
+     * @param listener Listener
      */
     public static <E, S, L> void listen(E event, S source, L listener)
     {
@@ -51,9 +51,9 @@ public final class Events
 
     /**
      *
-     * @param <E>
-     * @param event
-     * @param function
+     * @param <E> Event type
+     * @param event Event
+     * @param function Function
      */
     public static <E> void listen(E event, Function<?> function)
     {
@@ -61,11 +61,11 @@ public final class Events
 
     /**
      *
-     * @param <E>
-     * @param <S>
-     * @param event
-     * @param source
-     * @param function
+     * @param <E> Event type
+     * @param <S> Source type
+     * @param event Event
+     * @param source Source
+     * @param function Function
      */
     public static <E, S> void listen(E event, S source, Function<?> function)
     {
@@ -73,9 +73,9 @@ public final class Events
 
     /**
      *
-     * @param <E>
-     * @param eventClass
-     * @param publisher
+     * @param <E> Event type
+     * @param eventClass Event class
+     * @param publisher Publisher
      */
     public static <E> void register(Class<E> eventClass, Object publisher)
     {
@@ -92,9 +92,9 @@ public final class Events
 
     /**
      *
-     * @param <E>
-     * @param eventClass
-     * @param function
+     * @param <E> Event type
+     * @param eventClass Event class
+     * @param function Function
      */
     public static <E> void subscribe(Class<E> eventClass, Function<Object> function)
     {
@@ -103,10 +103,10 @@ public final class Events
 
     /**
      *
-     * @param <E>
-     * @param eventClass
-     * @param criteria
-     * @param function
+     * @param <E> Event type
+     * @param eventClass Event class
+     * @param criteria Criteria
+     * @param function Function
      */
     public static <E> void subscribe(Class<E> eventClass, Criteria<E> criteria, Function<Object> function)
     {
@@ -123,8 +123,8 @@ public final class Events
 
     /**
      *
-     * @param <E>
-     * @param event
+     * @param <E> Event type
+     * @param event Event
      */
     public static <E> void publish(E event)
     {
@@ -150,8 +150,8 @@ public final class Events
 
     /**
      *
-     * @param <E>
-     * @param event
+     * @param <E> Event type
+     * @param event Event
      */
     public static <E> void fire(E event)
     {
@@ -160,10 +160,10 @@ public final class Events
 
     /**
      *
-     * @param <E>
-     * @param <S>
-     * @param event
-     * @param source
+     * @param <E> Event type
+     * @param <S> Source type
+     * @param event Event
+     * @param source Source
      */
     public static <E, S> void fire(E event, S source)
     {
@@ -194,7 +194,7 @@ public final class Events
 
         /**
          *
-         * @param function
+         * @param function Function
          */
         private Subscription(Function<Object> function)
         {
@@ -202,8 +202,8 @@ public final class Events
         }
 
         /**
-         * @param function
-         * @param criteria
+         * @param function Function
+         * @param criteria Criteria
          */
         private Subscription(Function<Object> function, Criteria<E> criteria)
         {

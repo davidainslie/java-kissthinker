@@ -19,8 +19,8 @@ public class Subscription<S, E>
 
     /**
      *
-     * @param subject
-     * @param callback
+     * @param subject Subject
+     * @param callback Callback
      */
     public Subscription(S subject, Function<?> callback)
     {
@@ -29,9 +29,9 @@ public class Subscription<S, E>
 
     /**
      *
-     * @param subject
-     * @param callback
-     * @param criteria
+     * @param subject Subject
+     * @param callback Callback
+     * @param criteria Criteria
      */
     public Subscription(S subject, Function<?> callback, Function<Boolean> criteria)
     {

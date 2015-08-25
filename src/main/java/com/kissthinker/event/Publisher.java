@@ -26,8 +26,8 @@ public abstract class Publisher<S, E>
 
     /**
      *
-     * @param subject
-     * @param callback
+     * @param subject Subject
+     * @param callback Callback
      */
     public void subscribe(S subject, Function<?> callback)
     {
@@ -36,9 +36,9 @@ public abstract class Publisher<S, E>
 
     /**
      *
-     * @param subject
-     * @param callback
-     * @param criteria
+     * @param subject Subject
+     * @param callback Callback
+     * @param criteria Criteria
      */
     // TODO public void subscribe(S subject, Function<?> callback, Function<Boolean>... criteria)
     public void subscribe(S subject, Function<?> callback, Function<Boolean> criteria)
@@ -48,7 +48,7 @@ public abstract class Publisher<S, E>
 
     /**
      *
-     * @param event
+     * @param event Event
      */
     public void publish(E event)
     {
@@ -69,10 +69,10 @@ public abstract class Publisher<S, E>
 
     /**
      * Contract.
-     * @param subject
-     * @param callback
-     * @param criteria
-     * @return Subscription<S, E>
+     * @param subject Subject
+     * @param callback Callback
+     * @param criteria Criteria
+     * @return Subscription
      */
     protected abstract Subscription<S, E> createSubscription(S subject, Function<?> callback, Function<Boolean> criteria);
 }

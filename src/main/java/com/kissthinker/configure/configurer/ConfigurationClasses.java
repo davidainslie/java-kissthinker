@@ -96,7 +96,7 @@ public final class ConfigurationClasses
     /**
      *
      * @param configurationID a unique identifier
-     * @return Class<?> an implementation for the given configurationID
+     * @return Class an implementation for the given configurationID
      */
     public static Class<?> lookup(String configurationID)
     {
@@ -107,8 +107,8 @@ public final class ConfigurationClasses
     
     /**
      *
-     * @param targetField
-     * @return
+     * @param targetField Target field to be looked up
+     * @return Class
      */
     public static Class<?> lookup(Field targetField)
     {
@@ -167,7 +167,7 @@ public final class ConfigurationClasses
 
     /**
      * TODO Probably remove this as only referenced by a unit test.
-     * @return Set<Class<?>>
+     * @return Set<Class>
      */
     public static Set<Class<?>> configurationClasses()
     {
@@ -176,8 +176,8 @@ public final class ConfigurationClasses
 
     /**
      *
-     * @param configurationClass
-     * @param configuration
+     * @param configurationClass Configuration class
+     * @param configuration Configuration
      */
     private static void add(Class<?> configurationClass, Configuration configuration)
     {

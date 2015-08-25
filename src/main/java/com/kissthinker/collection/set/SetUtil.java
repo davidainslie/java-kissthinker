@@ -2,17 +2,19 @@ package com.kissthinker.collection.set;
 
 import java.util.Collections;
 import java.util.HashSet;
+import com.kissthinker.object.Singleton;
 
 /**
  * @author David Ainslie
  *
  */
+@Singleton
 public final class SetUtil
 {
     /**
      *
-     * @param <O>
-     * @return
+     * @param <O> Object type
+     * @return HashSet
      */
     public static <O> HashSet<O> hashSet()
     {
@@ -21,9 +23,9 @@ public final class SetUtil
 
     /**
      *
-     * @param <O>
-     * @param objects
-     * @return
+     * @param <O> Object type
+     * @param objects Zero to many objects
+     * @return HashSet of given objects
      */
     @SafeVarargs
     public static <O> HashSet<O> hashSet(O... objects)

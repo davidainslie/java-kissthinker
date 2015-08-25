@@ -36,7 +36,7 @@ public class ConfigurationConfigurer extends Configurer
 
     /**
      *
-     * @param configurator
+     * @param configurator Configurator
      */
     public ConfigurationConfigurer(Configurator configurator)
     {
@@ -48,7 +48,7 @@ public class ConfigurationConfigurer extends Configurer
      * @see com.kissthinker.configure.configurer.Configurer#doConfigure(java.lang.Object, java.lang.Class, java.lang.reflect.Field)
      */
     @Override
-    protected boolean doConfigure(Object configurable, Class<? extends Object> configurableClass, Field field)
+    protected boolean doConfigure(Object configurable, Class<?> configurableClass, Field field)
     {
         Configure configure = field.getAnnotation(Configure.class);
         String propertyKey = configure.id();
@@ -81,7 +81,7 @@ public class ConfigurationConfigurer extends Configurer
 
         if (propertyValue != null)
         {
-            propertyValue.trim();
+            propertyValue = propertyValue.trim();
 
             // Is it to be found in ConfigurationClasses?
             Class<?> configurationClass = ConfigurationClasses.lookup(propertyValue);
@@ -130,11 +130,11 @@ public class ConfigurationConfigurer extends Configurer
      * {@code @Configure(id="myIDGenerator") private final IDGenerator<?> idGenerator = null; }<p>
      * The idea would be that the name of the field would be used (via reflection) to look up a property setting.<p>
      * However, the issue with this is when refactoring, such as changing the name of the field - and one forgets to update that name in the properties file.
-     * @param key
-     * @param configurableClass
-     * @return
+     * @param key Key
+     * @param configurableClass Configurable class
+     * @return String of property
      */
-    private String getProperty(String key, Class<? extends Object> configurableClass)
+    private String getProperty(String key, Class<?> configurableClass)
     {
         try
         {

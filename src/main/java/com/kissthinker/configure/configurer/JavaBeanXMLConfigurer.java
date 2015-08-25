@@ -10,7 +10,7 @@ public class JavaBeanXMLConfigurer extends Configurer
 {
     /**
      *
-     * @param configurator
+     * @param configurator Configurator
      */
     public JavaBeanXMLConfigurer(Configurator configurator)
     {

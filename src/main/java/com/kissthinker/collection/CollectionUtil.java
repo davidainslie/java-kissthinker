@@ -2,17 +2,19 @@ package com.kissthinker.collection;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import com.kissthinker.object.Singleton;
 
 /**
  * @author David Ainslie
  *
  */
+@Singleton
 public final class CollectionUtil
 {
     /**
      *
-     * @param collection
-     * @return
+     * @param collection Collection
+     * @return String representing given collection
      */
     public static String toString(Collection<?> collection)
     {
@@ -42,8 +44,8 @@ public final class CollectionUtil
 
     /**
      *
-     * @param <O>
-     * @param collection
+     * @param <O> Object type
+     * @param collection Collection
      * @return Collection<O>
      */
     public static <O> Collection<O> newInstance(Collection<O> collection)
