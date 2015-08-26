@@ -21,9 +21,9 @@ public interface Morpher
 {
     /**
      * Morph (transform/convert) given object to the required class i.e to an object of type toClass, Class<O>
-     * @param <O>
-     * @param object
-     * @param toClass
+     * @param <O> Object type
+     * @param object Object
+     * @param toClass Class to morph object to
      * @return O
      */
     <O> O morph(Object object, Class<O> toClass);

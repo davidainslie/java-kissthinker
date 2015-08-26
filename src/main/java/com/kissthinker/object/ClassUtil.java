@@ -6,13 +6,14 @@ package com.kissthinker.object;
  * @author David Ainslie
  *
  */
+@Singleton
 public final class ClassUtil
 {
     /**
      *
-     * @param <C>
-     * @param pathAndClassName
-     * @return
+     * @param <C> Class type
+     * @param pathAndClassName Path and class name
+     * @return Instance of class
      * @throws ClassNotFoundException
      */
     @SuppressWarnings("unchecked")
@@ -30,7 +31,7 @@ public final class ClassUtil
 
     /**
      *
-     * @param object
+     * @param object Object
      * @return String name of given object exluding package(s).
      */
     public static String name(Object object)
@@ -40,7 +41,7 @@ public final class ClassUtil
 
     /**
      * Get path of given class e.g given class com.kissthinker.object.ClassUtil to get back com/kissthinker/object
-     * @param class_
+     * @param class_ Class
      * @return String of path to given class
      */
     public static String path(Class<?> class_)
@@ -50,8 +51,8 @@ public final class ClassUtil
 
     /**
      *
-     * @param class_
-     * @return
+     * @param class_ Class
+     * @return Path and class name
      */
     public static String pathAndClassName(Class<?> class_)
     {
@@ -60,8 +61,8 @@ public final class ClassUtil
 
     /**
      * Get path of given class with a prefix.
-     * @param prefix
-     * @param class_
+     * @param prefix Prefix
+     * @param class_ Class
      * @return String of path to given class
      */
     public static String path(String prefix, Class<?> class_)
@@ -71,9 +72,9 @@ public final class ClassUtil
 
     /**
      *
-     * @param prefix
-     * @param class_
-     * @return
+     * @param prefix Prefix
+     * @param class_ Class
+     * @return Path and class name
      */
     public static String pathAndClassName(String prefix, Class<?> class_)
     {
@@ -82,8 +83,8 @@ public final class ClassUtil
 
     /**
      * Get path of given class with a suffix.
-     * @param class_
-     * @param suffix
+     * @param class_ Class
+     * @param suffix Suffix
      * @return String of path to given class
      */
     public static String path(Class<?> class_, String suffix)
@@ -93,9 +94,9 @@ public final class ClassUtil
 
     /**
      *
-     * @param class_
-     * @param suffix
-     * @return
+     * @param class_ Class
+     * @param suffix Suffix
+     * @return Path and class name
      */
     public static String pathAndClassName(Class<?> class_, String suffix)
     {
@@ -104,9 +105,9 @@ public final class ClassUtil
 
     /**
      * Get path of given class with a prefix and suffix.
-     * @param prefix
-     * @param class_
-     * @param suffix
+     * @param prefix Prefix
+     * @param class_ Class
+     * @param suffix Suffix
      * @return String of path to given class
      */
     public static String path(String prefix, Class<?> class_, String suffix)
@@ -116,10 +117,10 @@ public final class ClassUtil
 
     /**
      *
-     * @param prefix
-     * @param class_
-     * @param suffix
-     * @return
+     * @param prefix Prefix
+     * @param class_ Class
+     * @param suffix Suffix
+     * @return Path and class name
      */
     public static String pathAndClassName(String prefix, Class<?> class_, String suffix)
     {
@@ -128,7 +129,7 @@ public final class ClassUtil
 
     /**
      *
-     * @param class_
+     * @param class_ Class
      * @return String name of given class_ exluding package(s).
      */
     public static String name(Class<?> class_)

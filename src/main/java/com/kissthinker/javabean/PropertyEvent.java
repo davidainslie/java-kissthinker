@@ -13,11 +13,11 @@ public class PropertyEvent<V> extends PropertyChangeEvent
 
     /**
      *
-     * @param <S>
-     * @param source
-     * @param property
-     * @param oldValue
-     * @param newValue
+     * @param <S> Source type
+     * @param source Source
+     * @param property Property
+     * @param oldValue Old value
+     * @param newValue New value
      */
     public <S> PropertyEvent(S source, String property, V oldValue, V newValue)
     {
@@ -26,10 +26,10 @@ public class PropertyEvent<V> extends PropertyChangeEvent
 
     /**
      *
-     * @param <S>
-     * @param source
-     * @param property
-     * @param newValue
+     * @param <S> Source type
+     * @param source Source
+     * @param property Property
+     * @param newValue New value
      */
     public <S> PropertyEvent(S source, String property, V newValue)
     {
@@ -48,8 +48,8 @@ public class PropertyEvent<V> extends PropertyChangeEvent
 
     /**
      *
-     * @param <S>
-     * @return
+     * @param <S> Source type
+     * @return Source
      */
     @SuppressWarnings("unchecked")
     public <S> S source()
@@ -59,7 +59,7 @@ public class PropertyEvent<V> extends PropertyChangeEvent
     
     /**
      * 
-     * @return
+     * @return Old value
      */
     public V oldValue()
     {
@@ -79,7 +79,7 @@ public class PropertyEvent<V> extends PropertyChangeEvent
 
     /**
      * 
-     * @return
+     * @return New value
      */
     public V newValue()
     {

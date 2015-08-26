@@ -31,7 +31,6 @@ import static com.kissthinker.collection.CollectionUtil.newInstance;
  * TODO MapReduce.<p>
  * This is because, the implementation used in this class uses CBLIB, and static method interception is not handled.<p>
  * A solution to this, would be to implement a new utility that used AspectJ.
- * See {@link FnTest} for examples on how to use this utility.
  *
  * @author David Ainslie
  *
@@ -59,7 +58,7 @@ public final class Fn
 
     /**
      * Get a "function" object which essentially wraps an object given by method {@link #from(Object)} or object generated from given class given by method {@link #from(Class)}
-     * @param <R>
+     * @param <R> Result type
      * @param dummy is ignored, as the Function has already been created and stored on the current thread.
      * It is essentially a dummy value (which will in fact be null) for the result of the delegated method execution.
      * @return Function<R> that has already been created and stored on the current thread.
@@ -74,8 +73,8 @@ public final class Fn
 
     /**
      * To create a "function", an object (instantiated from the given class) is wrapped up as a "function" by proxy.
-     * @param <O>
-     * @param class_
+     * @param <O> Object type
+     * @param class_ Class
      * @return O a proxied object that can be executed as a function
      */
     public static <O> O from(Class<O> class_)
@@ -90,8 +89,8 @@ public final class Fn
 
     /**
      * To create a "function", an object is wrapped up as a "function" by proxy.<p>
-     * @param <O>
-     * @param object
+     * @param <O> Object type
+     * @param object Object
      * @return O a proxied object that can be executed as a function
      */
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -118,10 +117,10 @@ public final class Fn
     /**
      * Convenience method to execute given function on given target, instead of the (original) proxied target.<p>
      * Primarily used by {@link CollectionUtil}
-     * @param <R>
-     * @param function
-     * @param target
-     * @param args
+     * @param <R> Result type
+     * @param function Function
+     * @param target Target object
+     * @param args Function arguments
      * @return R result of executing given function
      */
     public static <R> R apply(Function<R> function, Object target, Object... args)
@@ -132,10 +131,10 @@ public final class Fn
 
     /**
      *
-     * @param <O>
-     * @param collection
-     * @param functions
-     * @return
+     * @param <O> Type of Collection objects
+     * @param collection Collections
+     * @param functions Functions to be applied to each object
+     * @return New collection of result of applying functions
      */
     public static <O> Collection<O> forEach(Collection<O> collection, List<Function<O>> functions)
     {
@@ -149,10 +148,10 @@ public final class Fn
 
     /**
      *
-     * @param <O>
-     * @param collection
-     * @param function
-     * @return
+     * @param <O> Type of List objects
+     * @param collection Collection
+     * @param function Function to apply to each object of Collection
+     * @return Resulting Collection
      */
     public static <O> Collection<O> forEach(Collection<O> collection, Function<O> function)
     {
@@ -168,10 +167,10 @@ public final class Fn
 
     /**
      *
-     * @param <O>
-     * @param list
-     * @param functions
-     * @return
+     * @param <O> Type of Collection objects
+     * @param list List
+     * @param functions Functions to apply to each object of List
+     * @return Resulting List
      */
     public static <O> List<O> forEach(List<O> list, List<Function<O>> functions)
     {
@@ -180,10 +179,10 @@ public final class Fn
 
     /**
      *
-     * @param <O>
-     * @param list
-     * @param function
-     * @return
+     * @param <O> Type of List objects
+     * @param list List
+     * @param function Function to apply to each object of List
+     * @return Resulting List
      */
     public static <O> List<O> forEach(List<O> list, Function<O> function)
     {
@@ -192,10 +191,10 @@ public final class Fn
 
     /**
      *
-     * @param <O>
-     * @param set
-     * @param functions
-     * @return
+     * @param <O> Type of Set objects
+     * @param set Set
+     * @param functions Functions to apply to each object of Set
+     * @return Resulting Set
      */
     public static <O> Set<O> forEach(Set<O> set, List<Function<O>> functions)
     {
@@ -204,10 +203,10 @@ public final class Fn
 
     /**
      *
-     * @param <O>
-     * @param set
-     * @param function
-     * @return
+     * @param <O> Type of Set objects
+     * @param set Set
+     * @param function Function to apply to each object of Set
+     * @return Resulting Set
      */
     public static <O> Set<O> forEach(Set<O> set, Function<O> function)
     {
@@ -216,9 +215,9 @@ public final class Fn
 
     /**
      *
-     * @param <O>
-     * @param collection
-     * @param functions
+     * @param <O> Type of Collection objects
+     * @param collection Collection
+     * @param functions Functions to apply (filter) to each object of Collection
      * @return Collection<O>
      */
     public static <O> Collection<O> filter(Collection<O> collection, List<Function<Boolean>> functions)
@@ -233,9 +232,9 @@ public final class Fn
 
     /**
      *
-     * @param <O>
-     * @param collection
-     * @param function
+     * @param <O> Type of Collection objects
+     * @param collection Collection
+     * @param function Function to apply (filter) to each object of Collection
      * @return Collection<O>
      */
     public static <O> Collection<O> filter(Collection<O> collection, Function<Boolean> function)
@@ -258,9 +257,9 @@ public final class Fn
 
     /**
      *
-     * @param <O>
-     * @param list
-     * @param functions
+     * @param <O> Type of List objects
+     * @param list List
+     * @param functions Functions to apply (filter) to each object of List
      * @return List<O>
      */
     public static <O> List<O> filter(List<O> list, List<Function<Boolean>> functions)
@@ -270,9 +269,9 @@ public final class Fn
 
     /**
      *
-     * @param <O>
-     * @param list
-     * @param function
+     * @param <O> Type of List objects
+     * @param list List
+     * @param function Function to apply (filter) to each object of List
      * @return List<O>
      */
     public static <O> List<O> filter(List<O> list, Function<Boolean> function)
@@ -282,9 +281,9 @@ public final class Fn
 
     /**
      *
-     * @param <O>
-     * @param set
-     * @param functions
+     * @param <O> Type of Set objects
+     * @param set Set
+     * @param functions Functions to apply (filter) to each object of Set
      * @return Set<O>
      */
     public static <O> Set<O> filter(Set<O> set, List<Function<Boolean>> functions)
@@ -294,9 +293,9 @@ public final class Fn
 
     /**
      *
-     * @param <O>
-     * @param set
-     * @param function
+     * @param <O> Type of Set objects
+     * @param set Set
+     * @param function Function to apply (filter) to each object of Set
      * @return Set<O>
      */
     public static <O> Set<O> filter(Set<O> set, Function<Boolean> function)
@@ -306,10 +305,10 @@ public final class Fn
 
     /**
      *
-     * @param <I>
-     * @param <O>
-     * @param collection
-     * @param function
+     * @param <I> Type of input Collection objects
+     * @param <O> Type of output Collection objects
+     * @param collection Collection
+     * @param function Function to apply (map) to each object of Collection
      * @return Collection<O>
      */
     public static <I, O> Collection<O> map(Collection<I> collection, Function<O> function)
@@ -327,10 +326,10 @@ public final class Fn
 
     /**
      *
-     * @param <I>
-     * @param <O>
-     * @param list
-     * @param function
+     * @param <I> Type of input Collection objects
+     * @param <O> Type of output Collection objects
+     * @param list List
+     * @param function Function to apply (map) to each object of List
      * @return List<O>
      */
     public static <I, O> List<O> map(List<I> list, Function<O> function)
@@ -340,10 +339,10 @@ public final class Fn
 
     /**
      *
-     * @param <I>
-     * @param <O>
-     * @param set
-     * @param function
+     * @param <I> Type of input Set objects
+     * @param <O> Type of output Set objects
+     * @param set Set
+     * @param function Function to apply (map) to each object of Set
      * @return Set<O>
      */
     public static <I, O> Set<O> map(Set<I> set, Function<O> function)
@@ -352,11 +351,11 @@ public final class Fn
     }
 
     /**
-     * @param <I>
-     * @param <O>
-     * @param collection
-     * @param seed
-     * @param function
+     * @param <I> Type of input Collection objects
+     * @param <O> Type of result object
+     * @param collection Input Collection
+     * @param seed Seed
+     * @param function Function to apply
      * @return O
      */
     public static <I, O> O foldLeft(Collection<I> collection, O seed, Function<O> function)
@@ -372,11 +371,11 @@ public final class Fn
     }
 
     /**
-     * @param <I>
-     * @param <O>
-     * @param list
-     * @param seed
-     * @param function
+     * @param <I> Type of input List objects
+     * @param <O> Type of result object
+     * @param list Input List
+     * @param seed Seed
+     * @param function Function to apply
      * @return O
      */
     public static <I, O> O foldLeft(List<I> list, O seed, Function<O> function)
@@ -385,11 +384,11 @@ public final class Fn
     }
 
     /**
-     * @param <I>
-     * @param <O>
-     * @param set
-     * @param seed
-     * @param function
+     * @param <I> Type of input Set objects
+     * @param <O> Type of result object
+     * @param set Input Set
+     * @param seed Seed
+     * @param function Function to apply
      * @return O
      */
     public static <I, O> O foldLeft(Set<I> set, O seed, Function<O> function)
@@ -491,7 +490,7 @@ public final class Fn
 
         /**
          *
-         * @see com.kissthinker.function.Fn.Function#apply(java.lang.Object[])
+         * @see com.kissthinker.function.Function#apply(java.lang.Object[])
          */
         @SuppressWarnings("unchecked")
         @Override
@@ -515,7 +514,7 @@ public final class Fn
 
         /**
          *
-         * @param class_
+         * @param class_ Class
          */
         private FunctionInterceptor(Class<Object> class_)
         {
@@ -525,7 +524,7 @@ public final class Fn
 
         /**
          *
-         * @param object
+         * @param object Object
          */
         private FunctionInterceptor(Object object)
         {
@@ -535,9 +534,9 @@ public final class Fn
 
         /**
          * Convenience method for executing on a different target other than the proxied one.
-         * @param target
-         * @param args
-         * @return
+         * @param target Target object
+         * @param args Arguments
+         * @return Result
          */
         @SuppressWarnings("unchecked")
         private R applyOn(Object target, Object... args)
@@ -560,8 +559,8 @@ public final class Fn
 
         /**
          *
-         * @param method
-         * @param class_
+         * @param method Method
+         * @param class_ Class
          * @return Method
          */
         private Method match(Method method, Class<?> class_)

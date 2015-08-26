@@ -30,9 +30,9 @@ public class Invocation implements Serializable
     private final Serializable[] methodArgs;
 
     /**
-     * @param class_
-     * @param returnClass
-     * @param methodName
+     * @param class_ Class
+     * @param returnClass Return class
+     * @param methodName Method name
      * @param methodArgs Not a varags as is the original in {@link com.kissthinker.proxy.Invocation} to avoid calls turning into (incorrectly) nested arrays.
      */
     public Invocation(Class<?> class_, Class<?> returnClass, String methodName, Serializable[] methodArgs)
@@ -46,7 +46,7 @@ public class Invocation implements Serializable
 
     /**
      * Getter
-     * @return
+     * @return Class
      */
     public Class<?> class_()
     {
@@ -55,7 +55,7 @@ public class Invocation implements Serializable
 
     /**
      * Getter.
-     * @return
+     * @return Class
      */
     public Class<?> returnClass()
     {
@@ -70,7 +70,7 @@ public class Invocation implements Serializable
 
     /**
      * Getter
-     * @return
+     * @return Method name
      */
     public String methodName()
     {
@@ -79,7 +79,7 @@ public class Invocation implements Serializable
 
     /**
      * Getter
-     * @return
+     * @return Method arguments
      */
     public Object[] methodArgs()
     {

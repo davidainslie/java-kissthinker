@@ -10,7 +10,7 @@ public interface Proxy
      * Create (instantiate) an object for the given class which is wrapped within a {@link ClassInfo}.<p>
      * Instead of simply passing in one argument of {@link Class} to be used as the blueprint for creating a proxy object (which was actually the way it was initially coded),
      * a wrapper is used for any future additions/enhancements to {@link ClassInfo} allowing client code to access future "extras" but without changing the method contract.
-     * @param classInfo
+     * @param classInfo Class info
      * @return O a proxy for the given (wrapped) class
      */
     <O, P> O create(ClassInfo<O, P> classInfo);
@@ -24,7 +24,7 @@ public interface Proxy
     {
         /**
          *
-         * @see com.kissthinker.proxy.Proxy#create(java.lang.Class)
+         * @see com.kissthinker.proxy.Proxy#create(ClassInfo)
          */
         @Override
         public <O, P> O create(ClassInfo<O, P> classInfo)
@@ -52,7 +52,7 @@ public interface Proxy
         private P parent;
 
         /**
-         * @param proxyClass
+         * @param proxyClass Proxy class
          */
         public ClassInfo(Class<O> proxyClass)
         {
@@ -69,7 +69,8 @@ public interface Proxy
             return proxyClass;
         }
 
-        /** Getter
+        /**
+         * Getter
          * @return the parentClass
          */
         public Class<P> parentClass()
@@ -80,7 +81,7 @@ public interface Proxy
         /**
          * Setter
          * @param parentClass the parentClass to set
-         * @return ClassInfo<O, P>
+         * @return ClassInfo
          */
         public ClassInfo<O, P> parentClass(Class<P> parentClass)
         {
@@ -100,7 +101,7 @@ public interface Proxy
         /**
          * Setter
          * @param parent the parent to set
-         * @return ClassInfo<O, P>
+         * @return ClassInfo
          */
         public ClassInfo<O, P> parent(P parent)
         {

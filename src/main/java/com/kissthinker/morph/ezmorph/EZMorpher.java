@@ -1,5 +1,6 @@
 package com.kissthinker.morph.ezmorph;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import net.sf.ezmorph.MorphUtils;
@@ -74,7 +75,7 @@ public class EZMorpher implements Morpher
 
     /**
      *
-     * @param morpherRegistry
+     * @param morpherRegistry Morpher registry
      */
     private void registerCustomMorphers(MorpherRegistry morpherRegistry)
     {
@@ -83,10 +84,7 @@ public class EZMorpher implements Morpher
         // TODO Allow for properites files as well as -D?
         if (System.getProperty("morpher.packages") != null)
         {
-            for (String morpherPackage : System.getProperty("morpher.packages").split(","))
-            {
-                morpherPackages.add(morpherPackage);
-            }
+            Collections.addAll(morpherPackages, System.getProperty("morpher.packages").split(","));
         }
 
         Set<Class<? extends net.sf.ezmorph.Morpher>> morpherClasses = hashSet();

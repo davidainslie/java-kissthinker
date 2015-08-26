@@ -16,8 +16,8 @@ public abstract class AbstractObjectMorpher implements ObjectMorpher
 
     /**
      *
-     * @param supportsClass
-     * @param morphsToClass
+     * @param supportsClass Supports class
+     * @param morphsToClass Morphs to class
      */
     public AbstractObjectMorpher(final Class<?> supportsClass, final Class<?> morphsToClass)
     {
@@ -26,25 +26,14 @@ public abstract class AbstractObjectMorpher implements ObjectMorpher
         this.morphsToClass = morphsToClass;
     }
 
-    /**
-     *
-     */
+    /** */
     @Override
     public boolean supports(@SuppressWarnings("rawtypes") Class class_)
     {
-        if (supportsClass.isAssignableFrom(class_))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return supportsClass.isAssignableFrom(class_);
     }
 
-    /**
-     *
-     */
+    /** */
     @Override
     public Class<?> morphsTo()
     {

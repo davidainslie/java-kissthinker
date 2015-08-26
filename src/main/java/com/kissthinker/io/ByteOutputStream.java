@@ -28,7 +28,7 @@ public class ByteOutputStream extends OutputStream
 
     /**
      * Constructs stream with given buffer size.
-     * @param bufferSize
+     * @param bufferSize Buffer size
      */
     public ByteOutputStream(int bufferSize)
     {
@@ -82,7 +82,7 @@ public class ByteOutputStream extends OutputStream
 
     /**
      *
-     * @param newSize
+     * @param newSize New size
      */
     private void verifyBufferSize(int newSize)
     {

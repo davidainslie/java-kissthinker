@@ -7,10 +7,10 @@ package com.kissthinker.proxy;
 public class SubscribeInvocation extends Invocation
 {
     /**
-     * @param targetClass
-     * @param returnClass
-     * @param methodName
-     * @param methodArgs
+     * @param targetClass Target class
+     * @param returnClass Return class
+     * @param methodName Method name
+     * @param methodArgs Method arguments
      */
     public SubscribeInvocation(Class<?> targetClass, Class<?> returnClass, String methodName, Object... methodArgs)
     {

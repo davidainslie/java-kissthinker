@@ -11,7 +11,7 @@ public abstract class PropertyListener<V> implements PropertyChangeListener
 {
     /**
      *
-     * @param propertyEvent
+     * @param propertyEvent PropertyEvent
      */
     public abstract void propertyChange(PropertyEvent<V> propertyEvent);
 

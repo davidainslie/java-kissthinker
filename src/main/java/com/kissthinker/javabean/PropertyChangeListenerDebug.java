@@ -40,7 +40,7 @@ public class PropertyChangeListenerDebug
 
     /**
      * 
-     * @param propertyChangeListener
+     * @param propertyChangeListener PropertyChangeListener
      */
     @After("execution(java.beans.PropertyChangeListener+.new(..)) && this(propertyChangeListener)")
     public void propertyChangeListenerInstantiated(final PropertyChangeListener propertyChangeListener)

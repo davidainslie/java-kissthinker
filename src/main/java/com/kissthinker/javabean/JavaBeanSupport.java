@@ -8,10 +8,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.kissthinker.collection.CollectionListener;
 import com.kissthinker.collection.map.MapListener;
+import com.kissthinker.object.Singleton;
 import com.kissthinker.reflect.MethodUtil;
 import static com.kissthinker.collection.map.MapUtil.identityWeakHashMap;
 import static com.kissthinker.collection.set.SetUtil.hashSet;
@@ -24,11 +23,9 @@ import static com.kissthinker.collection.set.SetUtil.hashSet;
  * @author David Ainslie
  * 
  */
+@Singleton
 public final class JavaBeanSupport
 {
-    /** */
-    private static final Logger LOGGER = LoggerFactory.getLogger(JavaBeanSupport.class);
-    
     /** TODO Test for auto GC - may need a slight rewrite */
     private static final Map<Collection<?>, Set<CollectionListener<?>>> COLLECTION_LISTENERS = identityWeakHashMap();
     
@@ -43,8 +40,8 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param javaBean
-     * @param propertyChangeListener
+     * @param javaBean JavaBean
+     * @param propertyChangeListener PropertyChangeListener
      * @return JavaBean
      */
     public static JavaBean listen(JavaBean javaBean, PropertyChangeListener propertyChangeListener)
@@ -55,9 +52,9 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param javaBean
-     * @param propertyName
-     * @param propertyChangeListener
+     * @param javaBean JavaBean
+     * @param propertyName Property name
+     * @param propertyChangeListener PropertyChangeListener
      * @return JavaBean
      */
     public static <P> JavaBean listen(JavaBean javaBean, String propertyName, PropertyChangeListener propertyChangeListener)
@@ -68,10 +65,10 @@ public final class JavaBeanSupport
     
     /**
      * 
-     * @param javaBean
-     * @param propertyName
-     * @param propertyChangeListener
-     * @return JavaBean.Enumerated<?>
+     * @param javaBean JavaBean
+     * @param propertyName Property name
+     * @param propertyChangeListener PropertyChangeListener
+     * @return JavaBean.Enumerated
      */
     public static <P> JavaBean.Enumerated<?> listen(JavaBean.Enumerated<?> javaBean, String propertyName, PropertyChangeListener propertyChangeListener)
     {        
@@ -81,10 +78,10 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param javaBean
-     * @param property
-     * @param propertyChangeListener
-     * @return JavaBean.Enumerated<?>
+     * @param javaBean JavaBean
+     * @param property Property
+     * @param propertyChangeListener PropertyChangeListener
+     * @return JavaBean.Enumerated
      */
     public static <P> JavaBean.Enumerated<?> listen(JavaBean.Enumerated<?> javaBean, P property, PropertyChangeListener propertyChangeListener)
     {        
@@ -94,8 +91,8 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param collection
-     * @param collectionListener
+     * @param collection Collection
+     * @param collectionListener PropertyChangeListener
      */
     public static <O> void listen(Collection<O> collection, CollectionListener<O> collectionListener)
     {
@@ -122,8 +119,8 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param map
-     * @param mapListener
+     * @param map Map
+     * @param mapListener Map listener
      */
     public static <K, V> void listen(Map<K, V> map, MapListener<K, V> mapListener)
     {
@@ -150,9 +147,9 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param methodName
-     * @param collection
-     * @param object
+     * @param methodName Method name
+     * @param collection Collection
+     * @param object Object
      */
     static void callback(final String methodName, final Collection<?> collection, final Object object)
     {
@@ -171,10 +168,10 @@ public final class JavaBeanSupport
 
     /**
      *
-     * @param methodName
-     * @param map
-     * @param key
-     * @param value
+     * @param methodName Method name
+     * @param map Map
+     * @param key Key
+     * @param value Value
      */
     static void callback(final String methodName, final Map<?, ?> map, final Object key, final Object value)
     {
@@ -193,10 +190,10 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param javaBean
-     * @param propertyName
-     * @param oldValue
-     * @param newValue
+     * @param javaBean JavaBean
+     * @param propertyName Property name
+     * @param oldValue Old value
+     * @param newValue New value
      * @return JavaBean
      */
     static JavaBean firePropertyChange(JavaBean javaBean, String propertyName, Object oldValue, Object newValue)
@@ -207,11 +204,11 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param javaBean
-     * @param propertyName
-     * @param oldValue
-     * @param newValue
-     * @return JavaBean.Enumerated<?>
+     * @param javaBean JavaBean
+     * @param propertyName Property name
+     * @param oldValue Old value
+     * @param newValue New value
+     * @return JavaBean.Enumerated
      */
     static <P> JavaBean.Enumerated<?> firePropertyChange(JavaBean.Enumerated<?> javaBean, String propertyName, Object oldValue, Object newValue)
     {
@@ -221,11 +218,11 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param javaBean
-     * @param property
-     * @param oldValue
-     * @param newValue
-     * @return JavaBean.Enumerated<?>
+     * @param javaBean JavaBean
+     * @param property Property
+     * @param oldValue Old value
+     * @param newValue New value
+     * @return JavaBean.Enumerated
      */
     static <P> JavaBean.Enumerated<?> firePropertyChange(JavaBean.Enumerated<?> javaBean, P property, Object oldValue, Object newValue)
     {
@@ -235,8 +232,8 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param javaBean
-     * @param propertyChangeEvent
+     * @param javaBean JavaBean
+     * @param propertyChangeEvent PropertyChangeEvent
      * @return JavaBean
      */
     static JavaBean firePropertyChange(JavaBean javaBean, PropertyChangeEvent propertyChangeEvent)
@@ -247,11 +244,11 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param javaBean
-     * @param propertyName
-     * @param index
-     * @param oldValue
-     * @param newValue
+     * @param javaBean JavaBean
+     * @param propertyName Property name
+     * @param index Index
+     * @param oldValue Old value
+     * @param newValue New value
      * @return JavaBean
      */
     static JavaBean fireIndexedPropertyChange(JavaBean javaBean, String propertyName, int index, Object oldValue, Object newValue)
@@ -262,12 +259,12 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param javaBean
-     * @param propertyName
-     * @param index
-     * @param oldValue
-     * @param newValue
-     * @return JavaBean.Enumerated<?>
+     * @param javaBean JavaBean
+     * @param propertyName Property name
+     * @param index Index
+     * @param oldValue Old value
+     * @param newValue New value
+     * @return JavaBean.Enumerated
      */
     static <P> JavaBean.Enumerated<?> fireIndexedPropertyChange(JavaBean.Enumerated<?> javaBean, String propertyName, int index, Object oldValue, Object newValue)
     {
@@ -277,12 +274,12 @@ public final class JavaBeanSupport
 
     /**
      * 
-     * @param javaBean
-     * @param property
-     * @param index
-     * @param oldValue
-     * @param newValue
-     * @return JavaBean.Enumerated<?>
+     * @param javaBean JavaBean
+     * @param property Property
+     * @param index Index
+     * @param oldValue Old value
+     * @param newValue New value
+     * @return JavaBean.Enumerated
      */
     static <P> JavaBean.Enumerated<?> fireIndexedPropertyChange(JavaBean.Enumerated<?> javaBean, P property, int index, Object oldValue, Object newValue)
     {
@@ -335,8 +332,8 @@ public final class JavaBeanSupport
     /**
      * We can safely cast a given {@link JavaBean} to {@link PropertyChangeSupporter} as we have injected the interface and an implementation via AspectJ.<p>
      * Comparing this to Scala, {@link PropertyChangeSupporter} and its implementation act as a trait.
-     * @param javaBean
-     * @return
+     * @param javaBean JavaBean
+     * @return PropertyChangeSupport
      */
     private static PropertyChangeSupport propertyChangeSupport(JavaBean javaBean)
     {

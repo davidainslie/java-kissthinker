@@ -8,9 +8,7 @@ import java.util.UUID;
  */
 public class UUIDGenerator implements IDGenerator<UUID>
 {
-    /**
-     *
-     */
+    /** */
     public UUIDGenerator()
     {
         super();

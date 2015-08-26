@@ -23,10 +23,10 @@ public class Invocation
 
     /**
      *
-     * @param targetClass
-     * @param returnClass
-     * @param methodName
-     * @param methodArgs
+     * @param targetClass Target class
+     * @param returnClass Return class
+     * @param methodName Method name
+     * @param methodArgs Method arguments
      */
     public Invocation(Class<?> targetClass, Class<?> returnClass, String methodName, Object... methodArgs)
     {
@@ -39,7 +39,7 @@ public class Invocation
 
     /**
      * Getter
-     * @return
+     * @return Target class
      */
     public Class<?> targetClass()
     {
@@ -48,7 +48,7 @@ public class Invocation
 
     /**
      * Getter.
-     * @return the returnClass
+     * @return Return class
      */
     public Class<?> returnClass()
     {
@@ -57,7 +57,7 @@ public class Invocation
 
     /**
      *
-     * @return
+     * @return True or false
      */
     public boolean returns()
     {
@@ -66,7 +66,7 @@ public class Invocation
 
     /**
      * Getter
-     * @return
+     * @return Method name
      */
     public String methodName()
     {
@@ -75,7 +75,7 @@ public class Invocation
 
     /**
      * Getter
-     * @return
+     * @return Method arguments
      */
     public Object[] methodArgs()
     {

@@ -34,7 +34,7 @@ public interface JavaBean
      * @author David Ainslie
      *
      */
-    public interface Enumerated<P extends Enum<P>> extends JavaBean
+    interface Enumerated<P extends Enum<P>> extends JavaBean
     {        
     }
 
@@ -47,10 +47,10 @@ public interface JavaBean
     public static class JavaBeanInterceptor
     {
         /**
-         * @param proceedingJoinPoint
-         * @param target
-         * @param newValue
-         * @return
+         * @param proceedingJoinPoint ProceedingJoinPoint
+         * @param javaBean JavaBean
+         * @param newValue Object
+         * @return Object
          * @throws Throwable
          */
         @Around("set(* *.*) && @annotation(com.kissthinker.javabean.Property) && target(javaBean) && args(newValue)")
@@ -83,11 +83,11 @@ public interface JavaBean
     {
         /**
          * 
-         * @param proceedingJoinPoint
+         * @param proceedingJoinPoint ProceedingJoinPoint
          * @param collection Note the use of @SuppressWarnings("rawtypes") as AspectJ cannot handle a declaration of Collection<?>, the compile error would be<p>
          * parameterized types not supported for this and target pointcuts (erasure limitation)
-         * @param object
-         * @return
+         * @param object Object
+         * @return Object
          * @throws Throwable
          */
         @Around("call(* java.util.Collection+.add(..)) && target(collection) && args(object)")
@@ -100,10 +100,10 @@ public interface JavaBean
 
         /**
          * 
-         * @param proceedingJoinPoint
-         * @param collection
-         * @param object
-         * @return
+         * @param proceedingJoinPoint ProceedingJoinPoint
+         * @param collection Collection
+         * @param object Object
+         * @return Object
          * @throws Throwable
          */
         @Around("call(* java.util.Collection+.remove(..)) && target(collection) && args(object)")
@@ -128,12 +128,12 @@ public interface JavaBean
         
         /**
          * 
-         * @param proceedingJoinPoint
+         * @param proceedingJoinPoint ProceedingJoinPoint
          * @param map Note the use of @SuppressWarnings("rawtypes") as AspectJ cannot handle a declaration of Map<?, ?>, the compile error would be<p>
          * parameterized types not supported for this and target pointcuts (erasure limitation)
-         * @param key
-         * @param value
-         * @return
+         * @param key Key
+         * @param value Value
+         * @return Object
          * @throws Throwable
          */
         @Around("call(* java.util.Map+.put(..)) && target(map) && args(key, value)")
@@ -148,10 +148,10 @@ public interface JavaBean
 
         /**
          * 
-         * @param proceedingJoinPoint
-         * @param map
-         * @param key
-         * @return
+         * @param proceedingJoinPoint ProceedingJoinPoint
+         * @param map Map
+         * @param key Key
+         * @return Object
          * @throws Throwable
          */
         @Around("call(* java.util.Map+.remove(..)) && target(map) && args(key)")

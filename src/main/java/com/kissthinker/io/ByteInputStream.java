@@ -21,8 +21,8 @@ public class ByteInputStream extends InputStream
 
     /**
      *
-     * @param buffer
-     * @param count
+     * @param buffer Buffer
+     * @param count Size of buffer
      */
     public ByteInputStream(byte[] buffer, int count)
     {

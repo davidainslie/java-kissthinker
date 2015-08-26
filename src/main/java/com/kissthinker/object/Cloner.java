@@ -11,11 +11,12 @@ import com.kissthinker.io.ByteOutputStream;
  * @author David Ainslie
  *
  */
+@Singleton
 public final class Cloner
 {
     /**
      * Clone by serialization, making use of "fast" output/input byte array streams.
-     * @param <O>
+     * @param <O> Object type
      * @param object a Serializable object to be cloned. All references must be Serializable (client should set transient appropriately).
      * @return O the cloned object
      */
