@@ -110,9 +110,9 @@ public final class Services
 
     /**
      *
-     * @param <S>
-     * @param serviceClass
-     * @return
+     * @param <S> Service class type
+     * @param serviceClass Service type
+     * @return Service
      */
     @SuppressWarnings("unchecked")
     public static <S> S get(Class<? extends S> serviceClass)

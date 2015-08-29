@@ -17,7 +17,7 @@ public class ConstructorException extends RuntimeException
 
     /**
      *
-     * @param message
+     * @param message Message
      */
     public ConstructorException(String message)
     {
@@ -26,7 +26,7 @@ public class ConstructorException extends RuntimeException
 
     /**
      *
-     * @param cause
+     * @param cause Cause
      */
     public ConstructorException(Throwable cause)
     {
@@ -35,8 +35,8 @@ public class ConstructorException extends RuntimeException
 
     /**
      *
-     * @param message
-     * @param cause
+     * @param message Message
+     * @param cause Cause
      */
     public ConstructorException(String message, Throwable cause)
     {

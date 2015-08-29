@@ -5,9 +5,6 @@ package com.kissthinker.reflect;
  */
 public interface PojoInterface
 {
-    /**
-     * 
-     * @return
-     */
+    /** */
 	PojoInterface decorated();
 }

@@ -11,7 +11,10 @@ public class MethodInvocationWrapper
     /** */
     private Throwable throwable;
 
-    /** */
+    /**
+     *
+     * @return boolean Is it throwable
+     */
     public boolean isThrowable()
     {
         return throwable != null;
@@ -19,8 +22,8 @@ public class MethodInvocationWrapper
 
     /**
      * 
-     * @param result
-     * @return
+     * @param result Result
+     * @return Method invocation wrapper
      */
     public MethodInvocationWrapper result(Object result)
     {
@@ -28,7 +31,10 @@ public class MethodInvocationWrapper
         return this;
     }
 
-    /** */
+    /**
+     *
+     * @return Object The result
+     */
     public Object result()
     {
         return result;
@@ -36,8 +42,8 @@ public class MethodInvocationWrapper
 
     /**
      * 
-     * @param throwable
-     * @return
+     * @param throwable Throwable
+     * @return Method invocation wrapper
      */
     public MethodInvocationWrapper throwable(Throwable throwable)
     {
@@ -45,7 +51,10 @@ public class MethodInvocationWrapper
         return this;
     }
 
-    /** */
+    /**
+     *
+     * @return Throwable The Throwable
+     */
     public Throwable throwable()
     {
         return throwable;

@@ -21,8 +21,18 @@ public @interface Property
      Default of -1 means that no index is set.
      NOTE This index is meaningless when Property is a method parameter.
      */
+
+    /**
+     * Zero based (for convenience when used with e.g. arrays, tables etc.) to indicate order.
+     * Default of -1 means that no index is set.
+     * NOTE This index is meaningless when Property is a method parameter.
+     * @return Index
+     */
     int index() default -1;
 
-    /** A (user friendly) name that can be used for anything besides logic, such as a column title in a GUI table. */
+    /**
+     * A (user friendly) name that can be used for anything besides logic, such as a column title in a GUI table.
+     * @return Name
+     */
     String name() default "";
 }

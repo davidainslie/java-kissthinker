@@ -6,6 +6,9 @@ package com.kissthinker.id;
  */
 public interface IDGenerator<I>
 {
-    /** */
+    /**
+     *
+     * @return ID
+     */
     I next();
 }

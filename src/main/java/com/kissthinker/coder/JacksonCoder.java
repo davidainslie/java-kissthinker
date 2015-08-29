@@ -13,7 +13,7 @@ import org.codehaus.jackson.map.ObjectWriter;
  * XmlMapper mapper = new XmlMapper();
  * MyBean bean = new MyBean();
  * String xml = mapper.writeValueAsString(bean);
- * // we get something like "<MyBean><property>value</property>....</MyBean>"
+ * we get something like "&lt;MyBean&gt;&lt;property&gt;value&lt;/property&gt;....&lt;/MyBean&gt;"
  * MyBean beanFromXml = mapper.readValue(xml, MyBean.class);
  * </pre>
  * @author David Ainslie

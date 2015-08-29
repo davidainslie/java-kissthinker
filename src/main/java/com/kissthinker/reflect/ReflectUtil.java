@@ -6,12 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sun.reflect.FieldAccessor;
 import sun.reflect.ReflectionFactory;
+import com.kissthinker.object.Singleton;
 import static java.text.MessageFormat.format;
 
 /**
  * @author David Ainslie
  *
  */
+@Singleton
 public final class ReflectUtil
 {
     /** */
@@ -22,9 +24,9 @@ public final class ReflectUtil
 
     /**
      *
-     * @param <O>
-     * @param field
-     * @return
+     * @param <O> Object type
+     * @param field field
+     * @return Object
      */
     @SuppressWarnings("unchecked")
     public static <O> O get(Field field)
@@ -34,10 +36,10 @@ public final class ReflectUtil
 
     /**
      *
-     * @param <O>
-     * @param object
-     * @param field
-     * @return
+     * @param <O> Object type
+     * @param object Object
+     * @param field Field
+     * @return Object
      */
     @SuppressWarnings("unchecked")
     public static <O> O get(Object object, Field field)
@@ -48,8 +50,8 @@ public final class ReflectUtil
     /**
      * Set a given static field to the given value.<p>
      * The field may be final.
-     * @param field
-     * @param value
+     * @param field Field
+     * @param value Value
      * @return true if set operation completed without error
      */
     public static boolean set(Field field, Object value)
@@ -60,9 +62,9 @@ public final class ReflectUtil
     /**
      * Set a given field to the given value for the given object.<p>
      * The field may be final and/or static.
-     * @param object
-     * @param field
-     * @param value
+     * @param object Object
+     * @param field Field
+     * @param value Value
      * @return true if set operation completed without error
      */
     public static boolean set(Object object, Field field, Object value)
@@ -72,10 +74,10 @@ public final class ReflectUtil
 
     /**
      *
-     * @param <O>
-     * @param object
-     * @param field
-     * @return
+     * @param <O> Object type
+     * @param object Object
+     * @param field Field
+     * @return Object
      */
     @SuppressWarnings("unchecked")
     private static <O> O doGet(Object object, Field field)
@@ -98,9 +100,9 @@ public final class ReflectUtil
 
     /**
      * Set a given field to the given value for the possibly given object i.e maybe no object if given so should be a static field.
-     * @param object
-     * @param field
-     * @param value
+     * @param object Object
+     * @param field Field
+     * @param value Value
      * @return true if set operation completed without error
      */
     private static boolean doSet(Object object, Field field, Object value)

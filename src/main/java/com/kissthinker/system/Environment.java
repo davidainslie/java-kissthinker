@@ -1,9 +1,6 @@
 package com.kissthinker.system;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.kissthinker.collection.CollectionUtil;
@@ -79,7 +76,7 @@ public enum Environment
 
     /**
      * Convenience method to get a {@link Environment} with a given environment name, that should match an available "enum" {@link Environment}.
-     * @param environment
+     * @param environment Environment
      * @return Environment or null if "unkown".
      */
     public static Environment environment(String environment)
@@ -97,7 +94,7 @@ public enum Environment
 
     /**
      * Convenience method
-     * @param environments
+     * @param environments Environments
      * @return boolean
      */
     public static boolean isRutime(Environment... environments)
@@ -123,7 +120,7 @@ public enum Environment
 
     /**
      *
-     * @param environments
+     * @param environments Environments
      * @return int
      */
     public static int highestOrdinal(Environment... environments)
@@ -134,8 +131,8 @@ public enum Environment
     /**
      * Sort the given environments naturally.<p>
      * As Environment is an enum, the sorting is by the ordering that each is declared.
-     * @param environments
-     * @return Set<Environment>
+     * @param environments Environments
+     * @return Set of Environment
      */
     public static SortedSet<Environment> sorted(Environment... environments)
     {
@@ -143,10 +140,7 @@ public enum Environment
 
         if (environments != null && environments.length > 0)
         {
-            for (Environment environment : environments)
-            {
-                sortedEnvironments.add(environment);
-            }
+            Collections.addAll(sortedEnvironments, environments);
         }
 
         return sortedEnvironments;
@@ -171,7 +165,7 @@ public enum Environment
 
     /**
      *
-     * @param displayable
+     * @param displayable Displayable
      */
     Environment(String displayable)
     {

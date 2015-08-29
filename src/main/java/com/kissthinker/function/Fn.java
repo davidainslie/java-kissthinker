@@ -20,11 +20,11 @@ import static com.kissthinker.collection.CollectionUtil.newInstance;
  * <p>
  * Note that originally, this class was name FunctionUtil, as Fn is not descriptive. However, Fn was eventually chosen because of generics e.g<p>
  * Because of generics, we would have to code:<p>
- * fxQuotePublisher.subscribe(new FX(Currency.EUR, Currency.USD), function(from(this).onQuote(null)), FunctionUtil.<Boolean>function(from(this).invalidCriteria(null)));<p>
+ * fxQuotePublisher.subscribe(new FX(Currency.EUR, Currency.USD), function(from(this).onQuote(null)), FunctionUtil.function(from(this).invalidCriteria(null)));<p>
  * instead of
  * fxQuotePublisher.subscribe(new FX(Currency.EUR, Currency.USD), function(from(this).onQuote(null)), function(from(this).invalidCriteria(null)));<p>
  * but now with this class named as Fn, we can do:<p>
- * fxQuotePublisher.subscribe(new FX(Currency.EUR, Currency.USD), function(from(this).onQuote(null)), Fn.<Boolean>function(from(this).invalidCriteria(null)));<p>
+ * fxQuotePublisher.subscribe(new FX(Currency.EUR, Currency.USD), function(from(this).onQuote(null)), Fn.function(from(this).invalidCriteria(null)));<p>
  * which is still not great, but if that fabulous library op4j names its functions classes as FnXXX (such as FnString), then some others must think this is okay.<p>
  * Note that this utility also provides the standard functional programming of functions on collections through filter, map and reduce.
  * TODO This Implementation does not cater for invoking static methods as functions.<p>
@@ -61,7 +61,7 @@ public final class Fn
      * @param <R> Result type
      * @param dummy is ignored, as the Function has already been created and stored on the current thread.
      * It is essentially a dummy value (which will in fact be null) for the result of the delegated method execution.
-     * @return Function<R> that has already been created and stored on the current thread.
+     * @return Function that has already been created and stored on the current thread.
      */
     public static <R> Function<R> function(Object dummy)
     {
@@ -218,7 +218,7 @@ public final class Fn
      * @param <O> Type of Collection objects
      * @param collection Collection
      * @param functions Functions to apply (filter) to each object of Collection
-     * @return Collection<O>
+     * @return Collection
      */
     public static <O> Collection<O> filter(Collection<O> collection, List<Function<Boolean>> functions)
     {
@@ -235,7 +235,7 @@ public final class Fn
      * @param <O> Type of Collection objects
      * @param collection Collection
      * @param function Function to apply (filter) to each object of Collection
-     * @return Collection<O>
+     * @return Collection
      */
     public static <O> Collection<O> filter(Collection<O> collection, Function<Boolean> function)
     {
@@ -260,7 +260,7 @@ public final class Fn
      * @param <O> Type of List objects
      * @param list List
      * @param functions Functions to apply (filter) to each object of List
-     * @return List<O>
+     * @return List
      */
     public static <O> List<O> filter(List<O> list, List<Function<Boolean>> functions)
     {
@@ -272,7 +272,7 @@ public final class Fn
      * @param <O> Type of List objects
      * @param list List
      * @param function Function to apply (filter) to each object of List
-     * @return List<O>
+     * @return List
      */
     public static <O> List<O> filter(List<O> list, Function<Boolean> function)
     {
@@ -284,7 +284,7 @@ public final class Fn
      * @param <O> Type of Set objects
      * @param set Set
      * @param functions Functions to apply (filter) to each object of Set
-     * @return Set<O>
+     * @return Set
      */
     public static <O> Set<O> filter(Set<O> set, List<Function<Boolean>> functions)
     {
@@ -296,7 +296,7 @@ public final class Fn
      * @param <O> Type of Set objects
      * @param set Set
      * @param function Function to apply (filter) to each object of Set
-     * @return Set<O>
+     * @return Set
      */
     public static <O> Set<O> filter(Set<O> set, Function<Boolean> function)
     {
@@ -309,7 +309,7 @@ public final class Fn
      * @param <O> Type of output Collection objects
      * @param collection Collection
      * @param function Function to apply (map) to each object of Collection
-     * @return Collection<O>
+     * @return Collection
      */
     public static <I, O> Collection<O> map(Collection<I> collection, Function<O> function)
     {
@@ -330,7 +330,7 @@ public final class Fn
      * @param <O> Type of output Collection objects
      * @param list List
      * @param function Function to apply (map) to each object of List
-     * @return List<O>
+     * @return List
      */
     public static <I, O> List<O> map(List<I> list, Function<O> function)
     {
@@ -343,7 +343,7 @@ public final class Fn
      * @param <O> Type of output Set objects
      * @param set Set
      * @param function Function to apply (map) to each object of Set
-     * @return Set<O>
+     * @return Set
      */
     public static <I, O> Set<O> map(Set<I> set, Function<O> function)
     {
@@ -414,7 +414,7 @@ public final class Fn
      *
      * @author David Ainslie
      *
-     * @param <R>
+     * @param <R> Return type
      */
     private static class FunctionInterceptor<R> implements MethodInterceptor, Function<R>
     {

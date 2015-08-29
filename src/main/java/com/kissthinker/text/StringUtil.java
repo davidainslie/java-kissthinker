@@ -12,17 +12,19 @@ import org.op4j.functions.ExecCtx;
 import org.op4j.functions.FnString;
 import org.op4j.functions.IFunction;
 import com.kissthinker.collection.CollectionUtil;
+import com.kissthinker.object.Singleton;
 
 /**
  * @author David Ainslie
  *
  */
+@Singleton
 public final class StringUtil
 {
     /**
      * Convenience method to convert given string to {@link InputStream}
      *
-     * @param string
+     * @param string String
      * @return InputStream
      */
     public static InputStream toInputStream(String string)
@@ -32,8 +34,8 @@ public final class StringUtil
 
     /**
      *
-     * @param objects
-     * @return
+     * @param objects Object
+     * @return String
      */
     public static String toString(Object... objects)
     {
@@ -73,8 +75,8 @@ public final class StringUtil
 
     /**
      *
-     * @param object
-     * @return
+     * @param object Object
+     * @return String
      */
     public static String toReflectString(Object object)
     {
@@ -113,10 +115,10 @@ public final class StringUtil
      * Create a title from a given string.
      * The title will be in the format "My Title", i.e. capitilized words separated by spaces.
      * E.g.
-     * camelCase -> Camel Case
-     * MY_CAPS -> My Caps
-     * Scooby Doo -> Scooby Doo
-     * @param string
+     * camelCase - Camel Case
+     * MY_CAPS - My Caps
+     * Scooby Doo - Scooby Doo
+     * @param string String
      * @return the string as a title
      */
     public static String title(String string)

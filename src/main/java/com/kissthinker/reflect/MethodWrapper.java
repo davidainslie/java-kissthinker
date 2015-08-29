@@ -23,7 +23,7 @@ public class MethodWrapper
 
     /**
      *
-     * @param method
+     * @param method Method
      */
     public MethodWrapper(Method method)
     {
@@ -32,10 +32,10 @@ public class MethodWrapper
 
     /**
      *
-     * @param returnType
-     * @param name
-     * @param parameterTypes
-     * @param exceptionTypes
+     * @param returnType Return type
+     * @param name Name
+     * @param parameterTypes Parameter types
+     * @param exceptionTypes Exception types
      */
     public MethodWrapper(Class<?> returnType, String name, Class<?>[] parameterTypes, Class<?>[] exceptionTypes)
     {
@@ -45,25 +45,37 @@ public class MethodWrapper
         this.exceptionTypes = exceptionTypes;
     }
 
-    /** */
+    /**
+     *
+     * @return Class
+     */
     public Class<?> returnType()
     {
         return returnType;
     }
 
-    /** */
+    /**
+     *
+     * @return Name
+     */
     public String name()
     {
         return name;
     }
 
-    /** */
+    /**
+     *
+     * @return Class array
+     */
     public Class<?>[] parameterTypes()
     {
         return paramaterTypes.clone();
     }
 
-    /** */
+    /**
+     *
+     * @return Class array
+     */
     public Class<?>[] exceptionTypes()
     {
         return exceptionTypes.clone();
@@ -71,6 +83,8 @@ public class MethodWrapper
 
     /**
      *
+     * @param other Object
+     * @return boolean
      */
     @Override
     public boolean equals(Object other)
@@ -87,14 +101,20 @@ public class MethodWrapper
                Arrays.equals(paramaterTypes, methodWrapper.paramaterTypes);
     }
 
-    /** */
+    /**
+     *
+     * @return Hashcode
+     */
     @Override
     public int hashCode()
     {
         return name.hashCode() + returnType.hashCode() + Arrays.hashCode(paramaterTypes);
     }
 
-    /** */
+    /**
+     *
+     * @return String
+     */
     @Override
     public String toString()
     {

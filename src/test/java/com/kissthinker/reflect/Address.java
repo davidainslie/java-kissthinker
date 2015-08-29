@@ -25,8 +25,8 @@ public class Address implements Serializable
 
     /**
      *
-     * @param street
-     * @param telephone
+     * @param street Street
+     * @param telephone Telephone
      */
     public Address(String street, String telephone)
     {
@@ -36,7 +36,7 @@ public class Address implements Serializable
 
     /**
      * Getter
-     * @return
+     * @return String
      */
     public String street()
     {
@@ -45,7 +45,7 @@ public class Address implements Serializable
 
     /**
      * Setter
-     * @param street
+     * @param street Street
      */
     public Address setStreet(String street)
     {
@@ -55,7 +55,7 @@ public class Address implements Serializable
 
     /**
      * Getter
-     * @return
+     * @return String
      */
     public String telephone()
     {
@@ -64,7 +64,7 @@ public class Address implements Serializable
 
     /**
      * Setter
-     * @param telephone
+     * @param telephone Telephone
      */
     public Address telephone(String telephone)
     {

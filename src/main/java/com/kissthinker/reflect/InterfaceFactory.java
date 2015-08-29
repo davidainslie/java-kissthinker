@@ -5,6 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import com.kissthinker.object.Singleton;
 
 // TODO
 // import com.kissthinker.compiler.ClassFactory;
@@ -14,12 +15,13 @@ import java.util.regex.Pattern;
  * @author David Ainslie
  *
  */
+@Singleton
 public final class InterfaceFactory
 {
     /**
      *
-     * @param class_
-     * @return
+     * @param class_ Class
+     * @return Class
      */
     public static Class<?> create(Class<?> class_)
     {
@@ -67,9 +69,7 @@ public final class InterfaceFactory
      */
     private static class InterfaceClassLoader extends ClassLoader
     {
-        /**
-         *
-         */
+        /** */
         public InterfaceClassLoader()
         {
             super(Thread.currentThread().getContextClassLoader());
@@ -77,9 +77,9 @@ public final class InterfaceFactory
 
         /**
          *
-         * @param name
-         * @param methodWrappers
-         * @return
+         * @param name Name
+         * @param methodWrappers Method wrappers
+         * @return Class
          */
         public Class<?> findOrCreateInterface(String name, MethodWrapper... methodWrappers)
         {
@@ -105,9 +105,9 @@ public final class InterfaceFactory
 
         /**
          *
-         * @param name
-         * @param methodWrappers
-         * @return
+         * @param name Name
+         * @param methodWrappers Method wrappers
+         * @return Class
          * @throws Exception
          */
         private Class<?> create(String name, MethodWrapper... methodWrappers) throws Exception
@@ -133,8 +133,8 @@ public final class InterfaceFactory
 
         /**
          *
-         * @param methodWrappers
-         * @return
+         * @param methodWrappers Method wrappers
+         * @return String
          */
         private String createJavaSource(MethodWrapper... methodWrappers)
         {

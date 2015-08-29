@@ -21,7 +21,10 @@ public class PropertyChangeListenerDebug
         propertyChangeListenerWeakReference = null;
     }
 
-    /** */
+    /**
+     *
+     * @return Property change listener
+     */
     public static PropertyChangeListener propertyChangeListener()
     {
         if (propertyChangeListenerWeakReference == null)

@@ -7,7 +7,7 @@ public interface MethodExceptionHandler
 {
     /**
      * 
-     * @param exception
+     * @param exception Exception
      */
     void handle(Exception exception);
 }

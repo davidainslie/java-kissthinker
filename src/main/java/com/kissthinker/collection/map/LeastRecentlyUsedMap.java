@@ -8,8 +8,8 @@ import java.util.Map.Entry;
  * <p>
  * When adding ({@link #put(Object, Object)}) to the map, upon exceeding the maximum number of entries, the "oldest" entry is removed.
  * @author David Ainslie
- * @param <K>
- * @param <V>
+ * @param <K> Key type
+ * @param <V> Value type
  */
 public class LeastRecentlyUsedMap<K, V> extends LinkedHashMap<K, V>
 {

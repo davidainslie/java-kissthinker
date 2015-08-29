@@ -17,9 +17,7 @@ public class ArrayUtilTest
         super();
     }
 
-    /**
-     *
-     */
+    /** */
     @Test
     public void convert()
     {

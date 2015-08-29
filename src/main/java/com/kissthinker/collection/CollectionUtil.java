@@ -46,7 +46,7 @@ public final class CollectionUtil
      *
      * @param <O> Object type
      * @param collection Collection
-     * @return Collection<O>
+     * @return Collection
      */
     public static <O> Collection<O> newInstance(Collection<O> collection)
     {

@@ -43,7 +43,7 @@ public class CoderInputStream extends InputStream
      * @param <I> Input
      * @param <O> Output
      * @return Identifiable
-     * @throws IOException
+     * @throws IOException Issue decoding
      */
     public <I, O> Identifiable<I, O> readObject() throws IOException
     {
@@ -52,7 +52,7 @@ public class CoderInputStream extends InputStream
 
     /**
      * @return Coder
-     * @throws IOException
+     * @throws IOException Issue decoding
      */
     private Coder decodeCoder() throws IOException
     {
@@ -68,7 +68,7 @@ public class CoderInputStream extends InputStream
     /**
      * @param coder Coder
      * @return Identifiable
-     * @throws IOException
+     * @throws IOException Issue decoding
      */
     private <I, O> Identifiable<I, O> decodeIdentifiable(Coder coder) throws IOException
     {

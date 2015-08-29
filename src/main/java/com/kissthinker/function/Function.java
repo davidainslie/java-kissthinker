@@ -13,7 +13,7 @@ import java.util.Collection;
  * import static com.kissthinker.function.Fn.from;
  * import static com.kissthinker.function.Fn.function;
  *
- * Function<String> function = function(from(AFunction.class).doSomething());
+ * Function function = function(from(AFunction.class).doSomething());
  * }
  * </pre>
  * By creating a Function via {@link Fn}, the generated function is actually a proxy that allows it to work with collections via functional programming.<p>
@@ -27,7 +27,7 @@ import java.util.Collection;
  * @see com.kissthinker.function.Fn
  * @author David Ainslie
  *
- * @param <R>
+ * @param <R> Return type
  */
 public interface Function<R>
 {
@@ -42,15 +42,15 @@ public interface Function<R>
      * A convenience callback to be implemented and shall be executed when {@link Function#apply(Object...)} is called.
      * <p>
      * When constructing a "function", instead of the usual call:<p>
-     * Function<String> function = function(from(AFunction.class).doSomething()); OR<p>
-     * Function<String> function = function(from(this).doSomething());
+     * Function function = function(from(AFunction.class).doSomething()); OR<p>
+     * Function function = function(from(this).doSomething());
      * can instead implement this interface and call thus:<p>
-     * Function<String> function = function(from(new Function.Callback {<implement>}));<p>
+     * Function function = function(from(new Function.Callback implement));<p>
      * Notice that you do not need the final call to the method, in this case "onCallback" (instead of "doSomething")
      * @author David Ainslie
      *
-     * @param <R>
-     * @param <O>
+     * @param <R> Return type
+     * @param <O> Object type
      */
     interface Callback<R, O>
     {

@@ -122,13 +122,23 @@ public final class MapUtil
         return new WeakHashMap<>();
     }
 
-    /** */
+    /**
+     *
+     * @param <K> Key type
+     * @param <V> Value type
+     * @return IdentityHashMap
+     */
     public static <K, V> IdentityHashMap<K, V> identityHashMap()
     {
         return new IdentityHashMap<>();
     }
-    
-    /** */
+
+    /**
+     *
+     * @param <K> Key type
+     * @param <V> Value type
+     * @return IdentityWeakHashMap
+     */
     public static <K, V> IdentityWeakHashMap<K, V> identityWeakHashMap()
     {
         return new IdentityWeakHashMap<>();

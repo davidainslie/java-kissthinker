@@ -7,10 +7,12 @@ import java.util.List;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.kissthinker.object.Singleton;
 
 /**
  * @author David Ainslie
  */
+@Singleton
 public final class ConstructorUtil
 {
     /** */
@@ -18,11 +20,11 @@ public final class ConstructorUtil
 
 	/**
 	 *
-	 * @param <O>
-	 * @param object
-	 * @param parameters
-	 * @return
-	 * @throws ConstructorException
+	 * @param <O> Object type
+	 * @param object Object
+	 * @param parameters Parameters
+	 * @return New instance
+	 * @throws ConstructorException Cannot construct
 	 */
 	@SuppressWarnings("unchecked")
 	public static <O> O newInstance(O object, Object... parameters) throws ConstructorException
@@ -42,11 +44,11 @@ public final class ConstructorUtil
 
 	/**
 	 *
-	 * @param <O>
-	 * @param instantiationClass
-	 * @param parameters
-	 * @return
-	 * @throws ConstructorException
+	 * @param <O> Object type
+	 * @param instantiationClass Instantiate class
+	 * @param parameters Parameters
+	 * @return New instance
+	 * @throws ConstructorException Cannot construct
 	 */
 	@SuppressWarnings("unchecked")
 	public static <O> O newInstance(Class<?> instantiationClass, Object... parameters) throws ConstructorException
@@ -72,10 +74,10 @@ public final class ConstructorUtil
 
 	/**
 	 *
-	 * @param object
-	 * @param parameters
-	 * @return
-	 * @throws ConstructorException
+	 * @param object Object
+	 * @param parameters Parameters
+	 * @return Constructor
+	 * @throws ConstructorException Cannot construct
 	 */
 	public static Constructor<?> constructor(Object object, Object... parameters) throws ConstructorException
 	{
@@ -91,10 +93,10 @@ public final class ConstructorUtil
 
 	/**
 	 *
-	 * @param object
-	 * @param parameterClasses
-	 * @return
-	 * @throws ConstructorException
+	 * @param object Object
+	 * @param parameterClasses Parameters classes
+	 * @return Constructor
+	 * @throws ConstructorException Cannot construct
 	 */
 	public static Constructor<?> constructorByTypes(Object object, Class<?>... parameterClasses) throws ConstructorException
 	{
@@ -103,10 +105,10 @@ public final class ConstructorUtil
 
 	/**
 	 *
-	 * @param constructorClass
-	 * @param parameters
-	 * @return
-	 * @throws ConstructorException
+	 * @param constructorClass Constructor class
+	 * @param parameters Parameters
+	 * @return Constructor
+	 * @throws ConstructorException Cannot construct
 	 */
 	public static Constructor<?> constructor(Class<?> constructorClass, Object... parameters) throws ConstructorException
 	{
@@ -122,10 +124,11 @@ public final class ConstructorUtil
 
 	/**
 	 *
-	 * @param constructorClass
-	 * @param parameterClasses
-	 * @return
-	 * @throws ConstructorException
+	 * @param constructorClass Constructor class
+	 * @param parameterClasses Parameter classes
+     * @param <O> Object type
+	 * @return Constructor
+	 * @throws ConstructorException Cannot constuct
 	 */
 	@SuppressWarnings("unchecked")
 	public static <O> Constructor<O> constructorByTypes(Class<?> constructorClass, Class<?>... parameterClasses) throws ConstructorException
@@ -174,9 +177,9 @@ public final class ConstructorUtil
 
     /**
      *
-     * @param constructor
-     * @param parameterClasses
-     * @return
+     * @param constructor Constructor
+     * @param parameterClasses Parameter classes
+     * @return Matching constructor
      */
     private static MatchConstructor matchConstructor(Constructor<?> constructor, Class<?>... parameterClasses)
     {
@@ -253,8 +256,8 @@ class MatchConstructor
 
 	/**
 	 *
-	 * @param constructor
-	 * @param matchingParametersCount
+	 * @param constructor Constructor
+	 * @param matchingParametersCount Matching parameters count
 	 */
 	public MatchConstructor(Constructor<?> constructor, Integer matchingParametersCount)
 	{

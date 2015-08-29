@@ -26,9 +26,7 @@ public class SetUtilTest
         assertTrue(strings.isEmpty());
     }
 
-    /**
-     *
-     */
+    /** */
     @Test
     public void hashSetInitialised()
     {

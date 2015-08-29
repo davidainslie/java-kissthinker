@@ -3,13 +3,16 @@ package com.kissthinker.reflect;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.kissthinker.object.Singleton;
 
 /**
  * @author David Ainslie
  */
+@Singleton
 public final class FieldUtil
 {
     /** */
@@ -17,10 +20,10 @@ public final class FieldUtil
 
     /**
      *
-     * @param <O>
-     * @param object
-     * @param annotationClass
-     * @return
+     * @param <O> Object type
+     * @param object Object
+     * @param annotationClass Annotation class
+     * @return Field
      */
     public static <O> Field field(O object, Class<? extends Annotation> annotationClass)
     {
@@ -43,11 +46,11 @@ public final class FieldUtil
 
     /**
      *
-     * @param <O>
-     * @param object
-     * @param fieldName
-     * @param annotationClass
-     * @return
+     * @param <O> Object type
+     * @param object Object
+     * @param fieldName Field name
+     * @param annotationClass Annotation class
+     * @return Field
      */
     public static <O> Field field(O object, String fieldName, Class<? extends Annotation> annotationClass)
     {
@@ -71,9 +74,10 @@ public final class FieldUtil
 
     /**
      *
-     * @param object
-     * @param annotationClass
-     * @return
+     * @param object Object
+     * @param annotationClass Annotation class
+     * @param <O> Object type
+     * @return Field array
      */
     public static <O> Field[] fields(O object, Class<? extends Annotation> annotationClass)
     {
@@ -90,9 +94,10 @@ public final class FieldUtil
 
     /**
      * 
-     * @param class_
-     * @param annotationClass
-     * @return
+     * @param class_ Class
+     * @param annotationClass Annotation class
+     * @param <O> Object type
+     * @return Field array
      */
     public static <O> Field[] fields(Class<?> class_, Class<? extends Annotation> annotationClass)
     {
@@ -105,12 +110,7 @@ public final class FieldUtil
         if (class_.getSuperclass() != null)
         {
             List<Field> superFields = new ArrayList<>();
-            
-            for (Field field : fields(class_.getSuperclass(), annotationClass))
-            {
-                superFields.add(field);
-            }
-            
+            Collections.addAll(superFields, fields(class_.getSuperclass(), annotationClass));
             fields.addAll(superFields);
         }
         
@@ -129,9 +129,9 @@ public final class FieldUtil
 
     /**
      *
-     * @param object
-     * @param annotationClass
-     * @return
+     * @param object Object
+     * @param annotationClass Annotation class
+     * @return Object array
      */
     public static Object[] values(Object object, Class<? extends Annotation> annotationClass)
     {
@@ -158,9 +158,10 @@ public final class FieldUtil
 
     /**
      * 
-     * @param field
-     * @param target
-     * @return
+     * @param field Field
+     * @param target Target
+     * @param <V> Value type
+     * @return Value
      */
     @SuppressWarnings("unchecked")
     public static <V> V value(Field field, Object target)
@@ -178,8 +179,8 @@ public final class FieldUtil
     
     /**
      * Get declared class that is not an anonymous class;
-     * @param class_
-     * @return
+     * @param class_ Class
+     * @return Class
      */
     public static Class<?> declaredClass(Class<?> class_)
     {
@@ -196,9 +197,9 @@ public final class FieldUtil
 
     /**
      *
-     * @param object
-     * @param name
-     * @param value
+     * @param object Object
+     * @param name Name
+     * @param value Value
      */
     public static void set(Object object, String name, Object value)
     {

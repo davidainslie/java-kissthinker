@@ -101,8 +101,8 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
 
     /**
      * 
-     * @param string
-     * @return
+     * @param string String
+     * @return String
      */
     public String ltrim(String string)
     {
@@ -119,8 +119,8 @@ public class SQLSteppingStoneToFunctionalProgrammingTest
     
     /**
      * 
-     * @param string
-     * @return
+     * @param string String
+     * @return String
      */
     public String rtrim(String string)
     {

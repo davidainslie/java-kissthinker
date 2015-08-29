@@ -30,8 +30,8 @@ public class Man implements Serializable
 
     /**
      *
-     * @param wife
-     * @param homes
+     * @param wife Wife
+     * @param homes Homes
      */
     public Man(Woman wife, List<Address> homes)
     {
@@ -47,7 +47,7 @@ public class Man implements Serializable
 
     /**
      *
-     * @param wife
+     * @param wife Wife
      */
     public Man wife(Woman wife)
     {
@@ -63,7 +63,7 @@ public class Man implements Serializable
 
     /**
      * Default first home as home then others are secondary homes e.g. holiday homes.
-     * @param homes
+     * @param homes Homes
      */
     public Man homes(List<Address> homes)
     {
@@ -85,7 +85,7 @@ public class Man implements Serializable
 
     /**
      *
-     * @param home
+     * @param home Home
      */
     public Man home(Address home)
     {

@@ -17,9 +17,10 @@ public class ObjectUtil
     private static final Morpher MORPHER = null;
 
     /**
-     * Morph (transform/convert) given object to the required class i.e to an object of type classToMorphTo, Class<O>
-     * @param object
-     * @param toClass
+     * Morph (transform/convert) given object to the required class i.e to an object of type classToMorphTo, Class
+     * @param object Object to morph
+     * @param toClass Class to morph object to
+     * @param <O> Object type
      * @return O the morphed object or null if the given object could not be morphed.
      */
     @SuppressWarnings("all")

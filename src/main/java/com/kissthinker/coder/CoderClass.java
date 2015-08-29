@@ -13,6 +13,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface CoderClass
 {
-    /** */
+    /**
+     *
+     * @return Class
+     */
     Class<? extends Coder> value();
 }

@@ -29,12 +29,12 @@ public abstract class MethodUtil
      * This is somewhat like "pattern matching" in functional programming.
      * If given case insensitive name ends with "()", so any given parameters will be ignored.
      * This is useful if method overloading includes parameterless and parameters versions.
-     * @param <O>
-     * @param class_
-     * @param name (case insensitive).
-     * @param parameters
-     * @return
-     * @throws MethodException
+     * @param <O> Object type
+     * @param class_ Class
+     * @param name Name (case insensitive)
+     * @param parameters Parameters
+     * @return Object
+     * @throws MethodException Issue with method
      */
     @SuppressWarnings("unchecked")
 	public static <O> O invoke(Class<?> class_, String name, Object... parameters) throws MethodException
@@ -57,12 +57,12 @@ public abstract class MethodUtil
      * This is somewhat like "pattern matching" in functional programming.
      * If given case insensitive ends with "()", so any given parameters will be ignored.
      * This is useful if method overloading includes parameterless and parameters versions.
-     * @param <O>
-     * @param object
-     * @param name (case insensitive).
-     * @param parameters
-     * @return
-     * @throws MethodException
+     * @param <O> Object type
+     * @param object Object
+     * @param name Name (case insensitive)
+     * @param parameters Parameters
+     * @return Object
+     * @throws MethodException Issue with method
      */
     @SuppressWarnings("unchecked")
 	public static <O> O invoke(Object object, String name, Object... parameters) throws MethodException
@@ -87,12 +87,12 @@ public abstract class MethodUtil
 
     /**
      * @see #invoke(java.lang.Object, java.lang.String, java.lang.Object...)
-     * @param <O>
-     * @param methodExceptionHandler
-     * @param object
-     * @param name (case insensitive)
-     * @param parameters
-     * @return
+     * @param <O> Object type
+     * @param methodExceptionHandler Method exception handler
+     * @param object Object
+     * @param name Name (case insensitive)
+     * @param parameters Parameters
+     * @return Object
      */
     @SuppressWarnings("unchecked")
 	public static <O> O invoke(MethodExceptionHandler methodExceptionHandler, Object object, String name, Object... parameters)
@@ -111,10 +111,10 @@ public abstract class MethodUtil
 
     /**
      *
-     * @param object
-     * @param name (case insensitive)
-     * @param parameter
-     * @throws MethodException
+     * @param object Object
+     * @param name Name (case insensitive)
+     * @param parameter Parameter
+     * @throws MethodException Issue with method
      */
     public static void invokeSetter(Object object, String name, Object parameter) throws MethodException
     {
@@ -133,11 +133,10 @@ public abstract class MethodUtil
 
     /**
      *
-     * @param object
-     * @param parameterClass
-     * @param parameter
-     * @return
-     * @throws MethodException
+     * @param object Object
+     * @param parameterClass Parameter class
+     * @param parameter Parameter
+     * @throws MethodException Issue with method
      */
     public static void invokeSetter(Object object, Class<?> parameterClass, Object parameter) throws MethodException
     {
@@ -168,11 +167,11 @@ public abstract class MethodUtil
 
     /**
      *
-     * @param <O>
-     * @param object
-     * @param name (case insensitive)
-     * @return
-     * @throws MethodException
+     * @param <O> Object type
+     * @param object Object
+     * @param name Name (case insensitive)
+     * @return Object
+     * @throws MethodException Issue with method
      */
     @SuppressWarnings("unchecked")
 	public static <O> O invokeGetter(Object object, String name) throws MethodException
@@ -199,9 +198,9 @@ public abstract class MethodUtil
 
     /**
      *
-     * @param object
-     * @param name (case insensitive).
-     * @return
+     * @param object Object
+     * @param name Name (case insensitive)
+     * @return Method
      */
     public static Method acquireSetterMethod(Object object, String name)
     {
@@ -241,9 +240,9 @@ public abstract class MethodUtil
 
     /**
      *
-     * @param object
-     * @param name (case insensitive)
-     * @return
+     * @param object Object
+     * @param name Name (case insensitive)
+     * @return Method
      */
     public static Method acquireGetterMethod(Object object, String name)
     {
@@ -280,6 +279,10 @@ public abstract class MethodUtil
 
     /**
      * @see #invoke(java.lang.Class, java.lang.String, java.lang.Object...)
+     * @param class_ Class
+     * @param name Name
+     * @param parameters Parameters
+     * @return Method
      */
     public static Method acquireMethod(Class<?> class_, String name, Object... parameters)
     {
@@ -303,6 +306,10 @@ public abstract class MethodUtil
 
     /**
      * @see #invoke(java.lang.Object, java.lang.String, java.lang.Object...)
+     * @param object Object
+     * @param name Name
+     * @param parameters Parameters
+     * @return Method
      */
     public static Method acquireMethod(Object object, String name, Object... parameters)
     {
@@ -326,29 +333,18 @@ public abstract class MethodUtil
 
     /**
      *
-     * @param method
-     * @return
+     * @param method Method
+     * @return True or false
      */
     public static boolean isSetter(Method method)
     {
-        if (!method.getName().startsWith(DataMutator.set.name()))
-        {
-            return false;
-        }
-        else if (method.getParameterTypes().length != 1)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return method.getName().startsWith(DataMutator.set.name()) && method.getParameterTypes().length == 1;
     }
 
     /**
      *
-     * @param method
-     * @return
+     * @param method Method
+     * @return True or false
      */
     public static boolean isGetter(Method method)
     {
@@ -375,8 +371,8 @@ public abstract class MethodUtil
 
     /**
      *
-     * @param object
-     * @return
+     * @param object Object
+     * @return List
      */
     public static List<Method> acquireDataAccessorMethods(Object object)
     {
@@ -401,11 +397,10 @@ public abstract class MethodUtil
 
     /**
      *
-     * @param name
-     * @return
+     * @param name Name
+     * @return String
      */
-    public static String toDataAccessorProperty(String name)
-    {
+    public static String toDataAccessorProperty(String name) {
         for (DataAccessor dataAccessor : DataAccessor.values())
         {
             if (!name.equalsIgnoreCase(dataAccessor.name()) && name.startsWith(dataAccessor.name()))
@@ -419,8 +414,8 @@ public abstract class MethodUtil
 
     /**
      *
-     * @param methodName
-     * @return
+     * @param methodName Method name
+     * @return True or false
      */
     public static boolean isDataAccessor(String methodName)
     {
@@ -435,7 +430,11 @@ public abstract class MethodUtil
         return false;
     }
 
-    /** */
+    /**
+     *
+     * @param method Method
+     * @return boolean Is the method a data accessor
+     */
     public static boolean isDataAccessor(Method method)
     {
     	return isDataAccessor(method.getName());
@@ -490,10 +489,10 @@ public abstract class MethodUtil
 
     /**
      * @see #invoke(java.lang.Object, java.lang.String, java.lang.Object...)
-     * @param method
-     * @param name (case insensitive)
-     * @param parameters
-     * @return
+     * @param method Method
+     * @param name Name (case insensitive)
+     * @param parameters Parameters
+     * @return Matching method
      */
     private static MatchMethod matchMethod(Method method, String name, Object... parameters)
     {
@@ -593,8 +592,8 @@ class MatchMethod
 
 	/**
 	 *
-	 * @param method
-	 * @param matchingParametersCount
+	 * @param method Method
+	 * @param matchingParametersCount Matching parameters count
 	 */
 	public MatchMethod(Method method, Integer matchingParametersCount)
 	{
@@ -604,7 +603,7 @@ class MatchMethod
 
 	/**
 	 * Getter.
-	 * @return
+	 * @return Method
 	 */
 	public Method method()
 	{
@@ -613,7 +612,7 @@ class MatchMethod
 
 	/**
 	 * Getter.
-	 * @return
+	 * @return Parameters count
 	 */
 	public Integer matchingParametersCount()
 	{

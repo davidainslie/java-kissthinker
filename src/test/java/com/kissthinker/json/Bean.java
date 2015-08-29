@@ -32,7 +32,7 @@ public class Bean
 
     /**
      *
-     * @param notUsed
+     * @param notUsed Not used
      */
     public Bean(String notUsed)
     {

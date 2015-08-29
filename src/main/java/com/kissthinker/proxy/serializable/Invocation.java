@@ -5,7 +5,7 @@ import java.util.Arrays;
 import com.kissthinker.configure.Configuration;
 
 /**
- * Representation of a Serializable invocation e.g for use with RMI call or Object<Output|Input>Stream.
+ * Representation of a Serializable invocation e.g for use with RMI call or Object&lt;Output|Input&gt;Stream.
  * <p>
  * This is essentially a copy and paste from {@link com.kissthinker.proxy.Invocation}<p>
  * TODO Not good, but the easiest way to make a "serializable" version of {@link com.kissthinker.proxy.Invocation}.
@@ -62,7 +62,10 @@ public class Invocation implements Serializable
         return returnClass;
     }
 
-    /** */
+    /**
+     *
+     * @return boolean
+     */
     public boolean returns()
     {
         return !void.class.isAssignableFrom(returnClass);

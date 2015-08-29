@@ -16,6 +16,9 @@ import com.kissthinker.system.Environment;
 @Target(ElementType.TYPE)
 public @interface Service
 {
-    /** */
+    /**
+     *
+     * @return Environment array
+     */
     Environment[] environment();
 }

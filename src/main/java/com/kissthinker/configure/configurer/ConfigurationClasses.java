@@ -167,7 +167,7 @@ public final class ConfigurationClasses
 
     /**
      * TODO Probably remove this as only referenced by a unit test.
-     * @return Set<Class>
+     * @return Set
      */
     public static Set<Class<?>> configurationClasses()
     {

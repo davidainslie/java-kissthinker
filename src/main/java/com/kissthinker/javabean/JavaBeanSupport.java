@@ -55,6 +55,7 @@ public final class JavaBeanSupport
      * @param javaBean JavaBean
      * @param propertyName Property name
      * @param propertyChangeListener PropertyChangeListener
+     * @param <P> Property type
      * @return JavaBean
      */
     public static <P> JavaBean listen(JavaBean javaBean, String propertyName, PropertyChangeListener propertyChangeListener)
@@ -68,6 +69,7 @@ public final class JavaBeanSupport
      * @param javaBean JavaBean
      * @param propertyName Property name
      * @param propertyChangeListener PropertyChangeListener
+     * @param <P> Property type
      * @return JavaBean.Enumerated
      */
     public static <P> JavaBean.Enumerated<?> listen(JavaBean.Enumerated<?> javaBean, String propertyName, PropertyChangeListener propertyChangeListener)
@@ -81,6 +83,7 @@ public final class JavaBeanSupport
      * @param javaBean JavaBean
      * @param property Property
      * @param propertyChangeListener PropertyChangeListener
+     * @param <P> Property type
      * @return JavaBean.Enumerated
      */
     public static <P> JavaBean.Enumerated<?> listen(JavaBean.Enumerated<?> javaBean, P property, PropertyChangeListener propertyChangeListener)
@@ -93,6 +96,7 @@ public final class JavaBeanSupport
      * 
      * @param collection Collection
      * @param collectionListener PropertyChangeListener
+     * @param <O> Object type
      */
     public static <O> void listen(Collection<O> collection, CollectionListener<O> collectionListener)
     {
@@ -118,9 +122,11 @@ public final class JavaBeanSupport
     }
 
     /**
-     * 
+     *
      * @param map Map
      * @param mapListener Map listener
+     * @param <K> Key type
+     * @param <V> Value type
      */
     public static <K, V> void listen(Map<K, V> map, MapListener<K, V> mapListener)
     {
@@ -208,6 +214,7 @@ public final class JavaBeanSupport
      * @param propertyName Property name
      * @param oldValue Old value
      * @param newValue New value
+     * @param <P> Property type
      * @return JavaBean.Enumerated
      */
     static <P> JavaBean.Enumerated<?> firePropertyChange(JavaBean.Enumerated<?> javaBean, String propertyName, Object oldValue, Object newValue)
@@ -222,6 +229,7 @@ public final class JavaBeanSupport
      * @param property Property
      * @param oldValue Old value
      * @param newValue New value
+     * @param <P> Property type
      * @return JavaBean.Enumerated
      */
     static <P> JavaBean.Enumerated<?> firePropertyChange(JavaBean.Enumerated<?> javaBean, P property, Object oldValue, Object newValue)
@@ -264,6 +272,7 @@ public final class JavaBeanSupport
      * @param index Index
      * @param oldValue Old value
      * @param newValue New value
+     * @param <P> Property type
      * @return JavaBean.Enumerated
      */
     static <P> JavaBean.Enumerated<?> fireIndexedPropertyChange(JavaBean.Enumerated<?> javaBean, String propertyName, int index, Object oldValue, Object newValue)
@@ -279,6 +288,7 @@ public final class JavaBeanSupport
      * @param index Index
      * @param oldValue Old value
      * @param newValue New value
+     * @param <P> Property type
      * @return JavaBean.Enumerated
      */
     static <P> JavaBean.Enumerated<?> fireIndexedPropertyChange(JavaBean.Enumerated<?> javaBean, P property, int index, Object oldValue, Object newValue)
@@ -315,14 +325,20 @@ public final class JavaBeanSupport
         }
     }
 
-    /** */
+    /**
+     *
+     * @return Collection listener count
+     */
     static int collectionListenerCount()
     {
         return COLLECTION_LISTENERS.size();
     }
-    
-    
-    /** */
+
+
+    /**
+     *
+     * @return Map listener count
+     */
     static int mapListenerCount()
     {
         return MAP_LISTENERS.size();

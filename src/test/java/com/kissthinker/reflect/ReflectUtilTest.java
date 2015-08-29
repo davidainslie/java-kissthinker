@@ -20,7 +20,7 @@ public class ReflectUtilTest
     private final String finalInstanceString = null;
 
     /**
-     * For KISS IoC {@link Configurator} we don't want to configure/inject when "something" has been set, in this case "".
+     * For KISS IoC we don't want to configure/inject when "something" has been set, in this case "".
      * Setting to a value should be that valu,e because why would you set it if you want to configure/inject?
      */
     private final String finalInstanceEmptyString = "";

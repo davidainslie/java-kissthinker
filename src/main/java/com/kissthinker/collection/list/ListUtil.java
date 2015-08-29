@@ -15,7 +15,7 @@ public final class ListUtil
     /**
      *
      * @param <O> Type of objects in array
-     * @return ArrayList<O>
+     * @return ArrayList
      */
     public static <O> ArrayList<O> arrayList()
     {
@@ -24,8 +24,9 @@ public final class ListUtil
 
     /**
      *
+     * @param objects Objects
      * @param <O> Type of objects in array
-     * @return ArrayList<O>
+     * @return ArrayList
      */
     @SafeVarargs
     public static <O> ArrayList<O> arrayList(O... objects)
@@ -43,7 +44,7 @@ public final class ListUtil
     /**
      *
      * @param <O> Type of objects in list
-     * @return LinkedList<O>
+     * @return LinkedList
      */
     public static <O> LinkedList<O> linkedList()
     {
@@ -52,8 +53,9 @@ public final class ListUtil
 
     /**
      *
+     * @param objects Objects
      * @param <O> Type of objects in list
-     * @return LinkedList<O>
+     * @return LinkedList
      */
     @SafeVarargs
     public static <O> LinkedList<O> linkedList(O... objects)

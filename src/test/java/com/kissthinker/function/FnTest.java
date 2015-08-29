@@ -68,10 +68,6 @@ public class FnTest
     {
         Function<String> function = function(from(new Function.Callback<String, Void>()
         {
-            /**
-             *
-             * @see com.kissthinker.function.FnTest.Callback#callback(java.lang.Object)
-             */
             @Override
             public String onCallback(Void nill)
             {
@@ -135,7 +131,7 @@ public class FnTest
      * Note that a "function" method must be public and return "something".<p>
      * This can be expected of a "function" as a function should take an input(s) and give back some output.<p>
      * And public, because a function can be passed to around to any class in any package, so accessibility is required.
-     * @param whatever
+     * @param whatever Whatever
      * @return Boolean
      */
     public Boolean applyMe(String whatever)
@@ -148,7 +144,6 @@ public class FnTest
      * Note that a "function" method must be public and return "something".<p>
      * This can be expected of a "function" as a function should take an input(s) and give back some output.<p>
      * And public, because a function can be passed to around to any class in any package, so accessibility is required.
-     * @return
      */
     public Void applyMeAgain()
     {
@@ -160,7 +155,6 @@ public class FnTest
      * Note that a "function" method must be public and return "something".<p>
      * This can be expected of a "function" as a function should take an input(s) and give back some output.<p>
      * And public, because a function can be passed to around to any class in any package, so accessibility is required.
-     * @return
      */
     public Void applyMeAgainReturningActualVoid()
     {
@@ -169,7 +163,7 @@ public class FnTest
     }
 
     /**
-     * Referring to test {@link #executeFunction()} why would we not just implement the {@link Function} interface directly?
+     * Referring to test why would we not just implement the {@link Function} interface directly?
      * We can, as this test shows. However, we lose the power of filter/map/reduce as exposed by {@link CollectionUtil} shown in {@link CollectionUtilTest}
      */
     @Test
@@ -196,9 +190,7 @@ public class FnTest
         assertThat(1).isEqualTo(functionApplyCount);
     }
 
-    /**
-     *
-     */
+    /** */
     @Test
     public void applyFunctionWithPolymorphismNotDoubleDispatchAsWithVisitor()
     {
@@ -227,8 +219,8 @@ public class FnTest
 
     /**
      *
-     * @param bean
-     * @return
+     * @param bean Bean
+     * @return String
      */
     public String onBean(Bean bean)
     {
@@ -237,8 +229,8 @@ public class FnTest
 
     /**
      *
-     * @param bean2
-     * @return
+     * @param bean2 Bean
+     * @return String
      */
     public String onBean(Bean2 bean2)
     {
@@ -319,7 +311,6 @@ public class FnTest
 
     /**
      * This test shows the power/convenience of using {@link Fn} instead of directly implementing {@link Function} as mentioned in {@link FnTest}.
-     * A better example is the test for map {@link mapBeansToStrings}
      */
     @Test
     public void filterBeans()
@@ -332,9 +323,7 @@ public class FnTest
         assertThat(3).isEqualTo(filteredBeans.size());
     }
 
-    /**
-     *
-     */
+    /** */
     @Test
     public void filterSet()
     {
@@ -351,9 +340,7 @@ public class FnTest
         assertThat(3).isEqualTo(filteredSet.size());
     }
 
-    /**
-     *
-     */
+    /** */
     @Test
     public void mapBeansToStrings()
     {
@@ -369,9 +356,7 @@ public class FnTest
         assertThat("Grandad").isEqualTo(beanNames.get(listLastIndex));
     }
 
-    /**
-     * 
-     */
+    /** */
     @Test
     public void sumListOfIntegersByFoldLeft()
     {
@@ -385,8 +370,8 @@ public class FnTest
 
     /**
      * Can be used as a function, and it is used in that way by {@link #sumListOfIntegersByFoldLeft()}
-     * @param i1
-     * @param i2
+     * @param i1 Integer
+     * @param i2 Integer
      * @return Integer the result of adding i1 and i2
      */
     public Integer add(Integer i1, Integer i2)
@@ -422,7 +407,7 @@ public class FnTest
 
         /**
          * Use this method to gain access to the function.
-         * @return
+         * @return Function
          */
         public static Function<Class<?>[]> instance()
         {
@@ -431,8 +416,8 @@ public class FnTest
 
         /**
          * This is the method that is actually wrapped up in a function.
-         * @param object
-         * @return
+         * @param object Object
+         * @return Class array
          */
         public Class<?>[] classHierarchy(Object object)
         {
@@ -459,7 +444,7 @@ public class FnTest
     {
         /**
          *
-         * @param number
+         * @param number Number
          * @return given number multiplied by 10
          */
         public int timesTen(int number)
@@ -477,8 +462,8 @@ public class FnTest
     {
         /**
          *
-         * @param age
-         * @return
+         * @param age Age
+         * @return True or false
          */
         public boolean check(Integer age)
         {
@@ -495,8 +480,8 @@ public class FnTest
     {
         /**
          *
-         * @param age
-         * @return
+         * @param age Age
+         * @return True or false
          */
         public boolean check(Integer age)
         {
@@ -526,8 +511,8 @@ public class FnTest
         }
 
         /**
-         * @param name
-         * @param age
+         * @param name Name
+         * @param age Age
          */
         public Bean(String name, int age)
         {
@@ -613,8 +598,8 @@ public class FnTest
     {
         /**
          *
-         * @param bean
-         * @return
+         * @param bean Bean
+         * @return True or false
          */
         public boolean check(Bean bean)
         {

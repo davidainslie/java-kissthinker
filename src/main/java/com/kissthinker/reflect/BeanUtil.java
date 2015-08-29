@@ -15,8 +15,8 @@ public final class BeanUtil
 {
     /**
      *
-     * @param object
-     * @return
+     * @param object Object
+     * @return Map
      */
     public static Map<String, Object> propertyNamesAndValues(Object object)
     {
@@ -25,9 +25,9 @@ public final class BeanUtil
 
     /**
      * TODO
-     * @param object
-     * @param convertEnumsToStrings
-     * @return
+     * @param object Object
+     * @param convertEnumsToStrings Convert enums to strings
+     * @return Map
      */
     public static Map<String, Object> propertyNamesAndValues(Object object, boolean convertEnumsToStrings)
     {
@@ -55,8 +55,8 @@ public final class BeanUtil
 
     /**
      * TODO
-     * @param object
-     * @return
+     * @param object Object
+     * @return Map
      */
     @SuppressWarnings("unchecked")
     public static Map<String, Object> describe(Object object)
@@ -89,9 +89,9 @@ public final class BeanUtil
 
     /**
      * TODO
-     * @param bean
-     * @param propertyName
-     * @param propertyValue
+     * @param bean Bean
+     * @param propertyName Property name
+     * @param propertyValue Property value
      */
     public static void setProperty(Object bean, String propertyName, Object propertyValue)
     {

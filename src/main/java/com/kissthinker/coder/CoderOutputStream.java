@@ -70,7 +70,7 @@ public class CoderOutputStream extends OutputStream
     /**
      *
      * @param object Object
-     * @throws IOException
+     * @throws IOException Issue encoding
      */
     public void writeObject(Object object) throws IOException
     {
@@ -80,8 +80,9 @@ public class CoderOutputStream extends OutputStream
     /**
      *
      * @param invocation Invocation
+     * @param <I> Object type
      * @return ID
-     * @throws IOException
+     * @throws IOException Issue encoding
      */
     public <I> I writeObject(Invocation invocation) throws IOException
     {
@@ -100,10 +101,11 @@ public class CoderOutputStream extends OutputStream
 
     /**
      *
-     * @param <I> Input type
      * @param id ID
      * @param object Object
-     * @throws IOException
+     * @param <I> Input type
+     * @param <O> Output type
+     * @throws IOException Issue encoding
      */
     public <I, O> void writeObject(I id, O object) throws IOException
     {
@@ -120,7 +122,7 @@ public class CoderOutputStream extends OutputStream
      * @param <O> Object type
      * @param object Object
      * @return Coder
-     * @throws IOException
+     * @throws IOException Issue encoding
      */
     private <O> Coder encodeCoder(O object) throws IOException
     {
@@ -141,7 +143,7 @@ public class CoderOutputStream extends OutputStream
      * @param id ID
      * @param object Object
      * @param coder Coder
-     * @throws IOException
+     * @throws IOException Issue encoding
      */
     private <O, I> void encodeObject(I id, O object, Coder coder) throws IOException
     {

@@ -9,6 +9,7 @@ public interface Coder
     /**
      *
      * @param object Object to encode to an array of bytes
+     * @param <O> Object type
      * @return Array of encoded bytes
      */
     <O> byte[] encode(O object);
@@ -16,6 +17,7 @@ public interface Coder
     /**
      *
      * @param bytes Array of bytes to be decoded
+     * @param <O> Object type
      * @return Object from decoded bytes
      */
     <O> O decode(byte[] bytes);

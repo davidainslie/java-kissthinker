@@ -7,18 +7,16 @@ import static com.kissthinker.collection.set.SetUtil.hashSet;
 /**
  *
  * @author David Ainslie
- * <S> for source to suscribe to and <E> for the published event can of course be the same type if so desired.
- * @param <S>
- * @param <E>
+ * S for source to suscribe to and E for the published event can of course be the same type if so desired.
+ * @param <S> Source type
+ * @param <E> Event type
  */
 public abstract class Publisher<S, E>
 {
     /** */
     private final Set<Subscription<S, E>> subscriptions = hashSet(); // TODO Need a weak hash set
 
-    /**
-     *
-     */
+    /** */
     public Publisher()
     {
         super();

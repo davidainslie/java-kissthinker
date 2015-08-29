@@ -57,7 +57,7 @@ public class Invocation
 
     /**
      *
-     * @return True or false
+     * @return boolean True or false
      */
     public boolean returns()
     {

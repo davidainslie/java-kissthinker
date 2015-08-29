@@ -14,9 +14,8 @@ import static java.text.MessageFormat.format;
 
 /**
  * A general purpose concurrency utility.
- * <p>
- * Concurrency problems are usually categorised as either "high blocking" e.g involve a lot of IO or "low blocking" e.g involve a lot of processing.<p>
- * In either case, a thread pool should be tuned as to the size and whether the size is fixed or dynamic.<br/.
+ * Concurrency problems are usually categorised as either "high blocking" e.g involve a lot of IO or "low blocking" e.g involve a lot of processing.
+ * In either case, a thread pool should be tuned as to the size and whether the size is fixed or dynamic.
  * TODO Allow this general purpose utility be instantiated more than once and so can be configured to the type of problem at hand.
  *
  * @author David Ainslie
@@ -240,31 +239,46 @@ public final class ExecutorUtil
         }
     }
 
-    /** */
+    /**
+     *
+     * @return True or false
+     */
     public static boolean isShutdown()
     {
         return shutdown;
     }
 
-    /** */
+    /**
+     *
+     * @return Current pool size
+     */
     public static int coreCurrentPoolSize()
     {
         return THREAD_POOL_EXECUTOR.getPoolSize();
     }
 
-    /** */
+    /**
+     *
+     * @return Pool size
+     */
     public static int corePoolSize()
     {
         return THREAD_POOL_EXECUTOR.getCorePoolSize();
     }
 
-    /** */
+    /**
+     *
+     * @return Maximum pool size
+     */
     public static int coreMaximumPoolSize()
     {
         return THREAD_POOL_EXECUTOR.getMaximumPoolSize();
     }
 
-    /** */
+    /**
+     *
+     * @return Awaiting task count
+     */
     public static int awaitingTaskCount()
     {
         return THREAD_POOL_EXECUTOR.getQueue().size();

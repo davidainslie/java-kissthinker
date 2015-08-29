@@ -19,16 +19,16 @@ public abstract class ObjectUtil
 	/**
 	 * This is a naughty (generics) cast that avoids 2 issues.<br>
 	 * 1) Having to write a cast in front of an "object", where the cast is already implied by the assigned variable e.g.
-	 * Map<String, MyClass> map = (Map<String, MyClass>)someObject;
+	 * Map map = (Map)someObject;
 	 * But the variable "map" already implies the type so why write it all out again.
 	 * Instead do:
 	 * import static com.ddtechnology.reflect.ObjectUtils.cast;
-	 * Map<String, MyClass> map = cast(someObject);<br>
+	 * Map map = cast(someObject);
 	 * 2) Prevent the "unchecked" warning because of "generics casting".
 	 * Of course this actually implies that your code "smells", but we are all guilty of some hacking and sometimes you just don't want the warning.
-	 * @param <O>
-	 * @param object
-	 * @return
+	 * @param <O> Object type
+	 * @param object Object
+	 * @return Object
 	 */
 	//@UsageWarning
 	@SuppressWarnings("unchecked")
@@ -38,6 +38,8 @@ public abstract class ObjectUtil
 	}
 
     /**
+     *
+     * @param object Object
      * @return name class name only i.e. without package name.
      */
     public static String className(Object object)
@@ -65,8 +67,8 @@ public abstract class ObjectUtil
 
     /**
      *
-     * @param className
-     * @return
+     * @param className Class name
+     * @return String
      */
     public static String className(String className)
     {
@@ -76,7 +78,9 @@ public abstract class ObjectUtil
     }
 
     /**
-     * @return name class name along with its package. Note that this method will produce e.g. "com.ddtechnology.SomeClass",
+     *
+     * @param object Object
+     * @return name class name along with its package. Note that this method will produce e.g. "com.ddtechnology.SomeClass"
      */
     public static String fullClassName(Object object)
     {
@@ -97,8 +101,8 @@ public abstract class ObjectUtil
 
     /**
      *
-     * @param object
-     * @return
+     * @param object Object
+     * @return Package name
      */
     public static String packageName(Object object)
     {
@@ -114,8 +118,8 @@ public abstract class ObjectUtil
 
     /**
      *
-     * @param class_
-     * @return
+     * @param class_ Class
+     * @return Package name
      */
     public static String packageName(Class<?> class_)
     {
@@ -130,7 +134,10 @@ public abstract class ObjectUtil
     }
 
     /**
-     * @return name class name along with its package. Note that this method will produce e.g. "com.ddtechnology.SomeClass",
+     *
+     * @param object1 Object
+     * @param object2 Object
+     * @return name class name along with its package. Note that this method will produce e.g. "com.ddtechnology.SomeClass"
      */
     public static boolean isSameClass(Object object1, Object object2)
     {
@@ -139,9 +146,9 @@ public abstract class ObjectUtil
 
     /**
      *
-     * @param class1
-     * @param class2
-     * @return
+     * @param class1 Class
+     * @param class2 class
+     * @return True of false
      */
     public static boolean isSameClass(Class<?> class1, Class<?> class2)
     {
@@ -150,7 +157,7 @@ public abstract class ObjectUtil
 
     /**
      *
-     * @param <O>
+     * @param <O> Object type
      * @param object of which a deep (complete) copy is performed and returned - note that the given object must be serializable.
      * @return deep copy of given object.
      */
@@ -179,9 +186,9 @@ public abstract class ObjectUtil
 
     /**
      *
-     * @param <O>
-     * @param object
-     * @return
+     * @param <O> Object type
+     * @param object Object
+     * @return Object
      */
     @SuppressWarnings("unchecked")
     public static <O extends Serializable> O deepCopyViaJBoss(O object)
@@ -203,9 +210,9 @@ public abstract class ObjectUtil
 
     /**
      * Does "container" have a reference (direct or indirect) to a given object that is a @Property
-     * @param container
-     * @param object
-     * @return
+     * @param container Container
+     * @param object Object
+     * @return True or false
      */
     public static boolean hasProperty(Object container, Object object)
     {
@@ -245,10 +252,10 @@ class FastByteArrayOutputStream extends OutputStream
     /** */
     private int size;
 
-	/**
-	 *
-	 * @see java.io.OutputStream#write(byte[])
-	 */
+    /**
+     * @see java.io.OutputStream#write(byte[])
+     * @param bytes array of bytes
+     */
     @Override
     public void write(byte bytes[])
     {
@@ -257,10 +264,12 @@ class FastByteArrayOutputStream extends OutputStream
         size += bytes.length;
     }
 
-	/**
-	 *
-	 * @see java.io.OutputStream#write(byte[], int, int)
-	 */
+    /**
+     * @see java.io.OutputStream#write(byte[], int, int)
+     * @param bytes array of bytes
+     * @param offSet Offset
+     * @param length Length
+     */
     @Override
     public void write(byte bytes[], int offSet, int length)
     {
@@ -269,10 +278,10 @@ class FastByteArrayOutputStream extends OutputStream
         size += length;
     }
 
-	/**
-	 *
-	 * @see java.io.OutputStream#write(int)
-	 */
+    /**
+     * @see java.io.OutputStream#write(int)
+     * @param aByte A byte
+     */
     @Override
     public void write(int aByte)
     {
@@ -299,6 +308,7 @@ class FastByteArrayOutputStream extends OutputStream
 
     /**
      * Ensures that we have a large enough buffer for the given size.
+     * @param newSize The new size
      */
     void verifyBufferSize(int newSize)
     {
@@ -311,22 +321,25 @@ class FastByteArrayOutputStream extends OutputStream
         }
     }
 
-	/** */
+    /**
+     *
+     * @return The size
+     */
     int getSize()
     {
         return size;
     }
 
     /**
-     * Returns the byte array containing the written data. Note that this array will almost always be larger than the
-     * amount of data actually written.
+     * Returns the byte array containing the written data. Note that this array will almost always be larger than the amount of data actually written.
+     * @return array of bytes
      */
     byte[] getByteArray()
     {
         return buffer;
     }
 
-	/** */
+    /** */
     void reset()
     {
         size = 0;
@@ -334,6 +347,7 @@ class FastByteArrayOutputStream extends OutputStream
 
     /**
      * Returns a ByteArrayInputStream for reading back the written data
+     * @return InputStream
      */
     InputStream getInputStream()
     {
@@ -356,20 +370,23 @@ class FastByteArrayInputStream extends InputStream
     /** */
     private int position; // Number of bytes that have been read from the buffer
 
-	/**
-	 *
-	 * @see java.io.InputStream#read()
-	 */
+    /**
+     * @see java.io.InputStream#read()
+     * @return Read how much
+     */
 	@Override
     public int read()
     {
         return (position < count) ? (buffer[position++] & 0xff) : -1;
     }
 
-	/**
-	 *
-	 * @see java.io.InputStream#read(byte[], int, int)
-	 */
+    /**
+     * @see java.io.InputStream#read(byte[], int, int)
+     * @param bytes array bytes
+     * @param offSet Offset
+     * @param length Length
+     * @return Read hom much
+     */
     @Override
     public int read(byte[] bytes, int offSet, int length)
     {
@@ -389,20 +406,21 @@ class FastByteArrayInputStream extends InputStream
         return length;
     }
 
-	/**
-	 *
-	 * @see java.io.InputStream#available()
-	 */
+    /**
+     * @see java.io.InputStream#available()
+     * @return How much available
+     */
     @Override
     public int available()
     {
         return count - position;
     }
 
-	/**
-	 *
-	 * @see java.io.InputStream#skip(long)
-	 */
+    /**
+     * @see java.io.InputStream#skip(long)
+     * @param n How many to skip
+     * @return long
+     */
     @Override
     public long skip(long n)
     {
@@ -422,8 +440,8 @@ class FastByteArrayInputStream extends InputStream
 
 	/**
 	 *
-	 * @param buffer
-	 * @param count
+	 * @param buffer Bytes array
+	 * @param count Count
 	 */
     FastByteArrayInputStream(byte[] buffer, int count)
     {

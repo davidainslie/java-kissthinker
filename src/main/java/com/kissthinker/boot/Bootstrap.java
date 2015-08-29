@@ -45,7 +45,10 @@ import static com.kissthinker.function.Fn.function;
 @Target(ElementType.TYPE)
 public @interface Bootstrap
 {
-    /** */
+    /**
+     *
+     * @return Environment
+     */
     Environment environment() default Environment.INTEGRATION;
 
     /**
@@ -102,6 +105,7 @@ public @interface Bootstrap
         /**
          *
          * @param joinPoint Defined point in execution of application
+         * @param bootstrap Bootstrap
          */
         @Before("within(@com.kissthinker.boot.Bootstrap *) && @annotation(bootstrap)")
         public void bootstrap(JoinPoint joinPoint, Bootstrap bootstrap)

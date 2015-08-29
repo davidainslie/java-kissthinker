@@ -14,7 +14,7 @@ public final class ClassUtil
      * @param <C> Class type
      * @param pathAndClassName Path and class name
      * @return Instance of class
-     * @throws ClassNotFoundException
+     * @throws ClassNotFoundException As is says on the tin
      */
     @SuppressWarnings("unchecked")
     public static <C> Class<C> loadClass(String pathAndClassName) throws ClassNotFoundException

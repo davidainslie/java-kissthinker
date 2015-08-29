@@ -10,7 +10,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-import com.gson4javaext.core.ClassMetaData;
 import com.gson4javaext.core.GSON4JavaExt;
 import com.gson4javaext.core.Java2JSON;
 

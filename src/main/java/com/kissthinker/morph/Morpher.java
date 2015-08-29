@@ -20,7 +20,7 @@ import com.kissthinker.morph.ezmorph.EZMorpher;
 public interface Morpher
 {
     /**
-     * Morph (transform/convert) given object to the required class i.e to an object of type toClass, Class<O>
+     * Morph (transform/convert) given object to the required class i.e to an object of type toClass, Class
      * @param <O> Object type
      * @param object Object
      * @param toClass Class to morph object to

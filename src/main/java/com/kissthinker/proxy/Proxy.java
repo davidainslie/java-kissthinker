@@ -11,6 +11,8 @@ public interface Proxy
      * Instead of simply passing in one argument of {@link Class} to be used as the blueprint for creating a proxy object (which was actually the way it was initially coded),
      * a wrapper is used for any future additions/enhancements to {@link ClassInfo} allowing client code to access future "extras" but without changing the method contract.
      * @param classInfo Class info
+     * @param <O> Object type
+     * @param <P> Parent type
      * @return O a proxy for the given (wrapped) class
      */
     <O, P> O create(ClassInfo<O, P> classInfo);
@@ -37,8 +39,8 @@ public interface Proxy
      * 
      * @author David Ainslie
      *
-     * @param <O>
-     * @param <P>
+     * @param <O> Object type
+     * @param <P> Parent type
      */
     public static class ClassInfo<O, P>
     {

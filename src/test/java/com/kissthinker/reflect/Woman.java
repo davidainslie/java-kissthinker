@@ -20,10 +20,7 @@ public class Woman implements Serializable
         super();
     }
 
-    /**
-     *
-     * @param home
-     */
+    /** */
     public Woman(Address home)
     {
         this.home = home;
@@ -35,10 +32,7 @@ public class Woman implements Serializable
         return home;
     }
 
-    /**
-     *
-     * @param home
-     */
+    /** */
     public Woman home(Address home)
     {
         //PropertySupport.set(this, "home", home);

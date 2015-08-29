@@ -51,7 +51,7 @@ public interface JavaBean
          * @param javaBean JavaBean
          * @param newValue Object
          * @return Object
-         * @throws Throwable
+         * @throws Throwable Issue with setting property
          */
         @Around("set(* *.*) && @annotation(com.kissthinker.javabean.Property) && target(javaBean) && args(newValue)")
         public Object setProperty(ProceedingJoinPoint proceedingJoinPoint, JavaBean javaBean, Object newValue) throws Throwable
@@ -84,11 +84,11 @@ public interface JavaBean
         /**
          * 
          * @param proceedingJoinPoint ProceedingJoinPoint
-         * @param collection Note the use of @SuppressWarnings("rawtypes") as AspectJ cannot handle a declaration of Collection<?>, the compile error would be<p>
+         * @param collection Note the use of @SuppressWarnings("rawtypes") as AspectJ cannot handle a declaration of Collection, the compile error would be<p>
          * parameterized types not supported for this and target pointcuts (erasure limitation)
          * @param object Object
          * @return Object
-         * @throws Throwable
+         * @throws Throwable Issue of add
          */
         @Around("call(* java.util.Collection+.add(..)) && target(collection) && args(object)")
         public Object add(ProceedingJoinPoint proceedingJoinPoint, @SuppressWarnings("rawtypes") Collection collection, final Object object) throws Throwable
@@ -104,7 +104,7 @@ public interface JavaBean
          * @param collection Collection
          * @param object Object
          * @return Object
-         * @throws Throwable
+         * @throws Throwable Issue of remove
          */
         @Around("call(* java.util.Collection+.remove(..)) && target(collection) && args(object)")
         public Object remove(ProceedingJoinPoint proceedingJoinPoint, @SuppressWarnings("rawtypes") Collection collection, final Object object) throws Throwable
@@ -129,12 +129,12 @@ public interface JavaBean
         /**
          * 
          * @param proceedingJoinPoint ProceedingJoinPoint
-         * @param map Note the use of @SuppressWarnings("rawtypes") as AspectJ cannot handle a declaration of Map<?, ?>, the compile error would be<p>
+         * @param map Note the use of @SuppressWarnings("rawtypes") as AspectJ cannot handle a declaration of Map, the compile error would be<p>
          * parameterized types not supported for this and target pointcuts (erasure limitation)
          * @param key Key
          * @param value Value
          * @return Object
-         * @throws Throwable
+         * @throws Throwable Issue of put
          */
         @Around("call(* java.util.Map+.put(..)) && target(map) && args(key, value)")
         public Object put(ProceedingJoinPoint proceedingJoinPoint, @SuppressWarnings("rawtypes") Map map, final Object key, final Object value) throws Throwable
@@ -152,7 +152,7 @@ public interface JavaBean
          * @param map Map
          * @param key Key
          * @return Object
-         * @throws Throwable
+         * @throws Throwable Issue of remove
          */
         @Around("call(* java.util.Map+.remove(..)) && target(map) && args(key)")
         public Object remove(ProceedingJoinPoint proceedingJoinPoint, @SuppressWarnings("rawtypes") Map map, final Object key) throws Throwable

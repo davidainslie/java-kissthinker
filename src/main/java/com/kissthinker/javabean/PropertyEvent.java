@@ -38,7 +38,7 @@ public class PropertyEvent<V> extends PropertyChangeEvent
 
     /**
      *
-     * @param propertyChangeEvent
+     * @param propertyChangeEvent Property change event
      */
     public PropertyEvent(PropertyChangeEvent propertyChangeEvent)
     {

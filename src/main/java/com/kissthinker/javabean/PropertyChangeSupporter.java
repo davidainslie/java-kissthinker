@@ -8,6 +8,9 @@ import java.beans.PropertyChangeSupport;
  */
 public interface PropertyChangeSupporter
 {
-    /** */
+    /**
+     *
+     * @return PropertyChangeSupport
+     */
     PropertyChangeSupport propertyChangeSupport();
 }

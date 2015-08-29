@@ -17,7 +17,7 @@ public class MethodException extends RuntimeException
     
     /**
      *
-     * @param message
+     * @param message Message
      */
     public MethodException(String message)
     {
@@ -26,7 +26,7 @@ public class MethodException extends RuntimeException
 
     /**
      *
-     * @param cause
+     * @param cause Cause
      */
     public MethodException(Throwable cause)
     {
@@ -35,8 +35,8 @@ public class MethodException extends RuntimeException
 
     /**
      *
-     * @param message
-     * @param cause
+     * @param message Message
+     * @param cause Cause
      */
     public MethodException(String message, Throwable cause)
     {

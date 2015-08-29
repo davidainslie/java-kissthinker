@@ -30,67 +30,64 @@ import static java.text.MessageFormat.format;
  * <pre>
  * {@code @Configure} private Foo foo = new Foo();
  * </pre>
- * This variable will not be configured, essentially it is not eligible for being configured because an actual value has been stipulated.<p>
- * This has been done for 2 reasons.<p>
- * 1) It allows for normal/usual Java development or using "new" (whether instantiated by a factory or not does not matter).<p>
- * 2) Allowing this is beneficial from a client developing perspective as, when a class is first developed, there may not be an appropriate configuration.<p>
- * This may not actually be a valid reason, but a Developer will often just want to instantiate anything as a means to testing the initial (and ongoing) development.<p>
- * Note that if "foo = null" in the declaration, it can be configured.<p>
- * This is actually essential for "final" fields as a final field always has to be set to "something". By setting a final initially to null we keep the compiler happy.<p>
- * At this point of "initialisation", note that a Developer is still allowed to set (final and non final) fields in class and instance initialisers.<p>
- * Again, this allows for normal/usual Java development. However, this does go against the idea of using a "configuration framework", but at least the "framework" does not intefere.<p>
- * <p>
- * So how is an application configured (say use xml, or scripting, or some custom way - this is allowed by this framework) is actually configurable.<p>
+ * This variable will not be configured, essentially it is not eligible for being configured because an actual value has been stipulated.
+ * This has been done for 2 reasons.
+ * 1) It allows for normal/usual Java development or using "new" (whether instantiated by a factory or not does not matter).
+ * 2) Allowing this is beneficial from a client developing perspective as, when a class is first developed, there may not be an appropriate configuration.
+ * This may not actually be a valid reason, but a Developer will often just want to instantiate anything as a means to testing the initial (and ongoing) development.
+ * Note that if "foo = null" in the declaration, it can be configured.
+ * This is actually essential for "final" fields as a final field always has to be set to "something". By setting a final initially to null we keep the compiler happy.
+ * At this point of "initialisation", note that a Developer is still allowed to set (final and non final) fields in class and instance initialisers.
+ * Again, this allows for normal/usual Java development. However, this does go against the idea of using a "configuration framework", but at least the "framework" does not intefere.
+ * So how is an application configured (say use xml, or scripting, or some custom way - this is allowed by this framework) is actually configurable.
  * If the sytem property "application.configurer" is provided and that "class name" declares an extension of {@link Configurer},
  * then configurations are performed by the instructions laid out by that implementation.
  * The default "configurer" is {@link ConfigurationConfigurer}
  * There are rules to the configuration process (mainly what is the order of getting an appropriate/desired configuration).
  * These rules are declared within a {@link Configurer}, whether those rules use helper methods in the abstract class {@link Configurer} that all configurers should extend
  * of whether custom rules are coded. Here follows some examples of rules.
- * <p>
- * One would hope that "id" is not provided, as Configurations is really about "I don't care, just configure me".<p>
- * However if an "id" is provided, then it is assumed that the Developer want something specific and so this takes highest priority.<p>
+ * One would hope that "id" is not provided, as Configurations is really about "I don't care, just configure me".
+ * However if an "id" is provided, then it is assumed that the Developer want something specific and so this takes highest priority.
  * But also not, that if the sytem property "application.configurer" is provided, then any list of "Configurer" can be provided in any order, so overriding these defaults.
- * <p>
  * <pre>
  * configure.id()
- *  -> system property
- *      => bean id to in Configurations
- *      => class name
- *      => value to morph
+ *  - system property
+ *      - bean id to in Configurations
+ *      - class name
+ *      - value to morph
  *
- *  -> META-INF/configure/application-env.properties
- *      => bean id to in Configurations
- *      => class name
- *      => value to morph
+ *  - META-INF/configure/application-env.properties
+ *      - bean id to in Configurations
+ *      - class name
+ *      - value to morph
  *
- *  -> META-INF/configure/application.properties
- *      => bean id to in Configurations
- *      => class name
- *      => value to morph
+ *  - META-INF/configure/application.properties
+ *      - bean id to in Configurations
+ *      - class name
+ *      - value to morph
  *
  * ConfigurationsConfigurer, the default configurer
- *  -> Configurations
+ *  - Configurations
  *
  * Field type
- *  -> system property
- *      => class name
+ *  - system property
+ *      - class name
  *
- *  -> META-INF/configure/packageAndClassType-env.properties  where class type is the class where the @Configure field is
+ *  - META-INF/configure/packageAndClassType-env.properties  where class type is the class where the @Configure field is
  *      e.g. META-INF/configure/com/kisstrader/code/Trader-test.properties
- *       => bean id to in Configurations
- *       => class name
- *       => value to morph
+ *       - bean id to in Configurations
+ *       - class name
+ *       - value to morph
  *
- *  -> META-INF/configure/packageAndClassType.properties
- *      => bean id to in Configurations
- *      => class name
- *      => value to morph
+ *  - META-INF/configure/packageAndClassType.properties
+ *      - bean id to in Configurations
+ *      - class name
+ *      - value to morph
  *
  * One would hope (just like "id") that "otherwise" is not provided, but this is a useful compromise especially during development (testing/mocking).
  *
  * otherwise
- *      => value to morph
+ *      - value to morph
  *
  * Other existing "configurers" that can be used:
  * {@link JavaBeanXMLConfigurer} - This uses Java's XMLDecoder to read a XML file that is a configuration.
@@ -104,22 +101,22 @@ import static java.text.MessageFormat.format;
  * Like any configuration, IoC, dependency injection framework (or however you wish to name this process), one must be careful of cyclic dependencies.<p>
  * Example:
  * <pre>
- * @@Singleton
- * @@Configurable
- * @@Configuration
+ * Singleton
+ * Configurable
+ * Configuration
  * public class A
  * {
- *      @@Configure B b
+ *      Configure B b
  * }
  *
- * @@Configurable
- * @@Configuration
+ * Configurable
+ * Configuration
  * public class BImpl extends B
  * {
- *      @@Configure A a
+ *      Configure A a
  * }
  *
- * -> the above would only work if at least one class is a singleton.
+ * - the above would only work if at least one class is a singleton.
  * TODO If not, should detect this (I guess possible) infinite recursion and log it. Test it
  * </pre>
  * Final note about "otherwise" (which should actually be avoided like the use of "id" i.e should really only declare @Configure with no attributes)<p>
@@ -275,7 +272,7 @@ public class Configurator
      *
      * @param proceedingJoinPoint ProceedingJoinPoint
      * @return Object
-     * @throws Throwable
+     * @throws Throwable Issue getting configured
      */
     @Around("get(* *.*) && @annotation(com.kissthinker.configure.Configure)")
     public Object gettingConfigured(ProceedingJoinPoint proceedingJoinPoint) throws Throwable

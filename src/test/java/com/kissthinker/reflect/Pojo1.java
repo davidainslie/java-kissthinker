@@ -14,19 +14,13 @@ public class Pojo1 implements PojoInterface
 	    super();
 	}
 
-	/**
-	 *
-	 * @param decorated
-	 */
+	/** */
 	public Pojo1(PojoInterface decorated)
 	{
 		this.decorated = decorated;
 	}
 
-	/**
-	 *
-	 * @see com.kissthinker.PojoInterface#decorated()
-	 */
+	/** */
 	@Override
 	public PojoInterface decorated()
 	{

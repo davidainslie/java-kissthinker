@@ -19,15 +19,27 @@ import com.kissthinker.system.Environment;
 @Target(ElementType.TYPE)
 public @interface Configuration
 {
-    /** An interface/class name is used by default to identify a "configuration", of which this given "id" can override. */
+    /**
+     * An interface/class name is used by default to identify a "configuration", of which this given "id" can override.
+     * @return ID
+     */
     String id() default "";
 
-    /** */
+    /**
+     *
+     * @return Environment array
+     */
     Environment[] environment();
 
-    /** */
+    /**
+     *
+     * @return Proxy class
+     */
     Class<? extends Proxy> proxy() default Proxy.Null.class;
 
-    /** For more than one available "configuration" within an "environment" a default (if available) will be used, else, the most specific "configuration". */
+    /**
+     * For more than one available "configuration" within an "environment" a default (if available) will be used, else, the most specific "configuration".
+     * @return True or false
+     */
     boolean isDefault() default false;
 }
