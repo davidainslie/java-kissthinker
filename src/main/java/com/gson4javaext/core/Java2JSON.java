@@ -9,8 +9,8 @@ import com.gson4javaext.core.transformers.EnumTransformer;
 import com.gson4javaext.core.transformers.TransformerBase;
 
 /**
- * David Ainslie has updated this class to utilise the new implementation of {@link EnumTransformer} to handle enums.<p>
- * As stated in {@link EnumTransformer}, the version downloaded was empty and was not used (even though the website http://code.google.com/p/gson4javaext/, at the time, claimed to support enums).<p>
+ * David Ainslie has updated this class to utilise the new implementation of {@link EnumTransformer} to handle enums.
+ * As stated in {@link EnumTransformer}, the version downloaded was empty and was not used (even though the website http://code.google.com/p/gson4javaext/, at the time, claimed to support enums).
  * I've simply harded the use of {@link EnumTransformer}. Hopefully a future version of GSON4JavaExt will be complete.
  *
  */

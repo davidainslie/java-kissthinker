@@ -2,7 +2,7 @@ package com.kissthinker.coder;
 
 /**
  * ID wrapper around an object.
- * <p>
+ *
  * @author David Ainslie
  *
  */

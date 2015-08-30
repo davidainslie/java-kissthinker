@@ -20,18 +20,18 @@ import static java.text.MessageFormat.format;
 
 /**
  * Simple API to work with XML - Essentially a wrapper around an xml string.
- * <p>
- * Fast at building XML - Internally a StringBuilder is used and nodes, attributes, text are all strings.<p>
- * Functionality included to convert XML (whether a String or String from some Stream) to a {@link Map}.<p>
+ *
+ * Fast at building XML - Internally a StringBuilder is used and nodes, attributes, text are all strings.
+ * Functionality included to convert XML (whether a String or String from some Stream) to a {@link Map}.
  * TODO Issue with coverting to a map as keys are overwritten - need a key to be mapped to list
  * XMLTest use of example.xml shows this issue as the results are:
  * Key-parent.child.id  Value-whatever 2
  * Key-parent.child  Value-
  * Key-parent.child.grandchild  Value-Some grandchild text
  * Key-parent  Value-
- * <p>
+ *
  * A fluent API allows for a DSL like way of constructing XML, somewhat akin to the way Groovy provides "markup builders".
- * <p>
+ *
  * @author David Ainslie
  *
  */
@@ -106,7 +106,7 @@ public final class XML
     }
 
     /**
-     * The given xml string is parsed into {@link XML}.<p>
+     * The given xml string is parsed into {@link XML}.
      * TODO Currently no actual parsing, only reading in to allow for xpath lookup.
      * @param xml XML
      * @return XML
@@ -117,7 +117,7 @@ public final class XML
     }
 
     /**
-     * The given xml input stream is parsed into {@link XML}.<p>
+     * The given xml input stream is parsed into {@link XML}.
      * TODO Currently no actual parsing, only reading in to allow for xpath lookup.
      * @param xmlInputStream XML input stream
      * @return XML
@@ -217,8 +217,8 @@ public final class XML
     }
 
     /**
-     * Create a node with the given name.<p>
-     * This new node will be a sub node to the current node, where the current node will be the parent.<p>
+     * Create a node with the given name.
+     * This new node will be a sub node to the current node, where the current node will be the parent.
      * E.g create "new node" under "current node"
      * @param name of the XML node
      * @return XML of newly created node
@@ -231,8 +231,8 @@ public final class XML
     }
 
     /**
-     * Create a node with the given name and include the node text.<p>
-     * This new node will be a sub node to the current node, where the current node will be the parent.<p>
+     * Create a node with the given name and include the node text.
+     * This new node will be a sub node to the current node, where the current node will be the parent.
      * This is really a convenience method as instead {@link #text(String)} can be called after calling {@link #node(String)}
      * @param name of the XML node
      * @param text to include within the node
@@ -286,7 +286,7 @@ public final class XML
     }
 
     /**
-     * Add an attibute to the current node.<p>
+     * Add an attibute to the current node.
      * The given name may include "an ampersand" to separate multiple attribute names where each will be set on the current node with the given value.
      * @param name of the attribute which can be multiple names delimited by "an ampersand"
      * @param value of the attribute - as this is an Object and XML deals with strings, the given value should have an appropriate "toString()"
@@ -312,7 +312,7 @@ public final class XML
     }
 
     /**
-     * Get text() or "attribute" form XML.<p>
+     * Get text() or "attribute" form XML.
      * Internally the given xpath is converted to a regular expression for fast lookup e.g.
      * <pre>
      * Given xpath //ServiceStatus/StatusNbr/text() internally is converted to ServiceStatus.*&lt;StatusNbr&gt;(.*)&lt;\\/StatusNbr&gt;
@@ -392,8 +392,8 @@ public final class XML
     }
 
     /**
-     * Get text() or "attribute" form XML.<p>
-     * Internally the given xpath is converted to a regular expression for fast lookup.<p>
+     * Get text() or "attribute" form XML.
+     * Internally the given xpath is converted to a regular expression for fast lookup.
      * This method can be thought of as an asynchronous version of {@link #get(String)}
      * @param xpath XPath
      * @param attributeCallback Attribute callback
@@ -450,7 +450,7 @@ public final class XML
     }
 
     /**
-     * Upon calling, if {@link #xmlEnd()} has yet to be called, the returned string will only be for the current node.<p>
+     * Upon calling, if {@link #xmlEnd()} has yet to be called, the returned string will only be for the current node.
      * The commented out code in this implementation would handle automatic closing, but this reduced flexibilty such as logging of added nodes.
      * @see java.lang.Object#toString()
      */
@@ -537,7 +537,7 @@ public final class XML
 
     /**
      * Callback for when an XPath expression expects to process a list.
-     * <p>
+     *
      * @author David Ainslie
      *
      */
@@ -596,10 +596,10 @@ public final class XML
 
     /**
      * To convert xml into a Map<String, String>
-     * <p>
-     * TODO Not yet namespace aware<p>
-     * This is a subclass of {@link ContentHandler} and contains the event listeners related to xml parsing.<p>
-     * Note that the "map" has keys ordered by entry.<p>
+     *
+     * TODO Not yet namespace aware
+     * This is a subclass of {@link ContentHandler} and contains the event listeners related to xml parsing.
+     * Note that the "map" has keys ordered by entry.
      *
      * @author David Ainslie
      *
@@ -619,8 +619,8 @@ public final class XML
         private boolean nodeRead = false;
 
         /**
-         * Called when an element is being read.<p>
-         * This method will store the key of element in {@link #key}. This key will be used in map.<p>
+         * Called when an element is being read.
+         * This method will store the key of element in {@link #key}. This key will be used in map.
          * The elements attributes are handled here.
          * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
          */
@@ -660,7 +660,7 @@ public final class XML
         }
 
         /**
-         * Called when the value of element is being read.<p>
+         * Called when the value of element is being read.
          * This method will store the value of element in {@link #value}. Both key and value will be stored in map.
          * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
          */

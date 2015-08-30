@@ -15,7 +15,7 @@ import static com.kissthinker.object.ObjectUtil.morph;
 /**
  * Look for "configurations" to be "injected" into fields annotated with {@link Configure} by searching the classpath for implementations
  * whether interfaces, abstract classes or concrete classes that have the type annotation {@link Configuration}
- * <p>
+ *
  * @author David Ainslie
  *
  */
@@ -126,9 +126,9 @@ public class ConfigurationConfigurer extends Configurer
      *  <li>/META-INF/configure/com/kissthinker/blah/BlahClass.properties</li>
      *  <li>/META-INF/configure/com/kissthinker/blah/BlahClass-ENV.properties</li>
      * </ul>
-     * Note, that I thought about allowing "property" file lookups even without have "id" set on annotation {@link Configure} e.g<p>
-     * {@code @Configure(id="myIDGenerator") private final IDGenerator<?> idGenerator = null; }<p>
-     * The idea would be that the name of the field would be used (via reflection) to look up a property setting.<p>
+     * Note, that I thought about allowing "property" file lookups even without have "id" set on annotation {@link Configure} e.g
+     * {@code @Configure(id="myIDGenerator") private final IDGenerator<?> idGenerator = null; }
+     * The idea would be that the name of the field would be used (via reflection) to look up a property setting.
      * However, the issue with this is when refactoring, such as changing the name of the field - and one forgets to update that name in the properties file.
      * @param key Key
      * @param configurableClass Configurable class

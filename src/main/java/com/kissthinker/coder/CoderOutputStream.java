@@ -15,12 +15,12 @@ import static com.kissthinker.collection.array.ArrayUtil.va;
 
 /**
  * A {@link Coder} version of an {@link OutputStream} where objects are written (much like an {@link ObjectOutputStream} but as a standard stream of encoded bytes.
- * <p>
- * Given objects (and {@link Invocation} objects) are encoded via a {@link Coder}. At the other end of the communication channel a {@link CoderInputStream} should be used.<p>
- * Notes/Decisions regarding API (and implementation):<p>
- * The method {@link #writeObject(Invocation)} returns an "id" that acts as a "message identifier", so that an outgoing "message" can be matched to one incoming.<p>
- * The ID from an IDGenerator (configured/injected) can be thought of as analogous to a topic/queue name in JMS, or a RMI identifier<p>
- * i.e we manage to have different forms of communication but all analogous.<p>
+ *
+ * Given objects (and {@link Invocation} objects) are encoded via a {@link Coder}. At the other end of the communication channel a {@link CoderInputStream} should be used.
+ * Notes/Decisions regarding API (and implementation):
+ * The method {@link #writeObject(Invocation)} returns an "id" that acts as a "message identifier", so that an outgoing "message" can be matched to one incoming.
+ * The ID from an IDGenerator (configured/injected) can be thought of as analogous to a topic/queue name in JMS, or a RMI identifier
+ * i.e we manage to have different forms of communication but all analogous.
  * Also note, that the coder streams were originally in project "io-kissthinker", and was moved to "core" to be alongside all other coder functionality - whether this is best I don't know.
  * @author David Ainslie
  *
@@ -156,7 +156,7 @@ public class CoderOutputStream extends OutputStream
     }
 
     /**
-     * Get {@link Coder} for given object, where if there is none available/found then use the {@link #DEFAULT_CODER}.<p>
+     * Get {@link Coder} for given object, where if there is none available/found then use the {@link #DEFAULT_CODER}.
      * @param <O> Object type
      * @param object Object
      * @return Coder

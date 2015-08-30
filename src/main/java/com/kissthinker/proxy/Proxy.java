@@ -7,7 +7,7 @@ package com.kissthinker.proxy;
 public interface Proxy
 {   
     /**
-     * Create (instantiate) an object for the given class which is wrapped within a {@link ClassInfo}.<p>
+     * Create (instantiate) an object for the given class which is wrapped within a {@link ClassInfo}.
      * Instead of simply passing in one argument of {@link Class} to be used as the blueprint for creating a proxy object (which was actually the way it was initially coded),
      * a wrapper is used for any future additions/enhancements to {@link ClassInfo} allowing client code to access future "extras" but without changing the method contract.
      * @param classInfo Class info

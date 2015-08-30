@@ -24,19 +24,19 @@ import static com.kissthinker.function.Fn.function;
 
 /**
  * Bootstrap classes such as those with a "main" method or unit tests may be "marked up" by this annotation to allow for "automatic initialisation".
- * <p>
- * Automatic initialisation includes starting all services that have been marked up with {@link Service}<p>
- * There is an inner static class that handles the bootstrapping automatically as an "aspect".<p>
- * NOTE That "bootstapping" can still be called directly (and so not have to annotate with @Bootstrap).<p>
- * In this case, client code would call the following:<p>
- * Note that calling the following multiple times would still only initialise once (this is handled by the implementation).<p>
+ *
+ * Automatic initialisation includes starting all services that have been marked up with {@link Service}
+ * There is an inner static class that handles the bootstrapping automatically as an "aspect".
+ * NOTE That "bootstapping" can still be called directly (and so not have to annotate with @Bootstrap).
+ * In this case, client code would call the following:
+ * Note that calling the following multiple times would still only initialise once (this is handled by the implementation).
  * {@code
  * Bootstrap.Bootstrapper.bootstrap(Environment);
  * }
- * <p>
- * Why choose this way? Maybe some "pre configuration" is first required e.g in a test setting the application's "environement" within the code.<p>
- * Don't understand why the inner class {@link Bootstrapper#bootstrap(JoinPoint, Bootstrap)} does not call {@link Bootstrapper#prepareShutdown()} directly?<p>
- * First of all, this is for demonstation purposes, and second, as subclasses of {@link Bootstrapper} can pass in functions to {@link Bootstrapper#bootstrap(Environment, Function...)}<p>
+ *
+ * Why choose this way? Maybe some "pre configuration" is first required e.g in a test setting the application's "environement" within the code.
+ * Don't understand why the inner class {@link Bootstrapper#bootstrap(JoinPoint, Bootstrap)} does not call {@link Bootstrapper#prepareShutdown()} directly?
+ * First of all, this is for demonstation purposes, and second, as subclasses of {@link Bootstrapper} can pass in functions to {@link Bootstrapper#bootstrap(Environment, Function...)}
  * to be executed, we may as well keep with consistency is the "parent" class and also pass in functions.
  * @author David Ainslie
  *

@@ -16,7 +16,7 @@ import static com.kissthinker.collection.set.SetUtil.hashSet;
 
 /**
  * Utility/Manager of "services".
- * <p>
+ *
  * Services are started (automatically) by searching the classpath for classes marked up with {@link Service}
  * @author David Ainslie
  *

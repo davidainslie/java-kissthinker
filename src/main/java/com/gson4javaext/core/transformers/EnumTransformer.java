@@ -9,10 +9,10 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Enum transformer to generate JSON from Object and vice versa.
- * <p>
- * Note that the above author (noellynch) originally created this file, but was essentially empty i.e did nothing and was not used anyway.<p>
- * A tad odd, as I, David Ainslie, originally downloaded GSON4JavaExt, http://code.google.com/p/gson4javaext/, as it claimed to extend GSON to handle enums.<p>
- * Alas, even though the website claimed this, at the time of download, the implementation to handle enums was missing.<p>
+ *
+ * Note that the above author (noellynch) originally created this file, but was essentially empty i.e did nothing and was not used anyway.
+ * A tad odd, as I, David Ainslie, originally downloaded GSON4JavaExt, http://code.google.com/p/gson4javaext/, as it claimed to extend GSON to handle enums.
+ * Alas, even though the website claimed this, at the time of download, the implementation to handle enums was missing.
  * So I've implemented this class and had to update {@link Java2JSON} to use this class.
  * @author David Ainslie
  *
@@ -64,7 +64,7 @@ public class EnumTransformer extends TransformerBase<Enum<?>>
 	}
 
 	/**
-	 * A slightly paranoid version of loading a class.<p>
+	 * A slightly paranoid version of loading a class.
 	 * Why paranoid? When getting Strings from {@link JsonObject}, you don't just get a String, you also get the quotes surrounding a String.
 	 * @param pathAndClassName Path and class name
 	 * @return Class

@@ -8,7 +8,7 @@ import com.kissthinker.system.Environment;
 
 /**
  * Any object can be marked up as a "service". Services should be automatically started to "service" other objects.
- * <p>
+ *
  * @author David Ainslie
  *
  */

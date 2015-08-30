@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  * A "bi map" or "two way map".
- * <p>
+ *
  * Get a value with a given key (as in a traditional map), but also get a key with a given value.
  * @author David Ainslie
  *

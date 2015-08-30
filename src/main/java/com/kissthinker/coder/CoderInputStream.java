@@ -8,8 +8,8 @@ import com.kissthinker.factory.Factory;
 
 /**
  * A {@link Coder} version of an {@link InputStream} where objects are read (much like an {@link ObjectInputStream} but as a standard stream of bytes for decoding.
- * <p>
- * Note that at the other end of the communication channel a {@link CoderOutputStream} should be used.<p>
+ *
+ * Note that at the other end of the communication channel a {@link CoderOutputStream} should be used.
  * @author David Ainslie
  *
  */

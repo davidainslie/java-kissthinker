@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * Immutable generic "key value" pair.
- * <p>
+ *
  * @param <K> key
  * @param <V> value
  * @author David Ainslie

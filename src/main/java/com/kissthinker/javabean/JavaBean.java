@@ -13,7 +13,7 @@ import static com.kissthinker.collection.array.ArrayUtil.va;
 
 /**
  * Marker interface to highlight a "class" as a JavaBean i.e. a class where any fields marked up with @Property fire property change events to property listeners.
- * <p>
+ *
  * To "listen" to a {@link JavaBean} go through the 3rd party (support/helper) class {@link JavaBeanSupport}
  * @author David Ainslie
  *
@@ -22,7 +22,7 @@ public interface JavaBean
 {
     /**
      * Mark up a class to be a {@link JavaBean} with this interface, if properties are to be given to {@link JavaBeanSupport} as enum.
-     * <p>
+     *
      * TODO Currently a declared enum can only match "exactly" the name of the variable of a "property" e.g.
      * <pre>
      *  // If you have the following declared in a marked up JavaBean
@@ -84,7 +84,7 @@ public interface JavaBean
         /**
          * 
          * @param proceedingJoinPoint ProceedingJoinPoint
-         * @param collection Note the use of @SuppressWarnings("rawtypes") as AspectJ cannot handle a declaration of Collection, the compile error would be<p>
+         * @param collection Note the use of @SuppressWarnings("rawtypes") as AspectJ cannot handle a declaration of Collection, the compile error would be
          * parameterized types not supported for this and target pointcuts (erasure limitation)
          * @param object Object
          * @return Object
@@ -129,7 +129,7 @@ public interface JavaBean
         /**
          * 
          * @param proceedingJoinPoint ProceedingJoinPoint
-         * @param map Note the use of @SuppressWarnings("rawtypes") as AspectJ cannot handle a declaration of Map, the compile error would be<p>
+         * @param map Note the use of @SuppressWarnings("rawtypes") as AspectJ cannot handle a declaration of Map, the compile error would be
          * parameterized types not supported for this and target pointcuts (erasure limitation)
          * @param key Key
          * @param value Value

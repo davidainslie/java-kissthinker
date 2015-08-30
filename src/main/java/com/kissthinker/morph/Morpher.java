@@ -4,9 +4,9 @@ import com.kissthinker.morph.ezmorph.EZMorpher;
 
 /**
  * Morph an object to another type of object.
- * <p>
+ *
  * {@link EZMorpher} is the default implementation to handle morphing from one class type to another.
- * TODO Set up unit test to use different one morph implementation e.g change from currently using EZMorph to say Apache Commons ConvertUtils.<p>
+ * TODO Set up unit test to use different one morph implementation e.g change from currently using EZMorph to say Apache Commons ConvertUtils.
  * NOTE Instead of using EZMorph, could have used Apache Commons ConvertUtils instead e.g.
  * Converter myConverter = new org.apache.commons.beanutils.converter.IntegerConverter();
  * ConvertUtils.register(myConverter, Integer.TYPE);    // Native type

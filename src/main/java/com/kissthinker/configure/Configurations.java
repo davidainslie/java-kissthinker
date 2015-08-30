@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Allow multiple {@link Configuration} to be grouped.
- * <p>
+ *
  * If Configurations has multiple Configuration after filtering for the environment, and there is isn't one set as "default",
  * then first declared will be used.
  * @see com.kissthinker.configure.configurer.ConfigurationConfigurer

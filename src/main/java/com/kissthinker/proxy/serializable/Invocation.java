@@ -6,8 +6,8 @@ import com.kissthinker.configure.Configuration;
 
 /**
  * Representation of a Serializable invocation e.g for use with RMI call or Object&lt;Output|Input&gt;Stream.
- * <p>
- * This is essentially a copy and paste from {@link com.kissthinker.proxy.Invocation}<p>
+ *
+ * This is essentially a copy and paste from {@link com.kissthinker.proxy.Invocation}
  * TODO Not good, but the easiest way to make a "serializable" version of {@link com.kissthinker.proxy.Invocation}.
  * @author David Ainslie
  *

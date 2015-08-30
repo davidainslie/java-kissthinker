@@ -20,7 +20,7 @@ import static java.text.MessageFormat.format;
 
 /**
  * Factory to be used as a generic factory to instantiate any class i.e avoids coding factories per class.
- * <p>
+ *
  * This factory also provides "life cycle management".
  * @author David Ainslie
  *
@@ -38,7 +38,7 @@ public final class Factory
     private static final Lock SINGLETONS_LOCK = new ReentrantLock();
 
     /**
-     * Create/Instantiate a given class.<p>
+     * Create/Instantiate a given class.
      * This way of instantiation has many benefits.
      * <ul>
      *  <li>This is the only factory (for object instantiation) that you will need i.e don't have to code a factory per object type.</li>
@@ -99,7 +99,7 @@ public final class Factory
     }
 
     /**
-     * Convenience alternative to {@link Factory#create(Class, Object...)}.<p>
+     * Convenience alternative to {@link Factory#create(Class, Object...)}.
      * Note the unnecessary casting to O. This is not required by Eclipse, but required by Maven.
      * @param <O> Object type
      * @param className String of complete class name such as java.lang.String

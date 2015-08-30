@@ -7,7 +7,7 @@ import org.codehaus.jackson.map.ObjectWriter;
 
 /**
  * Coding between Object and bytes via Jackson.
- * <p>
+ *
  * Note that Jackson has a XmlMapper:
  * <pre>
  * XmlMapper mapper = new XmlMapper();

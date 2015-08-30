@@ -23,9 +23,9 @@ import static java.text.MessageFormat.format;
 
 /**
  * Any class marked @{@link Configurable} has its fields that are marked @{@link Configure} set by this aspect.
- * <p>
- * Any field, whether static or not and final or not can be configured.<p>
- * Firstly, if a {@link Configure} has something other than "null", then it will not be configured.<p>
+ *
+ * Any field, whether static or not and final or not can be configured.
+ * Firstly, if a {@link Configure} has something other than "null", then it will not be configured.
  * e.g
  * <pre>
  * {@code @Configure} private Foo foo = new Foo();
@@ -97,8 +97,8 @@ import static java.text.MessageFormat.format;
  * Note that any custom configurer can be developed by extending the abstract (base) class {@link Configurer}
  *
  * </pre>
- * AN IMPORTANT NOTE<p>
- * Like any configuration, IoC, dependency injection framework (or however you wish to name this process), one must be careful of cyclic dependencies.<p>
+ * AN IMPORTANT NOTE
+ * Like any configuration, IoC, dependency injection framework (or however you wish to name this process), one must be careful of cyclic dependencies.
  * Example:
  * <pre>
  * Singleton
@@ -119,7 +119,7 @@ import static java.text.MessageFormat.format;
  * - the above would only work if at least one class is a singleton.
  * TODO If not, should detect this (I guess possible) infinite recursion and log it. Test it
  * </pre>
- * Final note about "otherwise" (which should actually be avoided like the use of "id" i.e should really only declare @Configure with no attributes)<p>
+ * Final note about "otherwise" (which should actually be avoided like the use of "id" i.e should really only declare @Configure with no attributes)
  * Let's take the following example:
  * <pre>
  *{@code @Configure} int port = 1099;
